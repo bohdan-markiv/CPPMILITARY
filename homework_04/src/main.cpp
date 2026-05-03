@@ -1,5 +1,5 @@
 #define ENABLE_LOG 1
-#define ENABLE_DEBUG 1
+#define ENABLE_DEBUG 0
 
 #include <iostream>
 #include <sstream>
@@ -92,6 +92,10 @@ int main(int argc, char** argv)
         currentPosition.y += d * sin(currentPosition.theta + dTheta / 2.0);
         currentPosition.theta += dTheta;
         currentPosition.timestamp_ms = data_input.timestamp_ms;
+
+        LOG(currentPosition.timestamp_ms << " " << std::round(currentPosition.x * 1000.0) / 1000.0 << " "
+                                         << std::round(currentPosition.y * 1000.0) / 1000.0 << " "
+                                         << std::round(currentPosition.theta * 1000.0) / 1000.0);
       }
       else {
         currentPosition.timestamp_ms = data_input.timestamp_ms;
@@ -100,8 +104,6 @@ int main(int argc, char** argv)
         currentPosition.theta = 0.0;
       }
 
-      std::cout << currentPosition.timestamp_ms << " " << currentPosition.x << " " << currentPosition.y << " " << currentPosition.theta
-                << std::endl;
       previousOutput = data_input;
     }
     else {
