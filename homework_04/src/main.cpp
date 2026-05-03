@@ -53,6 +53,9 @@ int main(int argc, char** argv)
   }
   int line_count = 0;
   std::string line;
+  DataInput previousOutput;
+  Output currentPosition;
+
   while (std::getline(file, line)) {
     if (!line.empty()) {
       DataInput data_input;
@@ -63,8 +66,47 @@ int main(int argc, char** argv)
       }
       DEBUG("Parsed values: " << data_input.timestamp_ms << " " << data_input.fl_ticks << " " << data_input.fr_ticks << " "
                               << data_input.bl_ticks << " " << data_input.br_ticks);
-    }
 
+      if (line_count != 0) {
+        // Крок 1. Delta iмпульсiв по кожному колесу:
+        int delta_fl = data_input.fl_ticks - previousOutput.fl_ticks;
+        int delta_fr = data_input.fr_ticks - previousOutput.fr_ticks;
+        int delta_bl = data_input.bl_ticks - previousOutput.bl_ticks;
+        int delta_br = data_input.br_ticks - previousOutput.br_ticks;
+        // Крок 2. Усереднити борти (передне i заднє колесо одного боку обертаються синхронно):
+        double distance_left = (delta_fl + delta_bl) / 2.0;
+        double distance_right = (delta_fr + delta_br) / 2.0;
+
+        // Крок 3. Перевести iмпульси у метри:
+        double distance_per_tick = 2 * M_PI * WHEEL_RADIUS_M / static_cast<double>(TICKS_PER_REVOLUTION);
+
+        double dL = distance_left * distance_per_tick;
+        double dR = distance_right * distance_per_tick;
+
+        // Крок 4. Скiльки пройшов центр робота i на скiльки повернувся:
+        double d = (dL + dR) / 2.0;
+        double dTheta = (dR - dL) / WHEELBASE_M;
+
+        // Крок 5. Оновити позицiю (midpoint integration - усереднений напрямок на кроцi):
+        currentPosition.x += d * cos(currentPosition.theta + dTheta / 2.0);
+        currentPosition.y += d * sin(currentPosition.theta + dTheta / 2.0);
+        currentPosition.theta += dTheta;
+        currentPosition.timestamp_ms = data_input.timestamp_ms;
+      }
+      else {
+        currentPosition.timestamp_ms = data_input.timestamp_ms;
+        currentPosition.x = 0.0;
+        currentPosition.y = 0.0;
+        currentPosition.theta = 0.0;
+      }
+
+      std::cout << currentPosition.timestamp_ms << " " << currentPosition.x << " " << currentPosition.y << " " << currentPosition.theta
+                << std::endl;
+      previousOutput = data_input;
+    }
+    else {
+      LOG("Warning: Skipping empty line at line number " << line_count);
+    }
     line_count++;
   }
 
