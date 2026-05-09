@@ -38,7 +38,7 @@
       }
     },
     {
-      "name": "relwithdebinfo ",
+      "name": "relwithdebinfo",
       "displayName": "Release with Debug Info",
       "description": "Release with Debug Info build для занять блоку 2: оптимізована версія з безпечними значеннями.",
       "generator": "Ninja",
