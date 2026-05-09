@@ -44,7 +44,7 @@ long parse_long(const char* text)
   const long value = std::strtol(text, &end, 10);
 
   if (end == text || *end != '\0') {
-    throw std::runtime_error("invalid number");
+    throw std::runtime_error("Error with parsing into long");
   }
 
   return value;
@@ -55,7 +55,7 @@ int parse_int(const char* text)
   char* end = nullptr;
   const int value = std::strtol(text, &end, 10);
   if (end == text || *end != '\0') {
-    throw std::runtime_error("invalid number");
+    throw std::runtime_error("Error with parsing into int");
   }
   return value;
 }
@@ -65,7 +65,7 @@ double parse_double(const char* text)
   const double value = std::strtod(text, &end);
 
   if (end == text || *end != '\0') {
-    throw std::runtime_error("invalid number");
+    throw std::runtime_error("Error with parsing into double");
   }
 
   return value;
@@ -77,7 +77,8 @@ Frame parse_frame(char line[])
   const int field_count = split_line(line, fields, EXPECTED_FIELD_COUNT);
 
   if (field_count != EXPECTED_FIELD_COUNT) {
-    throw std::runtime_error("invalid line format");
+    throw std::runtime_error("Invalid frame format: expected " + std::to_string(EXPECTED_FIELD_COUNT) + " fields, got " +
+                             std::to_string(field_count));
   };
   (void)field_count;
 
@@ -114,7 +115,7 @@ double compute_frame_rate_hz(const Frame frames[], int frame_count)
   if (elapsed_ms <= 0) {
     throw std::runtime_error("The time difference between the first and last frame must be positive to compute frame rate.");
   }
-  return static_cast<double>((frame_count - 1) * 1000 / elapsed_ms);
+  return static_cast<double>((frame_count - 1) * 1000 / static_cast<double>(elapsed_ms));
 }
 
 int read_frames(const char* path, Frame frames[], int max_frames)
@@ -139,7 +140,7 @@ int read_frames(const char* path, Frame frames[], int max_frames)
     }
   }
   if (frame_count == 0) {
-    throw std::runtime_error("no valid frames found in the input file");
+    throw std::runtime_error("File is empty or contains only empty lines, at least one valid frame is required.");
   }
 
   return frame_count;
