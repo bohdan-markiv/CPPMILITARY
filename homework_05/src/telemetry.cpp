@@ -43,8 +43,8 @@ long parse_long(const char* text)
   char* end = nullptr;
   const long value = std::strtol(text, &end, 10);
 
-  if (end == text) {
-    std::abort();
+  if (end == text || *end != '\0') {
+    throw std::runtime_error("invalid number");
   }
 
   return value;
@@ -64,7 +64,7 @@ double parse_double(const char* text)
   char* end = nullptr;
   const double value = std::strtod(text, &end);
 
-  if (end == text) {
+  if (end == text || *end != '\0') {
     throw std::runtime_error("invalid number");
   }
 
@@ -77,7 +77,6 @@ Frame parse_frame(char line[])
   const int field_count = split_line(line, fields, EXPECTED_FIELD_COUNT);
 
   if (field_count != EXPECTED_FIELD_COUNT) {
-    std::cerr << "error: expected " << EXPECTED_FIELD_COUNT << " fields, but got " << field_count << '\n';
     throw std::runtime_error("invalid line format");
   };
   (void)field_count;
@@ -138,6 +137,9 @@ int read_frames(const char* path, Frame frames[], int max_frames)
       frames[frame_count] = parse_frame(line);
       ++frame_count;
     }
+  }
+  if (frame_count == 0) {
+    throw std::runtime_error("no valid frames found in the input file");
   }
 
   return frame_count;
