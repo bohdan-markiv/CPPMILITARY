@@ -1,5 +1,7 @@
 #include "ballistics.hpp"
 #include <gtest/gtest.h>
+#include <fstream>
+#include <stdexcept>
 
 TEST(Ballistics, ComputesKnownDropPointBasic1)
 {
@@ -67,5 +69,17 @@ TEST(Ballistics, ComputesKnownDropPointTest3)
   EXPECT_NEAR(solution.fire.x, 490.496f, 0.01f);
   EXPECT_NEAR(solution.fire.y, 232.0f, 0.01f);
   EXPECT_NEAR(solution.maneuver_used, true, 0.01f);
+  // Test case implementation
+}
+
+TEST(Ballistics, WrongAmmoName)
+{
+  const BallisticsInput input{.drone = {180.0f, 180.0f},
+                              .drone_z = 100.0f,
+                              .target = {200.0f, 200.0f},
+                              .attack_speed = 10.0f,
+                              .acceleration_path = 10.0f,
+                              .ammo_name = "UnknownAmmo"};
+  EXPECT_THROW(compute_drop_solution(input), std::invalid_argument);
   // Test case implementation
 }
