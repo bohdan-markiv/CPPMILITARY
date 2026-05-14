@@ -1,23 +1,61 @@
 #include "ballistics.hpp"
 #include <iostream>
 #include <fstream>
-int read_input(const char *path, BallisticsInput &input)
+#include <cstdlib>
+
+BallisticsInput read_input(const char* path)
 {
-  std::ifstream inputFile{path};
-  if (!inputFile) {
-    std::cerr << "error: failed to open input file: " << path << '\n';
-    throw std::runtime_error("Failed to open input file");
+  std::ifstream file{path};
+  if (!file) {
+    throw std::runtime_error(std::string("cannot open input file: ") + path);
   }
 
-  if (!(inputFile >> input.drone.x >> input.drone.y >> input.drone_z >> input.target.x >> input.target.y >> input.attack_speed >>
-        input.acceleration_path >> input.ammo_name)) {
-    std::cerr << "Error reading input file." << std::endl;
-    throw std::runtime_error("Failed to open input file");
+  BallisticsInput input{};
+
+  file >> input.drone.x;
+  if (file.fail()) {
+    throw std::runtime_error("bad or missing value for field: drone_x");
   }
-  return 0;  // Success
+
+  file >> input.drone.y;
+  if (file.fail()) {
+    throw std::runtime_error("bad or missing value for field: drone_y");
+  }
+
+  file >> input.drone_z;
+  if (file.fail()) {
+    throw std::runtime_error("bad or missing value for field: drone_z");
+  }
+
+  file >> input.target.x;
+  if (file.fail()) {
+    throw std::runtime_error("bad or missing value for field: target_x");
+  }
+
+  file >> input.target.y;
+  if (file.fail()) {
+    throw std::runtime_error("bad or missing value for field: target_y");
+  }
+
+  file >> input.attack_speed;
+  if (file.fail()) {
+    throw std::runtime_error("bad or missing value for field: attack_speed");
+  }
+
+  file >> input.acceleration_path;
+  if (file.fail()) {
+    throw std::runtime_error("bad or missing value for field: acceleration_path");
+  }
+
+  file >> input.ammo_name;
+  if (file.fail()) {
+    throw std::runtime_error("bad or missing value for field: ammo_name");
+  }
+
+  return input;
 }
 
-void print_drop_solution(const DropSolution &solution)
+void print_drop_solution(const DropSolution& solution)
 {
   std::cout << "flight_time " << solution.flight_time << '\n';
   std::cout << "fire_x " << solution.fire.x << '\n';

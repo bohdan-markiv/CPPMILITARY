@@ -24,4 +24,4 @@ struct DropSolution {
 
 DropSolution compute_drop_solution(const BallisticsInput& input);
 void print_drop_solution(const DropSolution& solution);
-int read_input(const char* path, BallisticsInput& input);
+BallisticsInput read_input(const char* path);

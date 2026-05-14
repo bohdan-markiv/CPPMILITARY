@@ -11,8 +11,7 @@ int main(int argc, char** argv)
   }
 
   try {
-    BallisticsInput input;
-    read_input(argv[1], input);
+    BallisticsInput input = read_input(argv[1]);
     const DropSolution solution = compute_drop_solution(input);
     print_drop_solution(solution);
   }
