@@ -14,8 +14,8 @@ target_include_directories(ballistics PUBLIC include)
 target_compile_options(ballistics PRIVATE -Wall -Wextra -pedantic)
 
 # Один executable для задачі з ballistics.
-add_executable(ballistics src/main.cpp)
-target_link_libraries(ballistics PRIVATE ballistics)
+add_executable(ballistics_check src/main.cpp)
+target_link_libraries(ballistics_check PRIVATE ballistics)
 
 # Базові compiler warnings допомагають побачити підозрілі місця до runtime.
-target_compile_options(ballistics PRIVATE -Wall -Wextra -pedantic)
+target_compile_options(ballistics_check PRIVATE -Wall -Wextra -pedantic)

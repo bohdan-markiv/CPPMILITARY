@@ -1,6 +1,19 @@
+#define ENABLE_LOG 1
+#define ENABLE_DEBUG 0
+
+#if ENABLE_LOG
+#define LOG(msg) std::cout << msg << std::endl
+#else
+#define LOG(msg)
+#endif
+
+#if ENABLE_DEBUG
+#define DEBUG(msg) std::cout << msg << std::endl
+#else
+#define DEBUG(msg)
+#endif
 #include "ballistics.hpp"
 #include <iostream>
-#include <sstream>
 #define _USE_MATH_DEFINES
 #include <cmath>
 #include <fstream>
@@ -14,7 +27,6 @@ struct AmmoParams {
   float lift;
 };
 
-const int AMMO_COUNT = 5;
 // float M_PI = std::acos(-1.0f);
 inline float distanceCalculation(Coord drone, Coord target)
 {
@@ -118,10 +130,9 @@ float ammoFlyDistance(float m, float d, float l, float &t, float attackSpeed, fl
 
   float h = term1 - term2 + term3 + term4 + term5;
   if (h < 0.0f) {
-    std::cout << "The distance to target cannot be negative: " << h << std::endl;
-    return -1.0f;
+    throw std::runtime_error("The fly distance cannot be negative: " + std::to_string(h));
   }
-  std::cout << "The distance to target is: " << h << std::endl;
+  LOG("The distance to target is: " << h << std::endl);
   return h;
 }
 
@@ -139,10 +150,9 @@ DropSolution compute_drop_solution(const BallisticsInput &input)
 {
   DropSolution solution;
   //   std::ofstream out("output.txt");
-  std::cout << "The input values are: " << input.drone.x << ", " << input.drone.y << ", " << input.target.x << ", " << input.target.y
-            << std::endl;
-  float fullDistance = distanceCalculation(input.drone.x, input.drone.y, input.target.x, input.target.y);
-  std::cout << "The full distance to target is: " << fullDistance << std::endl;
+  LOG("The input values are: " << input.drone.x << ", " << input.drone.y << ", " << input.target.x << ", " << input.target.y);
+  float fullDistance = distanceCalculation(input.drone, input.target);
+  LOG("The full distance to target is: " << fullDistance);
   // if (fullDistance <= 0.0f)
   // {
   //     std::cout << "Mistake with distance." << std::endl;
@@ -153,27 +163,30 @@ DropSolution compute_drop_solution(const BallisticsInput &input)
   if (ammoParametersIdentification(input.ammo_name, m, d, l) < 0.0f) {
     throw std::runtime_error("Failed to identify ammo parameters");
   }
-  std::cout << "Ammo parameters: mass = " << m << " kg, drag coefficient = " << d << ", lift coefficient = " << l << std::endl;
+  LOG("Ammo parameters: mass = " << m << " kg, drag coefficient = " << d << ", lift coefficient = " << l);
 
   float t = 0.0f;
   ;
-  float h = ammoFlyDistance(m, d, l, t, input.attackSpeed, input.drone_z);
+  float h = ammoFlyDistance(m, d, l, t, input.attack_speed, input.drone_z);
   if (h < 0.0f) {
     throw std::runtime_error("Failed to compute ammo fly distance");
   }
 
+  Coord drone = input.drone;
   solution.maneuver_used = false;
-  if (h + input.accelerationPath > fullDistance) {
-    input.drone = apply_maneuver(input.drone, input.target, fullDistance, h, input.accelerationPath);
+  if (h + input.acceleration_path > fullDistance) {
+    drone = apply_maneuver(input.drone, input.target, fullDistance, h, input.acceleration_path);
+    LOG("Maneuver applied. New drone coordinates: (" << drone.x << ", " << drone.y << ")");
+    fullDistance = distanceCalculation(drone, input.target);
     solution.maneuver_used = true;
   }
 
   // ratio = (D − h) / D
   float ratio = ((fullDistance - h) / fullDistance);
   solution.flight_time = t;
-  solution.fire.x = input.drone.x + (input.target.x - input.drone.x) * ratio;
-  solution.fire.y = input.drone.y + (input.target.y - input.drone.y) * ratio;
-  std::cout << "The coordinates to fire are: (" << solution.fire.x << " " << solution.fire.y << ")" << std::endl;
+  solution.fire.x = drone.x + (input.target.x - drone.x) * ratio;
+  solution.fire.y = drone.y + (input.target.y - drone.y) * ratio;
+  LOG("The coordinates to fire are: (" << solution.fire.x << " " << solution.fire.y << ")");
   //   out << solution.fire.x << " " << solution.fire.y << std::endl;
 
   return solution;
@@ -187,7 +200,7 @@ int read_input(const char *path, BallisticsInput &input)
     throw std::runtime_error("Failed to open input file");
   }
 
-  if (!(inputFile >> input.drone.xd >> input.drone.yd >> input.drone_z >> input.target.x >> input.target.y >> input.attack_speed >>
+  if (!(inputFile >> input.drone.x >> input.drone.y >> input.drone_z >> input.target.x >> input.target.y >> input.attack_speed >>
         input.acceleration_path >> input.ammo_name)) {
     std::cerr << "Error reading input file." << std::endl;
     throw std::runtime_error("Failed to open input file");
