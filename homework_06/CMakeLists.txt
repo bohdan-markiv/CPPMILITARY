@@ -9,8 +9,13 @@ set(CMAKE_CXX_STANDARD 20)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(CMAKE_CXX_EXTENSIONS OFF)
 
+add_library(ballistics src/ballistics.cpp)
+target_include_directories(ballistics PUBLIC include)
+target_compile_options(ballistics PRIVATE -Wall -Wextra -pedantic)
+
 # Один executable для задачі з ballistics.
 add_executable(ballistics src/main.cpp)
+target_link_libraries(ballistics PRIVATE ballistics)
 
 # Базові compiler warnings допомагають побачити підозрілі місця до runtime.
 target_compile_options(ballistics PRIVATE -Wall -Wextra -pedantic)
