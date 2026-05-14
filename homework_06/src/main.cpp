@@ -2,7 +2,7 @@
 
 #include <iostream>
 
-int main(int argc, char** argv)
+auto main(int argc, char** argv) -> int
 {
   // The executable expects exactly one telemetry log path.
   if (argc != 2) {

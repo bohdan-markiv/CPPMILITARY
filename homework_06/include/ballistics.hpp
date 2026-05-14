@@ -22,6 +22,6 @@ struct DropSolution {
   bool maneuver_used;
 };
 
-DropSolution compute_drop_solution(const BallisticsInput& input);
+auto compute_drop_solution(const BallisticsInput& input) -> DropSolution;
 void print_drop_solution(const DropSolution& solution);
-BallisticsInput read_input(const char* path);
+auto read_input(const char* path) -> BallisticsInput;

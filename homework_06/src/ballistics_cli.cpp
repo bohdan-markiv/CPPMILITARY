@@ -3,7 +3,7 @@
 #include <fstream>
 #include <cstdlib>
 
-BallisticsInput read_input(const char* path)
+auto read_input(const char* path) -> BallisticsInput
 {
   std::ifstream file{path};
   if (!file) {
