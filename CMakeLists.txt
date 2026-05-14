@@ -14,6 +14,16 @@ set(CMAKE_CXX_EXTENSIONS OFF)
 # що й реальна CMake-збірка.
 set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 
+include(FetchContent)
+
+include(GoogleTest)
+
+FetchContent_Declare(
+    googletest URL https://github.com/google/googletest/archive/refs/tags/v1.14.0.zip
+                   DOWNLOAD_EXTRACT_TIMESTAMP TRUE)
+
+FetchContent_MakeAvailable(googletest)
+enable_testing()
 # Домашні роботи. По мірі появи додаємо кожну окремим add_subdirectory.
 add_subdirectory(homework_04)
 
