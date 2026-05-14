@@ -1,24 +1,11 @@
-#define ENABLE_LOG 1
-#define ENABLE_DEBUG 0
 
-#if ENABLE_LOG
-#define LOG(msg) std::cout << msg << std::endl
-#else
-#define LOG(msg)
-#endif
-
-#if ENABLE_DEBUG
-#define DEBUG(msg) std::cout << msg << std::endl
-#else
-#define DEBUG(msg)
-#endif
 #include "ballistics.hpp"
 #include <iostream>
-#define _USE_MATH_DEFINES
 #include <cmath>
 #include <string>
 // #include <cstring>
-float g = 9.81f;
+const float g = 9.81f;
+const float kPi = std::acos(-1.0f);
 struct AmmoParams {
   std::string name;
   float mass;
@@ -50,7 +37,6 @@ float ammoParametersIdentification(std::string ammo_name, float &m, float &d, fl
   }
   if (found == -1) {
     throw std::invalid_argument("unknown ammo type: " + ammo_name);
-    return -1.0f;  // Return an error code;
   }
 
   m = ammoParams[found].mass;
@@ -71,7 +57,6 @@ float ammoFlyDistance(float m, float d, float l, float &t, float attackSpeed, fl
   // std::cout << "The coefficient c is: " << c << std::endl;
   if (a == 0.0f) {
     throw std::runtime_error("The coefficient a cannot be zero.");
-    return 0.0f;
   }
   // p = − b² / (3a²)
   float p = (-1.0f * pow(b, 2)) / (3.0f * pow(a, 2));
@@ -85,18 +70,15 @@ float ammoFlyDistance(float m, float d, float l, float &t, float attackSpeed, fl
   // std::cout << "The argument for the cubic root is: " << arg << std::endl;
   if (arg < -1.0f || arg > 1.0f) {
     throw std::runtime_error("The argument for the cubic root is out of range: " + std::to_string(arg));
-    return 0.0f;
   }
   float fphi = acos(arg);
   // std::cout << "The angle fphi is: " << fphi << std::endl;
 
   // t = 2√(−p/3) · cos( (φ + 4π) / 3 ) − b / (3a)
-  t = (2.0f * sqrt(-p / 3.0f) * cos((fphi + 4.0f * M_PI) / 3.0f) - b / (3.0f * a));
+  t = (2.0f * sqrt(-p / 3.0f) * cos((fphi + 4.0f * kPi) / 3.0f) - b / (3.0f * a));
 
   if (t < 1e-3f) {
     throw std::runtime_error("The time of flight cannot be negative: " + std::to_string(t));
-    return 0.0f;
-    return -1.0f;
   }
   //   std::cout << "The time of flight t is: " << t << std::endl;
 
@@ -131,7 +113,7 @@ float ammoFlyDistance(float m, float d, float l, float &t, float attackSpeed, fl
   if (h < 0.0f) {
     throw std::runtime_error("The fly distance cannot be negative: " + std::to_string(h));
   }
-  LOG("The distance to target is: " << h << std::endl);
+  //   std::cout << "The distance to target is: " << h << std::endl;
   return h;
 }
 
@@ -149,9 +131,10 @@ DropSolution compute_drop_solution(const BallisticsInput &input)
 {
   DropSolution solution;
   //   std::ofstream out("output.txt");
-  LOG("The input values are: " << input.drone.x << ", " << input.drone.y << ", " << input.target.x << ", " << input.target.y);
+  std::cout << "The input values are: " << input.drone.x << ", " << input.drone.y << ", " << input.target.x << ", " << input.target.y
+            << std::endl;
   float fullDistance = distanceCalculation(input.drone, input.target);
-  LOG("The full distance to target is: " << fullDistance);
+  std::cout << "The full distance to target is: " << fullDistance << std::endl;
   // if (fullDistance <= 0.0f)
   // {
   //     std::cout << "Mistake with distance." << std::endl;
@@ -162,10 +145,9 @@ DropSolution compute_drop_solution(const BallisticsInput &input)
   if (ammoParametersIdentification(input.ammo_name, m, d, l) < 0.0f) {
     throw std::runtime_error("Failed to identify ammo parameters");
   }
-  LOG("Ammo parameters: mass = " << m << " kg, drag coefficient = " << d << ", lift coefficient = " << l);
+  std::cout << "Ammo parameters: mass = " << m << " kg, drag coefficient = " << d << ", lift coefficient = " << l << std::endl;
 
   float t = 0.0f;
-  ;
   float h = ammoFlyDistance(m, d, l, t, input.attack_speed, input.drone_z);
   if (h < 0.0f) {
     throw std::runtime_error("Failed to compute ammo fly distance");
@@ -175,7 +157,7 @@ DropSolution compute_drop_solution(const BallisticsInput &input)
   solution.maneuver_used = false;
   if (h + input.acceleration_path > fullDistance) {
     drone = apply_maneuver(input.drone, input.target, fullDistance, h, input.acceleration_path);
-    LOG("Maneuver applied. New drone coordinates: (" << drone.x << ", " << drone.y << ")");
+    std::cout << "Maneuver applied. New drone coordinates: (" << drone.x << ", " << drone.y << ")" << std::endl;
     fullDistance = distanceCalculation(drone, input.target);
     solution.maneuver_used = true;
   }
@@ -185,7 +167,7 @@ DropSolution compute_drop_solution(const BallisticsInput &input)
   solution.flight_time = t;
   solution.fire.x = drone.x + (input.target.x - drone.x) * ratio;
   solution.fire.y = drone.y + (input.target.y - drone.y) * ratio;
-  LOG("The coordinates to fire are: (" << solution.fire.x << " " << solution.fire.y << ")");
+  std::cout << "The coordinates to fire are: (" << solution.fire.x << " " << solution.fire.y << ")" << std::endl;
   //   out << solution.fire.x << " " << solution.fire.y << std::endl;
 
   return solution;
