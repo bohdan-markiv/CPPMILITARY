@@ -145,7 +145,7 @@ struct TargetsConfig {
   int timeSteps;
   Coord **positions;  // 2D array: positions[targetIdx][timeStep]
 };
-
+std::vector<SimStep> simLog;
 inline float distanceCalculation(Coord currentCoord, Coord targetCoord)
 {
   return sqrt(pow(targetCoord.x - currentCoord.x, 2) + pow(targetCoord.y - currentCoord.y, 2));
@@ -282,7 +282,7 @@ public:
 class IBallisticSolver {
 public:
   virtual ~IBallisticSolver(){};
-  virtual Coord solver(Coord currentCoord, float zd, Coord targetCoord, float attackSpeed, double m, double d, double l) = 0;
+  virtual Coord solve(Coord currentCoord, float zd, Coord targetCoord, float attackSpeed, double m, double d, double l) = 0;
 };
 
 class IConfigLoader {
@@ -348,7 +348,7 @@ public:
 
 class AnalyticalSolver : public IBallisticSolver {
 public:
-  Coord solver(Coord currentCoord, float zd, Coord targetCoord, float attackSpeed, double m, double d, double l) override
+  Coord solve(Coord currentCoord, float zd, Coord targetCoord, float attackSpeed, double m, double d, double l) override
   {
     Coord fireCoord;
     float fullDistance = distanceCalculation(currentCoord, targetCoord);
@@ -501,9 +501,9 @@ class Mission {
   // float indexes[MAX_STEPS];
   bool TARGET_HIT = false;
   // int CURRENT_TARGET = -1;
-  int PREVIOUS_TARGET = -1;
-  bool currentDirInitialized = false;
-  float currentDir = -1.0f;  // Undefined direction at the start
+  // int PREVIOUS_TARGET = -1;
+  // bool currentDirInitialized = false;
+  // float currentDir = -1.0f;  // Undefined direction at the start
   float currentSpeed = 0.0f;
   float remainingTurnTime = 0.0f;
 
@@ -531,7 +531,7 @@ public:
     this->timeSteps = targets->getTimeSteps();
 
     simulation.pos = config.startPos;
-    simulation.direction = -1.0f;
+    simulation.direction = config.initialDir;
     simulation.state = STOPPED;
     simulation.targetIdx = -1;
     simulation.dropPoint = {0.0f, 0.0f};
@@ -570,12 +570,12 @@ public:
 
       Coord targetCoord, nextCoord;
       interpolateTarget(t, config.arrayTimeStep, targets->getTarget(i), timeSteps, targetCoord);
-      interpolateTarget(t, config.arrayTimeStep, targets->getTarget(i), timeSteps, nextCoord);
+      interpolateTarget(t + config.simTimeStep, config.arrayTimeStep, targets->getTarget(i), timeSteps, nextCoord);
       Coord dCoord = nextCoord - targetCoord;
       float targetVx = dCoord.x / config.simTimeStep;
       float targetVy = dCoord.y / config.simTimeStep;
 
-      Coord dropPoint = solver->solver(simulation.pos, config.altitude, targetCoord, config.attackSpeed, ammo.mass, ammo.drag, ammo.lift);
+      Coord dropPoint = solver->solve(simulation.pos, config.altitude, targetCoord, config.attackSpeed, ammo.mass, ammo.drag, ammo.lift);
 
       float desiredDir = atan2(dropPoint.y - simulation.pos.y, dropPoint.x - simulation.pos.x);
       float angleDiff = angleDifference(simulation.direction, desiredDir);
@@ -630,7 +630,7 @@ public:
       for (int iter = 0; iter < 2; iter++) {
         predictedCoord.x = targetCoord.x + targetVx * (totalTimeToTarget + t_ammo);
         predictedCoord.y = targetCoord.y + targetVy * (totalTimeToTarget + t_ammo);
-        dropPoint = solver->solver(simulation.pos, config.altitude, predictedCoord, config.attackSpeed, ammo.mass, ammo.drag, ammo.lift);
+        dropPoint = solver->solve(simulation.pos, config.altitude, predictedCoord, config.attackSpeed, ammo.mass, ammo.drag, ammo.lift);
         droneTravel = distanceCalculation(simulation.pos, dropPoint);
         cruiseDistance = droneTravel - distanceDuringAccel;
         totalTimeToTarget = penaltyTime + cruiseDistance / config.attackSpeed;
@@ -654,10 +654,133 @@ public:
 
     interpolateTarget(t + t_ammo, config.arrayTimeStep, targets->getTarget(chosenIdx), timeSteps, simulation.aimPoint);
 
+    Coord diffCoord = simulation.dropPoint - simulation.pos;
+    float desiredDir = atan2(diffCoord.y, diffCoord.x);
+    float angleDiff = angleDifference(simulation.direction, desiredDir);
+    bool needBigTurn = fabs(angleDiff) > config.turnThreshold;
+
+    switch (simulation.state) {
+      case STOPPED:
+        if (needBigTurn) {
+          simulation.state = TURNING;
+          remainingTurnTime = fabs(angleDiff) / config.angularSpeed;
+        }
+        else {
+          simulation.state = ACCELERATING;
+        }
+        break;
+
+      case ACCELERATING:
+        if (needBigTurn) {
+          simulation.state = DECELERATING;
+        }
+        else if (currentSpeed >= config.attackSpeed) {
+          simulation.state = MOVING;
+          currentSpeed = config.attackSpeed;  // Ensure we don't exceed max speed
+        }
+        break;
+
+      case MOVING:
+        if (needBigTurn) {
+          simulation.state = DECELERATING;
+        }
+        break;
+
+      case DECELERATING:
+        if (currentSpeed <= 0.0f) {
+          currentSpeed = 0.0f;
+          simulation.state = STOPPED;  // next step will decide TURNING or ACCELERATING
+        }
+        break;
+
+      case TURNING:
+        if (fabs(angleDiff) < 1e-2f) {
+          simulation.state = ACCELERATING;
+          remainingTurnTime = 0.0f;
+        }
+        else if (remainingTurnTime <= 0.0f) {
+          remainingTurnTime = fabs(angleDiff) / config.angularSpeed;
+        }
+        break;
+    }
+
+    switch (simulation.state) {
+      case STOPPED:
+        // no motion
+        break;
+
+      case ACCELERATING:
+        currentSpeed += a * config.simTimeStep;
+        if (currentSpeed > config.attackSpeed)
+          currentSpeed = config.attackSpeed;
+        // For small turns, adjust heading smoothly while moving
+        if (!needBigTurn && fabs(angleDiff) > 1e-4f) {
+          float turnStep = config.angularSpeed * config.simTimeStep;
+          if (turnStep > fabs(angleDiff))
+            turnStep = fabs(angleDiff);
+          simulation.direction += (angleDiff > 0 ? 1.0f : -1.0f) * turnStep;
+        }
+        // Update position
+        simulation.pos.x += currentSpeed * cos(simulation.direction) * config.simTimeStep;
+        simulation.pos.y += currentSpeed * sin(simulation.direction) * config.simTimeStep;
+        break;
+
+      case MOVING:
+        if (!needBigTurn && fabs(angleDiff) > 1e-4f) {
+          float turnStep = config.angularSpeed * config.simTimeStep;
+          if (turnStep > fabs(angleDiff))
+            turnStep = fabs(angleDiff);
+          simulation.direction += (angleDiff > 0 ? 1.0f : -1.0f) * turnStep;
+        }
+        simulation.pos.x += currentSpeed * cos(simulation.direction) * config.simTimeStep;
+        simulation.pos.y += currentSpeed * sin(simulation.direction) * config.simTimeStep;
+        break;
+
+      case DECELERATING:
+        currentSpeed -= a * config.simTimeStep;
+        if (currentSpeed < 0.0f)
+          currentSpeed = 0.0f;
+        simulation.pos.x += currentSpeed * cos(simulation.direction) * config.simTimeStep;
+        simulation.pos.y += currentSpeed * sin(simulation.direction) * config.simTimeStep;
+        break;
+
+      case TURNING: {
+        // Turn in place — no position change
+        float turnStep = config.angularSpeed * config.simTimeStep;
+        if (turnStep > fabs(angleDiff))
+          turnStep = fabs(angleDiff);
+        simulation.direction += (angleDiff > 0 ? 1.0f : -1.0f) * turnStep;
+        remainingTurnTime -= config.simTimeStep;
+        if (remainingTurnTime < 0.0f)
+          remainingTurnTime = 0.0f;
+      } break;
+    }
+
+    if (simulation.state == MOVING) {
+      Coord bombLand;
+      bombLand.x = simulation.pos.x + h_ammo * cos(simulation.direction);
+      bombLand.y = simulation.pos.y + h_ammo * sin(simulation.direction);
+
+      Coord hitCoord;
+      interpolateTarget(t + t_ammo, config.arrayTimeStep, targets->getTarget(simulation.targetIdx), timeSteps, hitCoord);
+
+      float missDistance = distanceCalculation(bombLand, hitCoord);
+
+      if (missDistance <= config.hitRadius) {
+        TARGET_HIT = true;
+        LOG("Target " << simulation.targetIdx << " HIT at t=" << t << "s (step " << N << ")");
+        LOG("  Drone:  (" << simulation.pos.x << ", " << simulation.pos.y << ")  dir=" << simulation.direction);
+        LOG("  Bomb lands at:   (" << bombLand.x << ", " << bombLand.y << ")");
+        LOG("  Target at impact:(" << hitCoord.x << ", " << hitCoord.y << ")");
+        LOG("  Miss distance:   " << missDistance << " m");
+      }
+    }
+
     N++;
     t += config.simTimeStep;
     return simulation;
   }
+  int getN() const { return N; }
 };
 
 int main()
@@ -670,465 +793,38 @@ int main()
 
   mission.init();
 
-  DroneConfig config = configLoader->getConfig();
-  AmmoParams ammoParams = configLoader->getAmmoParams();
   while (mission.hasNext()) {
     SimStep step = mission.step();
-    std::cout << "Step " << /*step counter*/ ": pos (" << step.pos.x << ", " << step.pos.y << ")  target=" << step.targetIdx << "  drop=("
-              << step.dropPoint.x << ", " << step.dropPoint.y << ")\n";
+    std::cout << "Step " << mission.getN() << " pos=(" << step.pos.x << "," << step.pos.y << ")" << " dir=" << step.direction
+              << " state=" << step.state << " target=" << step.targetIdx << "\n";
+    simLog.push_back(step);
   }
+
+  json out;
+  out["totalSteps"] = simLog.size();
+  out["steps"] = json::array();
+  for (const SimStep &s : simLog) {
+    json stepJson;
+    stepJson["position"] = {{"x", s.pos.x}, {"y", s.pos.y}};
+    stepJson["direction"] = s.direction;
+    stepJson["state"] = (int)s.state;
+    stepJson["targetIndex"] = s.targetIdx;
+    stepJson["dropPoint"] = {{"x", s.dropPoint.x}, {"y", s.dropPoint.y}};
+    stepJson["aimPoint"] = {{"x", s.aimPoint.x}, {"y", s.aimPoint.y}};
+    stepJson["predictedTarget"] = {{"x", s.predictedTarget.x}, {"y", s.predictedTarget.y}};
+    out["steps"].push_back(stepJson);
+  }
+
+  std::ofstream outFile("drone_ballistics/output/simulation.json");
+  if (!outFile.is_open()) {
+    throw std::runtime_error("Cannot open output/simulation.json — does the folder exist?");
+  }
+  outFile << out.dump(2);
+  outFile.close();
+
   delete configLoader;
   delete targetProvider;
   delete ballisticSolver;
 
   return 0;
 }
-
-//   while (N < MAX_STEPS && !TARGET_HIT) {
-//     bool targetChanged;
-//     float timeToCurrentTarget = 999999.0f;
-
-//     // float a = (startingValues.attackSpeed * startingValues.attackSpeed) / (2.0f * startingValues.accelPath);
-//     // const float t_ammo = timeToTarget(m, d, l, startingValues.attackSpeed, startingValues.altitude);
-//     // const float h_ammo = ammoFlyDistance(t_ammo, d, l, startingValues.attackSpeed, m);
-
-//     while (mission.hasNext()) {
-//       Coord dropPoint = mission.step(simulation.pos, t);
-//       std::cout << "Step " << mission.getCurrentTargetIdx() << ": Drop point at (" << dropPoint.x << ", " << dropPoint.y << ")"
-//                 << std::endl;
-//       targetChanged = (mission.getCurrentTargetIdx() != simulation.targetIdx);
-//       if (!currentDirInitialized) {
-//         simulation.direction = config.initialDir;
-//         currentDirInitialized = true;
-//       }
-//       float totalTimeToTarget = 0.0f;
-//       float penaltyTime = 0.0f;
-//       float startSpeed;
-//       float turningTime = 0.0f;
-
-//       Velocity targetVelocity = mission.getVelocity();
-
-//       float desiredDir = atan2(dropPoint.y - simulation.pos.y, dropPoint.x - simulation.pos.x);
-//       float angleDiff = angleDifference(simulation.direction, desiredDir);
-
-//       if (targetChanged) {
-//         switch (simulation.state) {
-//           case STOPPED:
-//             startSpeed = 0.0f;
-//             break;
-//           case ACCELERATING:
-//             startSpeed = currentSpeed;
-//             break;  // continue accelerating from current speed
-//           case MOVING:
-//             startSpeed = config.attackSpeed;
-//             break;  // already at max speed
-//           case DECELERATING:
-//             startSpeed = currentSpeed;
-//             break;  // continue decelerating from current speed
-//           case TURNING:
-//             startSpeed = currentSpeed;
-//             break;  // maintain speed during turn
-//         }
-//       }
-//       else {
-//         startSpeed = currentSpeed;
-//       }
-
-//       if (fabs(angleDiff) > config.turnThreshold) {
-//         turningTime = fabs(angleDiff) / config.angularSpeed;
-//         penaltyTime += turningTime;
-//         startSpeed = 0.0f;  // Assume we stop to turn
-//       }
-
-//       float timeToStop =
-//         calculateTimeToStop(currentSpeed, config.attackSpeed, config.accelPath, targetChanged, simulation.state, remainingTurnTime, a);
-
-//       penaltyTime += timeToStop;
-
-//       float timeToAccel = 0.0f;
-//       float distanceDuringAccel = 0.0f;
-//       if (startSpeed < config.attackSpeed) {
-//         timeToAccel = (config.attackSpeed - startSpeed) / a;
-//         distanceDuringAccel = startSpeed * timeToAccel + 0.5f * a * timeToAccel * timeToAccel;
-//       }
-//       penaltyTime += timeToAccel;
-//       float droneTravel = distanceCalculation(simulation.pos, dropPoint);
-
-//       float cruiseDistance = droneTravel - distanceDuringAccel;
-//       totalTimeToTarget = penaltyTime + cruiseDistance / config.attackSpeed;
-//       Coord predictedCoord;
-//       for (int iter = 0; iter < 2; iter++) {
-//         predictedCoord.x = targetCoord.x + targetVx * (totalTimeToTarget + t_ammo);
-//         predictedCoord.y = targetCoord.y + targetVy * (totalTimeToTarget + t_ammo);
-//         calculateDropOffPoint(simulation.pos,
-//                               startingValues.altitude,
-//                               predictedCoord,
-//                               startingValues.attackSpeed,
-//                               startingValues.accelPath,
-//                               AMMO_COUNT,
-//                               ammoParams,
-//                               startingValues.ammoName,
-//                               fireCoord);
-//         droneTravel = distanceCalculation(simulation.pos, fireCoord);
-//         cruiseDistance = droneTravel - distanceDuringAccel;
-//         totalTimeToTarget = penaltyTime + cruiseDistance / startingValues.attackSpeed;
-//       }
-
-//       if (totalTimeToTarget < 0.0f) {
-//         throw std::runtime_error("Calculated negative time to target, which is invalid.");
-//       }
-//       if (totalTimeToTarget < timeToCurrentTarget) {
-//         timeToCurrentTarget = totalTimeToTarget;
-//         simulation.targetIdx = i;
-//         simulation.dropPoint.x = fireCoord.x;
-//         simulation.dropPoint.y = fireCoord.y;
-
-//         interpolateTarget(
-//           simulation.targetIdx, t + t_ammo, startingValues.arrayTimeStep, NUMBER_OF_TARGETS, MAX_TIME_STEPS, targets,
-//           simulation.aimPoint);
-//         simulation.predictedTarget = predictedCoord;
-//       }
-//     }
-
-//     Coord diffCoord = simulation.dropPoint - simulation.pos;
-//     float desiredDir = atan2(diffCoord.y, diffCoord.x);
-//     float angleDiff = angleDifference(simulation.direction, desiredDir);
-//     bool needBigTurn = fabs(angleDiff) > startingValues.turnThreshold;
-
-//     switch (simulation.state) {
-//       case STOPPED:
-//         if (needBigTurn) {
-//           simulation.state = TURNING;
-//           remainingTurnTime = fabs(angleDiff) / startingValues.angularSpeed;
-//         }
-//         else {
-//           simulation.state = ACCELERATING;
-//         }
-//         break;
-
-//       case ACCELERATING:
-//         if (needBigTurn) {
-//           simulation.state = DECELERATING;
-//         }
-//         else if (currentSpeed >= startingValues.attackSpeed) {
-//           simulation.state = MOVING;
-//           currentSpeed = startingValues.attackSpeed;  // Ensure we don't exceed max speed
-//         }
-//         break;
-
-//       case MOVING:
-//         if (needBigTurn) {
-//           simulation.state = DECELERATING;
-//         }
-//         break;
-
-//       case DECELERATING:
-//         if (currentSpeed <= 0.0f) {
-//           currentSpeed = 0.0f;
-//           simulation.state = STOPPED;  // next step will decide TURNING or ACCELERATING
-//         }
-//         break;
-
-//       case TURNING:
-//         if (fabs(angleDiff) < 1e-3f) {
-//           // Angle reached — exit TURNING gracefully (no snap needed,
-//           // currentDir is already at desiredDir within tolerance)
-//           simulation.state = ACCELERATING;
-//           remainingTurnTime = 0.0f;
-//         }
-//         else if (remainingTurnTime <= 0.0f) {
-//           // Timer ran out but desired direction has changed
-//           // (e.g. selected target switched mid-turn).
-//           // Recompute remaining turn time so the gradual turn can finish.
-//           // DO NOT snap currentDir — that creates a discontinuity that violates
-//           // the "no large turns while moving" rule.
-//           remainingTurnTime = fabs(angleDiff) / startingValues.angularSpeed;
-//         }
-//         break;
-//     }
-
-//     t += config.simTimeStep;
-//   }
-
-//   for (int i = 0; i < mission.config.targetCount; i++) {
-//     Coord targetCoord, nextCoord;
-//     interpolateTarget(i, t, startingValues.arrayTimeStep, NUMBER_OF_TARGETS, MAX_TIME_STEPS, targets, targetCoord);
-
-//     //   interpolateTarget(
-//     //     i, t + startingValues.simTimeStep, startingValues.arrayTimeStep, NUMBER_OF_TARGETS, MAX_TIME_STEPS, targets, nextCoord);
-
-//     Coord dCoord = nextCoord - targetCoord;
-//     float targetVx = dCoord.x / startingValues.simTimeStep;
-//     float targetVy = dCoord.y / startingValues.simTimeStep;
-//     Coord fireCoord;
-
-//     calculateDropOffPoint(simulation.pos,
-//                           startingValues.altitude,
-//                           targetCoord,
-//                           startingValues.attackSpeed,
-//                           startingValues.accelPath,
-//                           AMMO_COUNT,
-//                           ammoParams,
-//                           startingValues.ammoName,
-//                           fireCoord);
-//     float desiredDir = atan2(fireCoord.y - simulation.pos.y, fireCoord.x - simulation.pos.x);
-//     float angleDiff = angleDifference(simulation.direction, desiredDir);
-
-//     float startSpeed;
-
-//     if (targetChanged) {
-//       switch (simulation.state) {
-//         case STOPPED:
-//           startSpeed = 0.0f;
-//           break;
-//         case ACCELERATING:
-//           startSpeed = currentSpeed;
-//           break;  // continue accelerating from current speed
-//         case MOVING:
-//           startSpeed = startingValues.attackSpeed;
-//           break;  // already at max speed
-//         case DECELERATING:
-//           startSpeed = currentSpeed;
-//           break;  // continue decelerating from current speed
-//         case TURNING:
-//           startSpeed = currentSpeed;
-//           break;  // maintain speed during turn
-//       }
-//     }
-//     else {
-//       startSpeed = currentSpeed;
-//     }
-//     float turningTime = 0.0f;
-//     if (fabs(angleDiff) > startingValues.turnThreshold) {
-//       turningTime = fabs(angleDiff) / startingValues.angularSpeed;
-//       penaltyTime += turningTime;
-//       startSpeed = 0.0f;  // Assume we stop to turn
-//     }
-
-//     float timeToStop = calculateTimeToStop(
-//       currentSpeed, startingValues.attackSpeed, startingValues.accelPath, targetChanged, simulation.state, remainingTurnTime, a);
-
-//     penaltyTime += timeToStop;
-
-//     // Time to acceleration
-//     float timeToAccel = 0.0f;
-//     float distanceDuringAccel = 0.0f;
-//     if (startSpeed < startingValues.attackSpeed) {
-//       timeToAccel = (startingValues.attackSpeed - startSpeed) / a;
-//       distanceDuringAccel = startSpeed * timeToAccel + 0.5f * a * timeToAccel * timeToAccel;
-//     }
-//     penaltyTime += timeToAccel;
-
-//     float droneTravel = distanceCalculation(simulation.pos, fireCoord);
-//     float cruiseDistance = droneTravel - distanceDuringAccel;
-//     totalTimeToTarget = penaltyTime + cruiseDistance / startingValues.attackSpeed;
-//     Coord predictedCoord;
-//     for (int iter = 0; iter < 2; iter++) {
-//       predictedCoord.x = targetCoord.x + targetVx * (totalTimeToTarget + t_ammo);
-//       predictedCoord.y = targetCoord.y + targetVy * (totalTimeToTarget + t_ammo);
-//       calculateDropOffPoint(simulation.pos,
-//                             startingValues.altitude,
-//                             predictedCoord,
-//                             startingValues.attackSpeed,
-//                             startingValues.accelPath,
-//                             AMMO_COUNT,
-//                             ammoParams,
-//                             startingValues.ammoName,
-//                             fireCoord);
-//       droneTravel = distanceCalculation(simulation.pos, fireCoord);
-//       cruiseDistance = droneTravel - distanceDuringAccel;
-//       totalTimeToTarget = penaltyTime + cruiseDistance / startingValues.attackSpeed;
-//     }
-
-//     if (totalTimeToTarget < 0.0f) {
-//       throw std::runtime_error("Calculated negative time to target, which is invalid.");
-//     }
-//     if (totalTimeToTarget < timeToCurrentTarget) {
-//       timeToCurrentTarget = totalTimeToTarget;
-//       simulation.targetIdx = i;
-//       simulation.dropPoint.x = fireCoord.x;
-//       simulation.dropPoint.y = fireCoord.y;
-
-//       interpolateTarget(
-//         simulation.targetIdx, t + t_ammo, startingValues.arrayTimeStep, NUMBER_OF_TARGETS, MAX_TIME_STEPS, targets, simulation.aimPoint);
-//       simulation.predictedTarget = predictedCoord;
-//     }
-//   }
-
-//   Coord diffCoord = simulation.dropPoint - simulation.pos;
-//   float desiredDir = atan2(diffCoord.y, diffCoord.x);
-//   float angleDiff = angleDifference(simulation.direction, desiredDir);
-//   bool needBigTurn = fabs(angleDiff) > startingValues.turnThreshold;
-
-//   switch (simulation.state) {
-//     case STOPPED:
-//       if (needBigTurn) {
-//         simulation.state = TURNING;
-//         remainingTurnTime = fabs(angleDiff) / startingValues.angularSpeed;
-//       }
-//       else {
-//         simulation.state = ACCELERATING;
-//       }
-//       break;
-
-//     case ACCELERATING:
-//       if (needBigTurn) {
-//         simulation.state = DECELERATING;
-//       }
-//       else if (currentSpeed >= startingValues.attackSpeed) {
-//         simulation.state = MOVING;
-//         currentSpeed = startingValues.attackSpeed;  // Ensure we don't exceed max speed
-//       }
-//       break;
-
-//     case MOVING:
-//       if (needBigTurn) {
-//         simulation.state = DECELERATING;
-//       }
-//       break;
-
-//     case DECELERATING:
-//       if (currentSpeed <= 0.0f) {
-//         currentSpeed = 0.0f;
-//         simulation.state = STOPPED;  // next step will decide TURNING or ACCELERATING
-//       }
-//       break;
-
-//     case TURNING:
-//       if (fabs(angleDiff) < 1e-3f) {
-//         // Angle reached — exit TURNING gracefully (no snap needed,
-//         // currentDir is already at desiredDir within tolerance)
-//         simulation.state = ACCELERATING;
-//         remainingTurnTime = 0.0f;
-//       }
-//       else if (remainingTurnTime <= 0.0f) {
-//         // Timer ran out but desired direction has changed
-//         // (e.g. selected target switched mid-turn).
-//         // Recompute remaining turn time so the gradual turn can finish.
-//         // DO NOT snap currentDir — that creates a discontinuity that violates
-//         // the "no large turns while moving" rule.
-//         remainingTurnTime = fabs(angleDiff) / startingValues.angularSpeed;
-//       }
-//       break;
-//   }
-
-//   switch (simulation.state) {
-//     case STOPPED:
-//       // no motion
-//       break;
-
-//     case ACCELERATING:
-//       currentSpeed += a * startingValues.simTimeStep;
-//       if (currentSpeed > startingValues.attackSpeed)
-//         currentSpeed = startingValues.attackSpeed;
-//       // For small turns, adjust heading smoothly while moving
-//       if (!needBigTurn && fabs(angleDiff) > 1e-4f) {
-//         float turnStep = startingValues.angularSpeed * startingValues.simTimeStep;
-//         if (turnStep > fabs(angleDiff))
-//           turnStep = fabs(angleDiff);
-//         simulation.direction += (angleDiff > 0 ? 1.0f : -1.0f) * turnStep;
-//       }
-//       // Update position
-//       simulation.pos.x += currentSpeed * cos(simulation.direction) * startingValues.simTimeStep;
-//       simulation.pos.y += currentSpeed * sin(simulation.direction) * startingValues.simTimeStep;
-//       break;
-
-//     case MOVING:
-//       if (!needBigTurn && fabs(angleDiff) > 1e-4f) {
-//         float turnStep = startingValues.angularSpeed * startingValues.simTimeStep;
-//         if (turnStep > fabs(angleDiff))
-//           turnStep = fabs(angleDiff);
-//         simulation.direction += (angleDiff > 0 ? 1.0f : -1.0f) * turnStep;
-//       }
-//       simulation.pos.x += currentSpeed * cos(simulation.direction) * startingValues.simTimeStep;
-//       simulation.pos.y += currentSpeed * sin(simulation.direction) * startingValues.simTimeStep;
-//       break;
-
-//     case DECELERATING:
-//       currentSpeed -= a * startingValues.simTimeStep;
-//       if (currentSpeed < 0.0f)
-//         currentSpeed = 0.0f;
-//       simulation.pos.x += currentSpeed * cos(simulation.direction) * startingValues.simTimeStep;
-//       simulation.pos.y += currentSpeed * sin(simulation.direction) * startingValues.simTimeStep;
-//       break;
-
-//     case TURNING: {
-//       // Turn in place — no position change
-//       float turnStep = startingValues.angularSpeed * startingValues.simTimeStep;
-//       if (turnStep > fabs(angleDiff))
-//         turnStep = fabs(angleDiff);
-//       simulation.direction += (angleDiff > 0 ? 1.0f : -1.0f) * turnStep;
-//       remainingTurnTime -= startingValues.simTimeStep;
-//       if (remainingTurnTime < 0.0f)
-//         remainingTurnTime = 0.0f;
-//     } break;
-//   }
-//   PREVIOUS_TARGET = simulation.targetIdx;
-
-//   DEBUG("Step " << N << ": Drone at (" << simulation.pos.x << ", " << simulation.pos.y << ")  dir=" << simulation.direction
-//                 << "  speed=" << currentSpeed << "  phase=" << simulation.state << "  target=" << simulation.targetIdx);
-
-//   droneCoordinates[2 * N] = simulation.pos.x;  // note: index 2*N, not N
-//   droneCoordinates[2 * N + 1] = simulation.pos.y;
-//   directions[N] = simulation.direction;
-//   phases[N] = simulation.state;
-//   indexes[N] = simulation.targetIdx;
-//   N++;
-//   steps[N - 1] = simulation;
-
-//   if (simulation.state == MOVING) {
-//     Coord bombLandPoint;
-
-//     bombLandPoint.x = simulation.pos.x + cos(simulation.direction) * h_ammo;
-//     bombLandPoint.y = simulation.pos.y + sin(simulation.direction) * h_ammo;
-//     // Where will current target be at impact time?
-//     Coord impactCoord;
-//     interpolateTarget(
-//       simulation.targetIdx, t + t_ammo, startingValues.arrayTimeStep, NUMBER_OF_TARGETS, MAX_TIME_STEPS, targets, impactCoord);
-//     float missDistance = distanceCalculation(bombLandPoint, impactCoord);
-
-//     if (missDistance <= startingValues.hitRadius) {
-//       TARGET_HIT = true;
-//       DEBUG("Target " << simulation.targetIdx << " HIT at sim time t=" << t << "s (step " << N << ")");
-//       DEBUG("  Drone:  (" << simulation.pos.x << ", " << simulation.pos.y << ")  dir=" << simulation.direction << "  speed=" <<
-//       currentSpeed
-//                           << std::endl);
-//       DEBUG("  Bomb lands at:   (" << bombLandPoint.x << ", " << bombLandPoint.y << ")" << std::endl);
-//       DEBUG("  Target at impact:(" << impactCoord.x << ", " << impactCoord.y << ")" << std::endl);
-//       DEBUG("  Miss distance:   " << missDistance << " m  (hitRadius=" << startingValues.hitRadius << ")" << std::endl);
-//       break;
-//     }
-//   }
-//   // Store the current step's state
-//   t += startingValues.simTimeStep;
-// }
-// LOG("Simulation ended after " << N << " steps.");
-
-// json out_json;
-// out_json["totalSteps"] = N;
-// out_json["steps"] = json::array();
-// for (int i = 0; i < N; i++) {
-//   json step;
-//   step["position"] = {{"x", steps[i].pos.x}, {"y", steps[i].pos.y}};
-//   step["direction"] = steps[i].direction;
-//   step["state"] = (int)steps[i].state;
-//   step["targetIndex"] = steps[i].targetIdx;
-//   step["dropPoint"] = {{"x", steps[i].dropPoint.x}, {"y", steps[i].dropPoint.y}};
-//   step["aimPoint"] = {{"x", steps[i].aimPoint.x}, {"y", steps[i].aimPoint.y}};
-//   step["predictedTarget"] = {{"x", steps[i].predictedTarget.x}, {"y", steps[i].predictedTarget.y}};
-//   out_json["steps"].push_back(step);
-// }
-// std::ofstream o("simulation.json");
-// o << out_json.dump(2);
-// // 1. Delete each row first
-// for (int i = 0; i < NUMBER_OF_TARGETS; i++) {
-//   delete[] targets[i];
-// }
-
-// // 2. Delete the array of pointers
-// delete[] targets;
-
-// delete[] ammoParams;
-// delete[] steps;
-
-// }
