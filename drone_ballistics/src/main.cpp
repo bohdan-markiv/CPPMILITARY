@@ -336,7 +336,7 @@ public:
   {  // Return initial position for simplicity
     return this->targets.positions[idx];
   }
-  ~JsonTargetProvider()
+  ~JsonTargetProvider() override
   {
     // Clean up allocated memory
     for (int i = 0; i < this->targets.targetCount; i++) {
@@ -351,15 +351,15 @@ public:
   Coord solve(Coord currentCoord, float zd, Coord targetCoord, float attackSpeed, double m, double d, double l) override
   {
     Coord fireCoord;
-    float fullDistance = distanceCalculation(currentCoord, targetCoord);
+    double fullDistance = distanceCalculation(currentCoord, targetCoord);
 
-    float t = timeToTarget(m, d, l, attackSpeed, zd);
-    if (t < 0.0f) {
+    double t = timeToTarget(m, d, l, attackSpeed, zd);
+    if (t < 0.0) {
       LOG("Error calculating time to target.");
       throw std::runtime_error("Error calculating time to target.");
     }
-    float h = ammoFlyDistance(t, d, l, attackSpeed, m);
-    if (h < 0.0f) {
+    double h = ammoFlyDistance(t, d, l, attackSpeed, m);
+    if (h < 0.0) {
       LOG("Error calculating ammo fly distance.");
       throw std::runtime_error("Error calculating ammo fly distance.");
     }
@@ -370,7 +370,7 @@ public:
     // }
 
     // ratio = (D − h) / D, clamped to [0,1]: if target is within bomb range, drop from current position
-    float ratio = (fullDistance > 0.0f) ? std::max(0.0f, (fullDistance - h) / fullDistance) : 0.0f;
+    double ratio = (fullDistance > 0.0) ? std::max(0.0, (fullDistance - h) / fullDistance) : 0.0;
     fireCoord.x = currentCoord.x + (targetCoord.x - currentCoord.x) * ratio;
     fireCoord.y = currentCoord.y + (targetCoord.y - currentCoord.y) * ratio;
     return fireCoord;
@@ -488,28 +488,20 @@ class Mission {
   int currentIdx = 0;
   int targetCount = 0;
 
-  // SimStep *steps = new SimStep[MAX_STEPS];
   SimStep simulation;
 
-  float t = 0.0f;
+  double t = 0.0;
 
   // OUTPUT  arrays
   int N = 0;
-  // float droneCoordinates[MAX_STEPS * 2];
-  // float directions[MAX_STEPS];
-  // float phases[MAX_STEPS];
-  // float indexes[MAX_STEPS];
   bool TARGET_HIT = false;
-  // int CURRENT_TARGET = -1;
-  // int PREVIOUS_TARGET = -1;
-  // bool currentDirInitialized = false;
-  // float currentDir = -1.0f;  // Undefined direction at the start
-  float currentSpeed = 0.0f;
-  float remainingTurnTime = 0.0f;
 
-  float t_ammo = 0.0f;
-  float h_ammo = 0.0f;
-  float a = 0.0f;
+  double currentSpeed = 0.0;
+  double remainingTurnTime = 0.0;
+
+  double t_ammo = 0.0;
+  double h_ammo = 0.0;
+  double a = 0.0;
   int timeSteps = 0;
 
 public:
@@ -568,19 +560,20 @@ public:
     for (int i = 0; i < targetCount; i++) {
       bool targetChanged = (i != simulation.targetIdx);
 
-      Coord targetCoord, nextCoord;
+      Coord targetCoord{0.0f, 0.0f}, nextCoord{0.0f, 0.0f};
       interpolateTarget(t, config.arrayTimeStep, targets->getTarget(i), timeSteps, targetCoord);
       interpolateTarget(t + config.simTimeStep, config.arrayTimeStep, targets->getTarget(i), timeSteps, nextCoord);
       Coord dCoord = nextCoord - targetCoord;
-      float targetVx = dCoord.x / config.simTimeStep;
-      float targetVy = dCoord.y / config.simTimeStep;
+      double targetVx = dCoord.x / config.simTimeStep;
+      double targetVy = dCoord.y / config.simTimeStep;
 
-      Coord dropPoint = solver->solve(simulation.pos, config.altitude, targetCoord, config.attackSpeed, ammo.mass, ammo.drag, ammo.lift);
+      Coord dropPoint{.x = 0.0f, .y = 0.0f};
+      dropPoint = solver->solve(simulation.pos, config.altitude, targetCoord, config.attackSpeed, ammo.mass, ammo.drag, ammo.lift);
 
-      float desiredDir = atan2(dropPoint.y - simulation.pos.y, dropPoint.x - simulation.pos.x);
-      float angleDiff = angleDifference(simulation.direction, desiredDir);
+      double desiredDir = atan2(dropPoint.y - simulation.pos.y, dropPoint.x - simulation.pos.x);
+      double angleDiff = angleDifference(simulation.direction, desiredDir);
 
-      float startSpeed = currentSpeed;
+      double startSpeed = currentSpeed;
 
       if (targetChanged) {
         switch (simulation.state) {
@@ -602,31 +595,31 @@ public:
         }
       };
 
-      float penaltyTime = 0.0f;
+      double penaltyTime = 0.0;
 
       if (fabs(angleDiff) > config.turnThreshold) {
-        float turningTime = fabs(angleDiff) / config.angularSpeed;
+        double turningTime = fabs(angleDiff) / config.angularSpeed;
         penaltyTime += turningTime;
-        startSpeed = 0.0f;  // Assume we stop to turn
+        startSpeed = 0.0;  // Assume we stop to turn
       }
 
-      float timeToStop = calculateTimeToStop(currentSpeed, config.attackSpeed, targetChanged, simulation.state, remainingTurnTime, a);
+      double timeToStop = calculateTimeToStop(currentSpeed, config.attackSpeed, targetChanged, simulation.state, remainingTurnTime, a);
       penaltyTime += timeToStop;
 
-      float timeToAccel = 0.0f;
-      float distanceDuringAccel = 0.0f;
+      double timeToAccel = 0.0;
+      double distanceDuringAccel = 0.0;
       if (startSpeed < config.attackSpeed) {
         timeToAccel = (config.attackSpeed - startSpeed) / a;
-        distanceDuringAccel = startSpeed * timeToAccel + 0.5f * a * timeToAccel * timeToAccel;
+        distanceDuringAccel = startSpeed * timeToAccel + 0.5 * a * timeToAccel * timeToAccel;
       }
 
       penaltyTime += timeToAccel;
 
-      float droneTravel = distanceCalculation(simulation.pos, dropPoint);
-      float cruiseDistance = droneTravel - distanceDuringAccel;
-      float totalTimeToTarget = penaltyTime + cruiseDistance / config.attackSpeed;
+      double droneTravel = distanceCalculation(simulation.pos, dropPoint);
+      double cruiseDistance = droneTravel - distanceDuringAccel;
+      double totalTimeToTarget = penaltyTime + cruiseDistance / config.attackSpeed;
 
-      Coord predictedCoord;
+      Coord predictedCoord{.x = 0.0, .y = 0.0};
       for (int iter = 0; iter < 2; iter++) {
         predictedCoord.x = targetCoord.x + targetVx * (totalTimeToTarget + t_ammo);
         predictedCoord.y = targetCoord.y + targetVy * (totalTimeToTarget + t_ammo);
@@ -654,9 +647,9 @@ public:
 
     interpolateTarget(t + t_ammo, config.arrayTimeStep, targets->getTarget(chosenIdx), timeSteps, simulation.aimPoint);
 
-    Coord diffCoord = simulation.dropPoint - simulation.pos;
-    float desiredDir = atan2(diffCoord.y, diffCoord.x);
-    float angleDiff = angleDifference(simulation.direction, desiredDir);
+    Coord diffCoord{.x = simulation.dropPoint.x - simulation.pos.x, .y = simulation.dropPoint.y - simulation.pos.y};
+    double desiredDir = atan2(diffCoord.y, diffCoord.x);
+    double angleDiff = angleDifference(simulation.direction, desiredDir);
     bool needBigTurn = fabs(angleDiff) > config.turnThreshold;
 
     switch (simulation.state) {
@@ -691,6 +684,10 @@ public:
           currentSpeed = 0.0f;
           simulation.state = STOPPED;  // next step will decide TURNING or ACCELERATING
         }
+        else if (!needBigTurn) {
+          // Turn requirement gone, re-accelerate
+          simulation.state = ACCELERATING;
+        }
         break;
 
       case TURNING:
@@ -715,10 +712,10 @@ public:
           currentSpeed = config.attackSpeed;
         // For small turns, adjust heading smoothly while moving
         if (!needBigTurn && fabs(angleDiff) > 1e-4f) {
-          float turnStep = config.angularSpeed * config.simTimeStep;
+          double turnStep = config.angularSpeed * config.simTimeStep;
           if (turnStep > fabs(angleDiff))
             turnStep = fabs(angleDiff);
-          simulation.direction += (angleDiff > 0 ? 1.0f : -1.0f) * turnStep;
+          simulation.direction += (angleDiff > 0 ? 1.0 : -1.0) * turnStep;
         }
         // Update position
         simulation.pos.x += currentSpeed * cos(simulation.direction) * config.simTimeStep;
@@ -727,10 +724,10 @@ public:
 
       case MOVING:
         if (!needBigTurn && fabs(angleDiff) > 1e-4f) {
-          float turnStep = config.angularSpeed * config.simTimeStep;
+          double turnStep = config.angularSpeed * config.simTimeStep;
           if (turnStep > fabs(angleDiff))
             turnStep = fabs(angleDiff);
-          simulation.direction += (angleDiff > 0 ? 1.0f : -1.0f) * turnStep;
+          simulation.direction += (angleDiff > 0 ? 1.0 : -1.0) * turnStep;
         }
         simulation.pos.x += currentSpeed * cos(simulation.direction) * config.simTimeStep;
         simulation.pos.y += currentSpeed * sin(simulation.direction) * config.simTimeStep;
@@ -738,33 +735,33 @@ public:
 
       case DECELERATING:
         currentSpeed -= a * config.simTimeStep;
-        if (currentSpeed < 0.0f)
-          currentSpeed = 0.0f;
+        if (currentSpeed < 0.0)
+          currentSpeed = 0.0;
         simulation.pos.x += currentSpeed * cos(simulation.direction) * config.simTimeStep;
         simulation.pos.y += currentSpeed * sin(simulation.direction) * config.simTimeStep;
         break;
 
       case TURNING: {
         // Turn in place — no position change
-        float turnStep = config.angularSpeed * config.simTimeStep;
+        double turnStep = config.angularSpeed * config.simTimeStep;
         if (turnStep > fabs(angleDiff))
           turnStep = fabs(angleDiff);
-        simulation.direction += (angleDiff > 0 ? 1.0f : -1.0f) * turnStep;
+        simulation.direction += (angleDiff > 0 ? 1.0 : -1.0) * turnStep;
         remainingTurnTime -= config.simTimeStep;
-        if (remainingTurnTime < 0.0f)
-          remainingTurnTime = 0.0f;
+        if (remainingTurnTime < 0.0)
+          remainingTurnTime = 0.0;
       } break;
     }
 
     if (simulation.state == MOVING) {
-      Coord bombLand;
+      Coord bombLand{.x = 0.0, .y = 0.0};
       bombLand.x = simulation.pos.x + h_ammo * cos(simulation.direction);
       bombLand.y = simulation.pos.y + h_ammo * sin(simulation.direction);
 
-      Coord hitCoord;
+      Coord hitCoord{.x = 0.0, .y = 0.0};
       interpolateTarget(t + t_ammo, config.arrayTimeStep, targets->getTarget(simulation.targetIdx), timeSteps, hitCoord);
 
-      float missDistance = distanceCalculation(bombLand, hitCoord);
+      double missDistance = distanceCalculation(bombLand, hitCoord);
 
       if (missDistance <= config.hitRadius) {
         TARGET_HIT = true;
@@ -780,10 +777,10 @@ public:
     t += config.simTimeStep;
     return simulation;
   }
-  int getN() const { return N; }
+  [[nodiscard]] int getN() const { return N; }
 };
 
-int main()
+auto main() -> int
 {
   IConfigLoader *configLoader = createLoader(LoaderType::FILE);
   ITargetProvider *targetProvider = createProvider(ProviderType::JSON);
