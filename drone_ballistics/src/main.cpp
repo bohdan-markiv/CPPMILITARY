@@ -691,12 +691,13 @@ public:
         break;
 
       case TURNING:
-        if (fabs(angleDiff) < 1e-2f) {
-          simulation.state = ACCELERATING;
+        // Check if the angular difference is smaller than your threshold
+        if (std::abs(angleDiff) < config.turnThreshold) {
+          simulation.state = ACCELERATING;  // Safely move to acceleration
           remainingTurnTime = 0.0f;
         }
         else if (remainingTurnTime <= 0.0f) {
-          remainingTurnTime = fabs(angleDiff) / config.angularSpeed;
+          remainingTurnTime = std::abs(angleDiff) / config.angularSpeed;
         }
         break;
     }
