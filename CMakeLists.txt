@@ -16,8 +16,17 @@ set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 
 # Домашні роботи. По мірі появи додаємо кожну окремим add_subdirectory.
 add_subdirectory(homework_04)
+include(FetchContent)
 
+include(GoogleTest)
+
+FetchContent_Declare(
+    googletest URL https://github.com/google/googletest/archive/refs/tags/v1.14.0.zip
+                   DOWNLOAD_EXTRACT_TIMESTAMP TRUE)
+
+FetchContent_MakeAvailable(googletest)
 # Demo-код для заняття 2.4: локальне і віддалене відлагодження через GDB.
 add_subdirectory(demos/lesson_2_4/debug_probe)
 
+add_subdirectory(drone_ballistics)
 add_subdirectory(homework_05)
