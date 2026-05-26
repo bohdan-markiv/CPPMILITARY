@@ -1,8 +1,8 @@
 {
   "drone": {
     "position": {
-      "x": 150,
-      "y": 150
+      "x": 50,
+      "y": 250
     },
     "altitude": 100,
     "initialDirection": 0,
@@ -16,5 +16,5 @@
     "timeStep": 0.1,
     "hitRadius": 3
   },
-  "targetArrayTimeStep": 10
+  "targetArrayTimeStep": 1
 }
