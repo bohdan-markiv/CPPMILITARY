@@ -29,3 +29,4 @@ FetchContent_MakeAvailable(googletest)
 add_subdirectory(demos/lesson_2_4/debug_probe)
 
 add_subdirectory(drone_ballistics)
+add_subdirectory(homework_05)
