@@ -9,6 +9,22 @@ set(CMAKE_CXX_STANDARD 20)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(CMAKE_CXX_EXTENSIONS OFF)
 
+add_library(helpers src/helpers.cpp)
+target_include_directories(helpers PUBLIC include)
+target_compile_options(helpers PRIVATE -Wall -Wextra -pedantic)
+
+add_library(factory src/config/ComponentFactory.cpp)
+target_include_directories(factory PUBLIC include)
+target_compile_options(factory PRIVATE -Wall -Wextra -pedantic)
+
+add_library(missionprocessor src/MissionProcessor.cpp)
+target_include_directories(missionprocessor PUBLIC include)
+target_compile_options(missionprocessor PRIVATE -Wall -Wextra -pedantic)
+
+add_library(analyticalsolver src/solvers/AnalyticalSolver.cpp)
+target_include_directories(analyticalsolver PUBLIC include)
+target_compile_options(analyticalsolver PRIVATE -Wall -Wextra -pedantic)
+
 # Один executable для задачі з ballistics.
 add_executable(ballistics src/main.cpp)
 
@@ -16,3 +32,5 @@ add_executable(ballistics src/main.cpp)
 target_include_directories(ballistics PRIVATE include)
 
 target_compile_options(ballistics PRIVATE -Wall -Wextra -pedantic)
+target_link_libraries(ballistics PRIVATE factory helpers analyticalsolver missionprocessor)
+target_link_libraries(analyticalsolver PRIVATE helpers)
