@@ -11,47 +11,37 @@ void JsonTargetProvider::load()
   }
   json targetsRaw = json::parse(targetsFile);
 
-  this->targets.targetCount = targetsRaw["targetCount"];
-  this->targets.timeSteps = targetsRaw["timeSteps"];
+  this->TargetCount = targetsRaw["targetCount"];
+  this->TimeSteps = targetsRaw["timeSteps"];
 
-  this->targets.positions = new Coord *[this->targets.targetCount];
-  for (int i = 0; i < this->targets.targetCount; i++) {
-    // Allocate each row
-    this->targets.positions[i] = new Coord[this->targets.timeSteps];
+  this->targets.resize(this->TargetCount);
+  for (int i = 0; i < this->TargetCount; i++) {
+    this->targets[i].resize(this->TimeSteps);
 
     // Get a reference to the specific target's positions array
     const auto &jsonPositions = targetsRaw["targets"][i]["positions"];
 
-    for (int j = 0; j < this->targets.timeSteps; j++) {
+    for (int j = 0; j < this->TimeSteps; j++) {
       // Access the specific position object once
       const auto &pos = jsonPositions[j];
 
-      this->targets.positions[i][j].x = pos["x"].get<float>();
-      this->targets.positions[i][j].y = pos["y"].get<float>();
+      this->targets[i][j].x = pos["x"].get<float>();
+      this->targets[i][j].y = pos["y"].get<float>();
     }
   };
 }
 
 int JsonTargetProvider::getTargetCount()
 {
-  return this->targets.targetCount;
+  return this->TargetCount;
 }
 
 int JsonTargetProvider::getTimeSteps()
 {
-  return this->targets.timeSteps;
+  return this->TimeSteps;
 }
 
 Coord *JsonTargetProvider::getTarget(int idx)
 {
-  return this->targets.positions[idx];
-}
-
-JsonTargetProvider::~JsonTargetProvider()
-{
-  // Clean up allocated memory
-  for (int i = 0; i < this->targets.targetCount; i++) {
-    delete[] this->targets.positions[i];
-  }
-  delete[] this->targets.positions;
+  return &this->targets[idx][0];
 }

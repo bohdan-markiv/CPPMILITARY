@@ -1,10 +1,13 @@
 #pragma once
+#include <vector>
 #include "Types.h"
 #include "interfaces/ITargetProvider.h"
 
 class JsonTargetProvider : public ITargetProvider {
 private:
-  TargetsConfig targets{0, 0, nullptr};
+  std::vector<std::vector<Coord>> targets;
+  int TargetCount;
+  int TimeSteps;
 
 public:
   JsonTargetProvider() = default;
@@ -14,5 +17,4 @@ public:
   int getTargetCount() override;
   int getTimeSteps() override;
   Coord *getTarget(int idx) override;
-  ~JsonTargetProvider() override;
 };
