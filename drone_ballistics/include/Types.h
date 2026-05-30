@@ -2,12 +2,8 @@
 
 #include <vector>
 #include "nlohmann/json.hpp"
-#include <limits>
-#include <cstring>
-#include <iostream>
-// #define _USE_MATH_DEFINES
+
 #include <cmath>
-#include <fstream>
 #include <string>
 
 using json = nlohmann::json;
@@ -101,17 +97,6 @@ struct SimStep {
   Coord dropPoint;        // точка скиду (куди летить дрон)
   Coord aimPoint;         // куди впаде бомба (якщо скинути зараз)
   Coord predictedTarget;  // прогнозована позиція цілі
-};
-
-struct SimulationLog {
-  int totalSteps;
-  SimStep *steps;
-};
-
-struct TargetsConfig {
-  int targetCount;
-  int timeSteps;
-  Coord **positions;  // 2D array: positions[targetIdx][timeStep]
 };
 
 extern std::vector<SimStep> simLog;
