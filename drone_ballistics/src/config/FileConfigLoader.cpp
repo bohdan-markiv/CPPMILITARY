@@ -52,3 +52,24 @@ void FileConfigLoader::load()
               << ", lift coefficient = " << selectedAmmo.lift << std::endl;
   }
 }
+
+DroneConfig FileConfigLoader::getConfig()
+{
+  // Return loaded DroneConfig
+  return this->config;
+}
+
+AmmoParams FileConfigLoader::getAmmoParams()
+{
+  return this->selectedAmmo;
+}
+
+int FileConfigLoader::getAmmoCount() const
+{
+  return this->AMMO_COUNT;
+}
+
+FileConfigLoader::~FileConfigLoader()
+{
+  delete[] ammoParams;
+}

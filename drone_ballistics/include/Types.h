@@ -114,4 +114,4 @@ struct TargetsConfig {
   Coord **positions;  // 2D array: positions[targetIdx][timeStep]
 };
 
-std::vector<SimStep> simLog;
+extern std::vector<SimStep> simLog;

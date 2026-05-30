@@ -2,6 +2,8 @@
 #include "MissionProcessor.h"
 #include "config/ComponentFactory.h"
 
+std::vector<SimStep> simLog;
+
 auto main() -> int
 {
   IConfigLoader *configLoader = createLoader(LoaderType::FILE);

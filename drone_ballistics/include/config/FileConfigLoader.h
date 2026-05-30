@@ -11,7 +11,7 @@ public:
   FileConfigLoader() = default;
   FileConfigLoader(const FileConfigLoader &) = delete;
   FileConfigLoader &operator=(const FileConfigLoader &) = delete;
-  ~FileConfigLoader() override { delete[] ammoParams; }
+  ~FileConfigLoader() override;
   void load() override;
   DroneConfig getConfig() override;
   AmmoParams getAmmoParams() override;

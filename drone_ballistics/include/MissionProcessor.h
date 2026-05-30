@@ -2,7 +2,6 @@
 #include "interfaces/IBallisticsSolver.h"
 #include "interfaces/ITargetProvider.h"
 #include "interfaces/IConfigLoader.h"
-
 class Mission {
   IBallisticSolver *solver;
   ITargetProvider *targets;
