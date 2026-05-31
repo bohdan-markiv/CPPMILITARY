@@ -53,6 +53,14 @@
       ]
     },
     {
+      // Локальний debug стартера ДЗ 4. preLaunchTask збирає debug preset.
+      "name": "Debug homework_07: ballistics",
+      "type": "cppdbg",
+      "request": "launch",
+      "program": "${workspaceFolder}/build/debug/drone_ballistics/ballistics",
+      // "args": [
+      //   "${workspaceFolder}/drone_ballistics/data/straight.txt"
+      // ],
       // Локальний debug стартера ДЗ 5. preLaunchTask збирає debug preset.
       "name": "Debug homework_05: telemetry_check",
       "type": "cppdbg",
