@@ -1,6 +1,8 @@
 #include "Types.h"
 #include "MissionProcessor.h"
 #include "config/ComponentFactory.h"
+#include <iostream>
+#include <fstream>
 
 std::vector<SimStep> simLog;
 

@@ -2,6 +2,7 @@
 #include "config/FileConfigLoader.h"
 #include <cstddef>
 #include <unordered_map>
+#include <fstream>
 
 void FileConfigLoader::load()
 {
