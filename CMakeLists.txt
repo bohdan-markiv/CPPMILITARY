@@ -32,3 +32,4 @@ add_subdirectory(demos/lesson_2_4/debug_probe)
 
 # Домашні роботи. По мірі появи додаємо кожну окремим add_subdirectory.
 add_subdirectory(homework_06)
+add_subdirectory(homework_05)

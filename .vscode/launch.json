@@ -60,6 +60,13 @@
       "program": "${workspaceFolder}/build/debug/homework_06/ballistics_check",
       "args": [
         "${workspaceFolder}/homework_06/data/${input:fileSelectHW6}"
+      // Локальний debug стартера ДЗ 5. preLaunchTask збирає debug preset.
+      "name": "Debug homework_05: telemetry_check",
+      "type": "cppdbg",
+      "request": "launch",
+      "program": "${workspaceFolder}/build/debug/homework_05/telemetry_check",
+      "args": [
+        "${workspaceFolder}/homework_05/data/${input:telemetryFile}"
       ],
       "stopAtEntry": false,
       "cwd": "${workspaceFolder}",
@@ -93,6 +100,17 @@
         "wrong_var_type.txt"
       ],
       "default": "basic_1.txt"
+      "id": "telemetryFile",
+      "type": "pickString",
+      "description": "Which telemetry file to debug?",
+      "options": [
+        "good.txt",
+        "bad_missing_field.txt",
+        "bad_invalid_number.txt",
+        "bad_zero_delta.txt",
+        "empty.txt"
+      ],
+      "default": "good.txt"
     }
   ]
 }
