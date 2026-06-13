@@ -3,9 +3,9 @@
 #include "interfaces/ITargetProvider.h"
 #include "interfaces/IConfigLoader.h"
 class Mission {
-  IBallisticSolver *solver;
-  ITargetProvider *targets;
-  IConfigLoader *configs;
+  std::unique_ptr<IBallisticSolver> solver;
+  std::unique_ptr<ITargetProvider> targets;
+  std::unique_ptr<IConfigLoader> configs;
 
   DroneConfig config;
   AmmoParams ammo;
@@ -30,10 +30,10 @@ class Mission {
   int timeSteps = 0;
 
 public:
-  Mission(IBallisticSolver *solver, ITargetProvider *targets, IConfigLoader *configs)
-    : solver(solver)
-    , targets(targets)
-    , configs(configs)
+  Mission(std::unique_ptr<IBallisticSolver> solver, std::unique_ptr<ITargetProvider> targets, std::unique_ptr<IConfigLoader> configs)
+    : solver(std::move(solver))
+    , targets(std::move(targets))
+    , configs(std::move(configs))
   {
   }
 
@@ -43,7 +43,7 @@ public:
   bool hasNext();
   int getCurrentTargetIdx();
   void reset();
-  void changeSolver(IBallisticSolver *newSolver);
+  void changeSolver(std::unique_ptr<IBallisticSolver> newSolver);
   SimStep step();
   [[nodiscard]] int getN() const;
 };

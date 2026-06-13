@@ -81,8 +81,17 @@ float ammoFlyDistance(float t, float d, float l, float attackSpeed, float m)
 
 void interpolateTarget(float t, float arrayTimeStep, Coord *trajectory, int timeSteps, Coord &interpolatedCoord)
 {
-  int idx = (int)floor(t / arrayTimeStep) % timeSteps;
+  float period = timeSteps * arrayTimeStep;
+  float wrappedT = fmodf(t, period);
+  if (wrappedT < 0.0f)
+    wrappedT += period;
+
+  int idx = (int)floorf(wrappedT / arrayTimeStep);
+  if (idx >= timeSteps)
+    idx = timeSteps - 1;  // guard against fp rounding at the seam
+
   int next = (idx + 1) % timeSteps;
-  float frac = (t - idx * arrayTimeStep) / arrayTimeStep;
+  float frac = (wrappedT - idx * arrayTimeStep) / arrayTimeStep;
+
   interpolatedCoord = trajectory[idx] + (trajectory[next] - trajectory[idx]) * frac;
 }

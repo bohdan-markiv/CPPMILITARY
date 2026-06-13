@@ -4,29 +4,29 @@
 #include "providers/JsonTargetProvider.h"
 #include "config/FileConfigLoader.h"
 
-#include <stdexcept>
+#include <memory>
 
-IBallisticSolver *createSolver(SolverType type)
+std::unique_ptr<IBallisticSolver> createSolver(SolverType type)
 {
   switch (type) {
     case SolverType::ANALYTICAL:
-      return new AnalyticalSolver();
+      return std::make_unique<AnalyticalSolver>();
   }
-  throw std::runtime_error("Unknown solver type");
+  return nullptr;
 };
-ITargetProvider *createProvider(ProviderType type)
+std::unique_ptr<ITargetProvider> createProvider(ProviderType type)
 {
   switch (type) {
     case ProviderType::JSON:
-      return new JsonTargetProvider();
+      return std::make_unique<JsonTargetProvider>();
   }
-  throw std::runtime_error("Unknown provider type");
+  return nullptr;
 };
-IConfigLoader *createLoader(LoaderType type)
+std::unique_ptr<IConfigLoader> createLoader(LoaderType type)
 {
   switch (type) {
     case LoaderType::FILE:
-      return new FileConfigLoader();
+      return std::make_unique<FileConfigLoader>();
   }
-  throw std::runtime_error("Unknown loader type");
+  return nullptr;
 };

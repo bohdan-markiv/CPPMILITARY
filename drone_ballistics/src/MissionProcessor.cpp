@@ -86,9 +86,9 @@ void Mission::reset()
   init();
 }
 
-void Mission::changeSolver(IBallisticSolver *newSolver)
+void Mission::changeSolver(std::unique_ptr<IBallisticSolver> newSolver)
 {
-  this->solver = newSolver;
+  this->solver = std::move(newSolver);
 }
 
 SimStep Mission::step()
