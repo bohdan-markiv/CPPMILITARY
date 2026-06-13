@@ -61,6 +61,13 @@
       // "args": [
       //   "${workspaceFolder}/drone_ballistics/data/straight.txt"
       // ],
+      // Локальний debug стартера ДZ 6. preLaunchTask збирає debug preset.
+      "name": "Debug homework_06: ballistics_check",
+      "type": "cppdbg",
+      "request": "launch",
+      "program": "${workspaceFolder}/build/debug/homework_06/ballistics_check",
+      "args": [
+        "${workspaceFolder}/homework_06/data/${input:fileSelectHW6}"
       // Локальний debug стартера ДЗ 5. preLaunchTask збирає debug preset.
       "name": "Debug homework_05: telemetry_check",
       "type": "cppdbg",
@@ -87,6 +94,20 @@
   ],
   "inputs": [
     {
+      "id": "fileSelectHW6",
+      "type": "pickString",
+      "description": "Виберіть вхідний файл для перевірки балістики:",
+      "options": [
+        "basic_1.txt",
+        "basic_2.txt",
+        "test_1.txt",
+        "test_2.txt",
+        "test_3.txt",
+        "missing_value.txt",
+        "unknown_ammo.txt",
+        "wrong_var_type.txt"
+      ],
+      "default": "basic_1.txt"
       "id": "telemetryFile",
       "type": "pickString",
       "description": "Which telemetry file to debug?",
