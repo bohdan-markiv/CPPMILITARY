@@ -9,9 +9,9 @@ set(CMAKE_CXX_STANDARD 20)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(CMAKE_CXX_EXTENSIONS OFF)
 
-add_library(ballistics src/ballistics.cpp)
-target_include_directories(ballistics PUBLIC include)
-target_compile_options(ballistics PRIVATE -Wall -Wextra -pedantic)
+add_library(ballistics_06 src/ballistics.cpp)
+target_include_directories(ballistics_06 PUBLIC include)
+target_compile_options(ballistics_06 PRIVATE -Wall -Wextra -pedantic)
 
 add_library(ballistics_cli src/ballistics_cli.cpp)
 target_include_directories(ballistics_cli PUBLIC include)
@@ -19,13 +19,13 @@ target_compile_options(ballistics_cli PRIVATE -Wall -Wextra -pedantic)
 
 if(NOT CMAKE_CROSSCOMPILING)
     add_executable(ballistics_tests tests/ballistics_tests.cpp)
-    target_link_libraries(ballistics_tests PRIVATE ballistics GTest::gtest_main)
+    target_link_libraries(ballistics_tests PRIVATE ballistics_06 GTest::gtest_main)
     gtest_discover_tests(ballistics_tests DISCOVERY_MODE PRE_TEST)
 endif()
 
 # Один executable для задачі з ballistics.
 add_executable(ballistics_check src/main.cpp)
-target_link_libraries(ballistics_check PRIVATE ballistics ballistics_cli)
+target_link_libraries(ballistics_check PRIVATE ballistics_06 ballistics_cli)
 
 # Базові compiler warnings допомагають побачити підозрілі місця до runtime.
 target_compile_options(ballistics_check PRIVATE -Wall -Wextra -pedantic)
