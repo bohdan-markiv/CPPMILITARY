@@ -21,9 +21,16 @@ add_library(missionprocessor src/MissionProcessor.cpp)
 target_include_directories(missionprocessor PUBLIC include)
 target_compile_options(missionprocessor PRIVATE -Wall -Wextra -pedantic)
 
+add_library(ballistictable src/solvers/BallisticTable.cpp)
+target_include_directories(ballistictable PUBLIC include)
+target_compile_options(ballistictable PRIVATE -Wall -Wextra -pedantic)
+
 add_library(analyticalsolver src/solvers/AnalyticalSolver.cpp)
 target_include_directories(analyticalsolver PUBLIC include)
 target_compile_options(analyticalsolver PRIVATE -Wall -Wextra -pedantic)
+add_library(tablesolver src/solvers/TableSolver.cpp)
+target_include_directories(tablesolver PUBLIC include)
+target_compile_options(tablesolver PRIVATE -Wall -Wextra -pedantic)
 add_library(fileconfigloader src/config/FileConfigLoader.cpp)
 target_include_directories(fileconfigloader PUBLIC include)
 target_compile_options(fileconfigloader PRIVATE -Wall -Wextra -pedantic)
@@ -38,6 +45,14 @@ add_executable(ballistics src/main.cpp)
 target_include_directories(ballistics PRIVATE include)
 
 target_compile_options(ballistics PRIVATE -Wall -Wextra -pedantic)
-target_link_libraries(ballistics PRIVATE factory helpers analyticalsolver missionprocessor
-                                         fileconfigloader jsonconfigloader)
+target_link_libraries(
+    ballistics
+    PRIVATE factory
+            helpers
+            analyticalsolver
+            missionprocessor
+            fileconfigloader
+            jsonconfigloader
+            tablesolver
+            ballistictable)
 target_link_libraries(analyticalsolver PRIVATE helpers)

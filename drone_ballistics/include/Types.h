@@ -20,15 +20,18 @@ enum DronePhase {
 
 };
 
-enum class SolverType { ANALYTICAL };
+enum class SolverType { ANALYTICAL, TABLE };
 enum class ProviderType { JSON };
 enum class LoaderType { FILE };
-
+struct Result {
+  float t;      // час польоту
+  float hDist;  // горизонтальна дистанція
+};
 struct Coord {
   float x;
   float y;
 
-  Coord operator+(const Coord &other) const
+  Coord operator+(const Coord& other) const
   {
     Coord result;
     result.x = x + other.x;
@@ -36,7 +39,7 @@ struct Coord {
     return result;
   }
 
-  Coord operator-(const Coord &other) const
+  Coord operator-(const Coord& other) const
   {
     Coord result;
     result.x = x - other.x;
@@ -60,7 +63,7 @@ struct Coord {
     return result;
   }
 
-  bool operator==(const Coord &other) const
+  bool operator==(const Coord& other) const
   {
     bool result;
     result = (x == other.x) && (y == other.y);
@@ -73,6 +76,10 @@ struct AmmoParams {
   float mass;
   float drag;
   float lift;
+};
+struct Interp {
+  int lo;      // нижній індекс в осі
+  float frac;  // коефіцієнт [0..1]
 };
 
 struct DroneConfig {

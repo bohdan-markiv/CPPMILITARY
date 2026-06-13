@@ -6,11 +6,22 @@
 
 std::vector<SimStep> simLog;
 
-auto main() -> int
+auto main(int argc, char **argv) -> int
 {
+  SolverType solverType;
+  if (argc > 1 && std::string(argv[1]) == "table") {
+    solverType = SolverType::TABLE;
+  }
+  else if (argc > 1 && std::string(argv[1]) == "analytical") {
+    solverType = SolverType::ANALYTICAL;
+  }
+  else {
+    std::cerr << "Usage: " << argv[0] << " [table|analytical]\n";
+    return 1;
+  }
   auto configLoader = createLoader(LoaderType::FILE);
   auto targetProvider = createProvider(ProviderType::JSON);
-  auto ballisticSolver = createSolver(SolverType::ANALYTICAL);
+  auto ballisticSolver = createSolver(solverType);
 
   Mission mission(std::move(ballisticSolver), std::move(targetProvider), std::move(configLoader));
 

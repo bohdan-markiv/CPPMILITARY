@@ -79,7 +79,7 @@ float ammoFlyDistance(float t, float d, float l, float attackSpeed, float m)
   return h;
 }
 
-void interpolateTarget(float t, float arrayTimeStep, Coord *trajectory, int timeSteps, Coord &interpolatedCoord)
+void interpolateTarget(float t, float arrayTimeStep, Coord* trajectory, int timeSteps, Coord& interpolatedCoord)
 {
   float period = timeSteps * arrayTimeStep;
   float wrappedT = fmodf(t, period);
