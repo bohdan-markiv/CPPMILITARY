@@ -25,6 +25,10 @@ add_library(ballistictable src/solvers/BallisticTable.cpp)
 target_include_directories(ballistictable PUBLIC include)
 target_compile_options(ballistictable PRIVATE -Wall -Wextra -pedantic)
 
+add_library(state src/state/StateClasses.cpp)
+target_include_directories(state PUBLIC include)
+target_compile_options(state PRIVATE -Wall -Wextra -pedantic)
+
 add_library(analyticalsolver src/solvers/AnalyticalSolver.cpp)
 target_include_directories(analyticalsolver PUBLIC include)
 target_compile_options(analyticalsolver PRIVATE -Wall -Wextra -pedantic)
@@ -54,5 +58,6 @@ target_link_libraries(
             fileconfigloader
             jsonconfigloader
             tablesolver
-            ballistictable)
+            ballistictable
+            state)
 target_link_libraries(analyticalsolver PRIVATE helpers)

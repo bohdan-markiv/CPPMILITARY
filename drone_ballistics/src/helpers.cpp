@@ -1,5 +1,6 @@
 #include "Types.h"
 #include "helpers.h"
+
 float distanceCalculation(Coord currentCoord, Coord targetCoord)
 {
   return sqrt(pow(targetCoord.x - currentCoord.x, 2) + pow(targetCoord.y - currentCoord.y, 2));

@@ -1,11 +1,15 @@
+#include <memory>
 #include "Types.h"
 #include "interfaces/IBallisticsSolver.h"
 #include "interfaces/ITargetProvider.h"
 #include "interfaces/IConfigLoader.h"
+#include "interfaces/IDroneState.h"
+#include "state/MissionContext.h"
 class Mission {
   std::unique_ptr<IBallisticSolver> solver;
   std::unique_ptr<ITargetProvider> targets;
   std::unique_ptr<IConfigLoader> configs;
+  std::unique_ptr<IDroneState> currentState;
 
   DroneConfig config;
   AmmoParams ammo;
@@ -28,6 +32,10 @@ class Mission {
   double h_ammo = 0.0;
   double a = 0.0;
   int timeSteps = 0;
+
+  double kSwitchCost = 0.1;
+
+  MissionContext ctx;
 
 public:
   Mission(std::unique_ptr<IBallisticSolver> solver, std::unique_ptr<ITargetProvider> targets, std::unique_ptr<IConfigLoader> configs)

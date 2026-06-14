@@ -5,7 +5,6 @@
 
 #include <cmath>
 #include <string>
-
 using json = nlohmann::json;
 const float kPi = std::acos(-1.0F);
 const float g = 9.81f;
