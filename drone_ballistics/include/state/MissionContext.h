@@ -34,4 +34,5 @@ struct MissionContext {
   float hitRadius;
 
   bool targetHit = false;
+  Coord predictedTarget;
 };

@@ -1,4 +1,5 @@
 #include "MissionProcessor.h"
+#include <iostream>
 #include "Types.h"
 #include "helpers.h"
 #include "state/StateClasses.h"
@@ -49,7 +50,7 @@ void Mission::init()
   this->ammo = configs->getAmmoParams();
   this->targetCount = targets->getTargetCount();
   this->timeSteps = targets->getTimeSteps();
-
+  fprintf(stderr, "timeSteps = %d, targetCount = %d\n", timeSteps, targetCount);
   simulation.pos = config.startPos;
   simulation.direction = config.initialDir;
   simulation.state = STOPPED;
@@ -65,8 +66,9 @@ void Mission::init()
   TARGET_HIT = false;
 
   a = config.attackSpeed * config.attackSpeed / (2.0f * config.accelPath);
-  t_ammo = timeToTarget(ammo.mass, ammo.drag, ammo.lift, config.attackSpeed, config.altitude);
-  h_ammo = ammoFlyDistance(t_ammo, ammo.drag, ammo.lift, config.attackSpeed, ammo.mass);
+  Result flight = solver->ammoFlight(config.altitude, config.attackSpeed, ammo.mass, ammo.drag, ammo.lift);
+  t_ammo = flight.t;
+  h_ammo = flight.hDist;
 
   currentIteration = 0;
   currentIdx = 0;
@@ -86,6 +88,7 @@ void Mission::init()
   this->ctx.direction = config.initialDir;
   this->ctx.currentSpeed = 0.0f;
   this->ctx.remainingTurnTime = 0.0f;
+  this->ctx.timeSteps = timeSteps;
 }
 
 bool Mission::hasNext()
@@ -110,10 +113,13 @@ void Mission::changeSolver(std::unique_ptr<IBallisticSolver> newSolver)
 
 SimStep Mission::step()
 {
+  std::cout << "h" << h_ammo << " t " << t_ammo << std::endl;
+
   float bestTime = std::numeric_limits<float>::max();
   int chosenIdx = -1;
   Coord chosenDrop{0.0f, 0.0f};
   Coord chosenTargetPos{0.0f, 0.0f};
+  Coord chosenPredicted{0.0f, 0.0f};
 
   for (int i = 0; i < targetCount; i++) {
     bool targetChanged = (i != simulation.targetIdx);
@@ -199,13 +205,14 @@ SimStep Mission::step()
       chosenIdx = i;
       chosenDrop = dropPoint;
       chosenTargetPos = targetCoord;
+      chosenPredicted = predictedCoord;
     }
   }
 
   simulation.targetIdx = chosenIdx;
   simulation.dropPoint = chosenDrop;
-  simulation.predictedTarget = chosenTargetPos;
-
+  simulation.predictedTarget = chosenPredicted;
+  this->ctx.predictedTarget = chosenPredicted;
   interpolateTarget(t + t_ammo, config.arrayTimeStep, targets->getTarget(chosenIdx), timeSteps, simulation.aimPoint);
 
   Coord diffCoord{.x = simulation.dropPoint.x - simulation.pos.x, .y = simulation.dropPoint.y - simulation.pos.y};

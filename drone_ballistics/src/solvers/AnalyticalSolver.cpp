@@ -21,3 +21,9 @@ Coord AnalyticalSolver::solve(Coord currentCoord, float zd, Coord targetCoord, f
   fireCoord.y = currentCoord.y + (targetCoord.y - currentCoord.y) * ratio;
   return fireCoord;
 }
+Result AnalyticalSolver::ammoFlight(float Z0, float V0, float m, float d, float l) const
+{
+  float t = timeToTarget(m, d, l, V0, Z0);
+  float h = ammoFlyDistance(t, d, l, V0, m);
+  return {t, h};
+}

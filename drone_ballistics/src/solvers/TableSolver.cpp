@@ -17,3 +17,7 @@ Coord TableSolver::solve(Coord currentCoord, float zd, Coord targetCoord, float 
 
   return fireCoord;
 }
+Result TableSolver::ammoFlight(float Z0, float V0, float m, float d, float l) const
+{
+  return table.lookup(Z0, V0, m, d, l);
+}

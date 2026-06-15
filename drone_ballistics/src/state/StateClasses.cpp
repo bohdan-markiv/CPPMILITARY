@@ -110,8 +110,7 @@ std::unique_ptr<IDroneState> StateMoving::execute(MissionContext& ctx)
   bombLand.x = ctx.pos.x + ctx.h_ammo * cos(ctx.direction);
   bombLand.y = ctx.pos.y + ctx.h_ammo * sin(ctx.direction);
 
-  Coord hitCoord{.x = 0.0, .y = 0.0};
-  interpolateTarget(ctx.t + ctx.t_ammo, ctx.arrayTimeStep, ctx.targets->getTarget(ctx.targetIdx), ctx.timeSteps, hitCoord);
+  Coord hitCoord = ctx.predictedTarget;  // Assuming predictedTarget is the expected position of the target at impact time
   double missDistance = distanceCalculation(bombLand, hitCoord);
   if (missDistance <= ctx.hitRadius) {
     ctx.targetHit = true;
