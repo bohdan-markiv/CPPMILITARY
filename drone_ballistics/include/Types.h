@@ -106,3 +106,25 @@ struct SimStep {
 };
 
 extern std::vector<SimStep> simLog;
+
+struct Target {
+  Coord pos;
+  Coord velocity;
+};
+
+enum class MotionKind { TurnInPlace, Accelerate, Decelerate, Moving, None };
+
+struct DroneCommand {
+  MotionKind motion = MotionKind::None;
+  float angleDiff = 0.0f;
+  float remainingTurnSeed = 0.0f;
+};
+
+struct DroneTelemetry {
+  Coord pos;
+  float direction = 0.0f;
+  float speed;
+  float currentSpeed = 0.0f;
+  float remainingTurnTime = 0.0f;
+  float timeSecSinceStart = 0.0f;
+};

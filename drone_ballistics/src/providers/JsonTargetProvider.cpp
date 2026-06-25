@@ -41,7 +41,25 @@ int JsonTargetProvider::getTimeSteps()
   return this->TimeSteps;
 }
 
-Coord *JsonTargetProvider::getTarget(int idx)
+Target JsonTargetProvider::getTarget(int idx)
 {
-  return &this->targets[idx][0];
+  Target out;
+  out.pos = this->targets[idx][currentNode];
+
+  // velocity calculation
+  int nextNode = (currentNode + 1) % this->TimeSteps;
+  Coord d = targets[idx][nextNode] - targets[idx][currentNode];
+  out.velocity.x = d.x / this->arrayTimeStep;
+  out.velocity.y = d.y / this->arrayTimeStep;
+  return out;
+}
+
+void JsonTargetProvider::advance()
+{
+  currentNode = (currentNode + 1) % this->TimeSteps;
+}
+
+void JsonTargetProvider::setArrayTimeStep(float step)
+{
+  this->arrayTimeStep = step;
 }

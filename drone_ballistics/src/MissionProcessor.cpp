@@ -47,6 +47,9 @@ void Mission::init()
 
   this->currentState = std::make_unique<StateStopped>();
   this->config = configs->getConfig();
+
+  this->targets->setArrayTimeStep(config.arrayTimeStep);
+
   this->ammo = configs->getAmmoParams();
   this->targetCount = targets->getTargetCount();
   this->timeSteps = targets->getTimeSteps();
@@ -124,12 +127,10 @@ SimStep Mission::step()
   for (int i = 0; i < targetCount; i++) {
     bool targetChanged = (i != simulation.targetIdx);
 
-    Coord targetCoord{0.0f, 0.0f}, nextCoord{0.0f, 0.0f};
-    interpolateTarget(t, config.arrayTimeStep, targets->getTarget(i), timeSteps, targetCoord);
-    interpolateTarget(t + config.simTimeStep, config.arrayTimeStep, targets->getTarget(i), timeSteps, nextCoord);
-    Coord dCoord = nextCoord - targetCoord;
-    double targetVx = dCoord.x / config.simTimeStep;
-    double targetVy = dCoord.y / config.simTimeStep;
+    Target tgt = targets->getTarget(i);
+    Coord targetCoord = tgt.pos;
+    float targetVx = tgt.velocity.x;
+    float targetVy = tgt.velocity.y;
 
     Coord dropPoint{.x = 0.0f, .y = 0.0f};
     dropPoint = solver->solve(simulation.pos, config.altitude, targetCoord, config.attackSpeed, ammo.mass, ammo.drag, ammo.lift);

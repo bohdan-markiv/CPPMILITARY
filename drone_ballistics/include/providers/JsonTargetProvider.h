@@ -8,6 +8,8 @@ private:
   std::vector<std::vector<Coord>> targets;
   int TargetCount;
   int TimeSteps;
+  int currentNode = 0;
+  float arrayTimeStep = 0.0f;
 
 public:
   JsonTargetProvider() = default;
@@ -16,5 +18,7 @@ public:
   void load() override;
   int getTargetCount() override;
   int getTimeSteps() override;
-  Coord *getTarget(int idx) override;
+  Target getTarget(int idx) override;
+  void advance();
+  void setArrayTimeStep(float step) override;
 };
