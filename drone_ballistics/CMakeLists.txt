@@ -42,6 +42,10 @@ add_library(jsonconfigloader src/providers/JsonTargetProvider.cpp)
 target_include_directories(jsonconfigloader PUBLIC include)
 target_compile_options(jsonconfigloader PRIVATE -Wall -Wextra -pedantic)
 
+add_library(dronephysics src/threads/DronePhysics.cpp)
+target_include_directories(dronephysics PUBLIC include)
+target_compile_options(dronephysics PRIVATE -Wall -Wextra -pedantic)
+
 # Один executable для задачі з ballistics.
 add_executable(ballistics src/main.cpp)
 
@@ -59,5 +63,6 @@ target_link_libraries(
             jsonconfigloader
             tablesolver
             ballistictable
-            state)
+            state
+            dronephysics)
 target_link_libraries(analyticalsolver PRIVATE helpers)

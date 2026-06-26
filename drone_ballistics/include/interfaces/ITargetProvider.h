@@ -9,4 +9,5 @@ public:
   virtual Target getTarget(int idx) = 0;
   virtual void setArrayTimeStep(float step) = 0;
   virtual ~ITargetProvider() = default;
+  virtual void advance() = 0;
 };

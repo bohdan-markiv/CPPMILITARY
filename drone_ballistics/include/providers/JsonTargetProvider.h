@@ -19,6 +19,6 @@ public:
   int getTargetCount() override;
   int getTimeSteps() override;
   Target getTarget(int idx) override;
-  void advance();
+  void advance() override;
   void setArrayTimeStep(float step) override;
 };

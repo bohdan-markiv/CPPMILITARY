@@ -1,6 +1,5 @@
 #pragma once
 
-#include "interfaces/ITargetProvider.h"
 #include "Types.h"
 
 struct MissionContext {
@@ -10,29 +9,23 @@ struct MissionContext {
   float remainingTurnTime;
 
   float angleDiff;
-
-  float timeToStop;
-  float a;
-  float attackSpeed;
-
-  float angularSpeed;
   float turnThreshold;
-
+  float angularSpeed;
+  float attackSpeed;
+  float a;
   float simTimeStep;
-  Coord targetCoord;
-
+  float arrayTimeStep;
   float h_ammo;
   float t_ammo;
-  float arrayTimeStep;
-  int targetIdx;
-
-  Coord hitCoord;
+  float timeToStop;
+  float hitRadius;
+  int timeSteps;
   float t;
   int N;
-  ITargetProvider* targets;
-  int timeSteps;
-  float hitRadius;
+  int targetIdx;
+  Coord predictedTarget;
+
+  DroneCommand command;
 
   bool targetHit = false;
-  Coord predictedTarget;
 };

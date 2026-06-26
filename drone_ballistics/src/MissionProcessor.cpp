@@ -1,8 +1,10 @@
 #include "MissionProcessor.h"
 #include <iostream>
+#include <memory>
 #include "Types.h"
 #include "helpers.h"
 #include "state/StateClasses.h"
+#include "threads/DronePhysics.h"
 
 float Mission::calculateTimeToStop(
   float currentSpeed, float attackSpeed, bool targetChanged, DronePhase phase, float remainingTurnTime, float a)
@@ -73,6 +75,8 @@ void Mission::init()
   t_ammo = flight.t;
   h_ammo = flight.hDist;
 
+  physics = std::make_unique<DronePhysics>();
+  physics->init(config.startPos, config.initialDir, config.attackSpeed, a, config.angularSpeed, config.simTimeStep);
   currentIteration = 0;
   currentIdx = 0;
 
@@ -85,7 +89,7 @@ void Mission::init()
   this->ctx.t_ammo = t_ammo;
   this->ctx.arrayTimeStep = config.arrayTimeStep;
   this->ctx.hitRadius = config.hitRadius;
-  this->ctx.targets = targets.get();
+  // this->ctx.targets = targets.get();
   this->ctx.targetHit = false;
   this->ctx.pos = config.startPos;
   this->ctx.direction = config.initialDir;
@@ -116,7 +120,7 @@ void Mission::changeSolver(std::unique_ptr<IBallisticSolver> newSolver)
 
 SimStep Mission::step()
 {
-  std::cout << "h" << h_ammo << " t " << t_ammo << std::endl;
+  DroneTelemetry tel = physics->getTelemetry();  // read drone state once, up front
 
   float bestTime = std::numeric_limits<float>::max();
   int chosenIdx = -1;
@@ -127,18 +131,18 @@ SimStep Mission::step()
   for (int i = 0; i < targetCount; i++) {
     bool targetChanged = (i != simulation.targetIdx);
 
-    Target tgt = targets->getTarget(i);
+    Target tgt = targets->getTarget(i);  // by value, snapshot
     Coord targetCoord = tgt.pos;
-    float targetVx = tgt.velocity.x;
-    float targetVy = tgt.velocity.y;
+    double targetVx = tgt.velocity.x;
+    double targetVy = tgt.velocity.y;
 
-    Coord dropPoint{.x = 0.0f, .y = 0.0f};
-    dropPoint = solver->solve(simulation.pos, config.altitude, targetCoord, config.attackSpeed, ammo.mass, ammo.drag, ammo.lift);
+    Coord dropPoint{0.0f, 0.0f};
+    dropPoint = solver->solve(tel.pos, config.altitude, targetCoord, config.attackSpeed, ammo.mass, ammo.drag, ammo.lift);
 
-    double desiredDir = atan2(dropPoint.y - simulation.pos.y, dropPoint.x - simulation.pos.x);
-    double angleDiff = angleDifference(simulation.direction, desiredDir);
+    double desiredDir = atan2(dropPoint.y - tel.pos.y, dropPoint.x - tel.pos.x);
+    double angleDiff = angleDifference(tel.direction, desiredDir);
 
-    double startSpeed = currentSpeed;
+    double startSpeed = tel.currentSpeed;
 
     if (targetChanged) {
       switch (currentState->name()) {
@@ -146,29 +150,30 @@ SimStep Mission::step()
           startSpeed = 0.0f;
           break;
         case ACCELERATING:
-          startSpeed = currentSpeed;
-          break;  // continue accelerating from current speed
+          startSpeed = tel.currentSpeed;
+          break;
         case MOVING:
           startSpeed = config.attackSpeed;
-          break;  // already at max speed
+          break;
         case DECELERATING:
-          startSpeed = currentSpeed;
+          startSpeed = tel.currentSpeed;
           break;
         case TURNING:
-          startSpeed = currentSpeed;
-          break;  // maintain speed during turn
+          startSpeed = tel.currentSpeed;
+          break;
       }
-    };
+    }
 
     double penaltyTime = 0.0;
 
     if (fabs(angleDiff) > config.turnThreshold) {
       double turningTime = fabs(angleDiff) / config.angularSpeed;
       penaltyTime += turningTime;
-      startSpeed = 0.0;  // Assume we stop to turn
+      startSpeed = 0.0;
     }
 
-    double timeToStop = calculateTimeToStop(currentSpeed, config.attackSpeed, targetChanged, currentState->name(), remainingTurnTime, a);
+    double timeToStop =
+      calculateTimeToStop(tel.currentSpeed, config.attackSpeed, targetChanged, currentState->name(), tel.remainingTurnTime, a);
     penaltyTime += timeToStop;
 
     double timeToAccel = 0.0;
@@ -180,16 +185,16 @@ SimStep Mission::step()
 
     penaltyTime += timeToAccel;
 
-    double droneTravel = distanceCalculation(simulation.pos, dropPoint);
+    double droneTravel = distanceCalculation(tel.pos, dropPoint);
     double cruiseDistance = droneTravel - distanceDuringAccel;
     double totalTimeToTarget = penaltyTime + cruiseDistance / config.attackSpeed;
 
-    Coord predictedCoord{.x = 0.0, .y = 0.0};
+    Coord predictedCoord{0.0, 0.0};
     for (int iter = 0; iter < 2; iter++) {
       predictedCoord.x = targetCoord.x + targetVx * (totalTimeToTarget + t_ammo);
       predictedCoord.y = targetCoord.y + targetVy * (totalTimeToTarget + t_ammo);
-      dropPoint = solver->solve(simulation.pos, config.altitude, predictedCoord, config.attackSpeed, ammo.mass, ammo.drag, ammo.lift);
-      droneTravel = distanceCalculation(simulation.pos, dropPoint);
+      dropPoint = solver->solve(tel.pos, config.altitude, predictedCoord, config.attackSpeed, ammo.mass, ammo.drag, ammo.lift);
+      droneTravel = distanceCalculation(tel.pos, dropPoint);
       cruiseDistance = droneTravel - distanceDuringAccel;
       totalTimeToTarget = penaltyTime + cruiseDistance / config.attackSpeed;
     }
@@ -214,33 +219,62 @@ SimStep Mission::step()
   simulation.dropPoint = chosenDrop;
   simulation.predictedTarget = chosenPredicted;
   this->ctx.predictedTarget = chosenPredicted;
-  interpolateTarget(t + t_ammo, config.arrayTimeStep, targets->getTarget(chosenIdx), timeSteps, simulation.aimPoint);
 
-  Coord diffCoord{.x = simulation.dropPoint.x - simulation.pos.x, .y = simulation.dropPoint.y - simulation.pos.y};
+  // aim-point: linear projection (trajectory matrix is hidden now)
+  Target chosenTgt = targets->getTarget(chosenIdx);
+  simulation.aimPoint = chosenTgt.pos + chosenTgt.velocity * t_ammo;
+
+  Coord diffCoord{chosenDrop.x - tel.pos.x, chosenDrop.y - tel.pos.y};
   double desiredDir = atan2(diffCoord.y, diffCoord.x);
-  double angleDiff = angleDifference(simulation.direction, desiredDir);
-  // bool needBigTurn = fabs(angleDiff) > config.turnThreshold;
+  double angleDiff = angleDifference(tel.direction, desiredDir);
 
-  ctx.pos = simulation.pos;
-  ctx.direction = simulation.direction;
-  ctx.currentSpeed = currentSpeed;
-  ctx.remainingTurnTime = remainingTurnTime;
+  // fill ctx decision inputs from telemetry
+  ctx.pos = tel.pos;
+  ctx.direction = tel.direction;
+  ctx.currentSpeed = tel.currentSpeed;
+  ctx.remainingTurnTime = tel.remainingTurnTime;
   ctx.angleDiff = angleDiff;
   ctx.t = t;
   ctx.N = N;
   ctx.targetIdx = simulation.targetIdx;
+  ctx.predictedTarget = chosenPredicted;
 
-  auto next = currentState->execute(ctx);
+  auto next = currentState->execute(ctx);  // decision only — fills ctx.command
   if (next)
     currentState = std::move(next);
 
-  simulation.pos = ctx.pos;
-  simulation.direction = ctx.direction;
-  simulation.state = currentState->name();
-  currentSpeed = ctx.currentSpeed;
-  remainingTurnTime = ctx.remainingTurnTime;
+  physics->pushCommand(ctx.command);  // hand motion to physics
+  physics->step(config.simTimeStep);  // Phase 1: integrate ONE step manually
 
-  TARGET_HIT = ctx.targetHit;
+  // --- relocated hit-check: read post-integration telemetry ---
+  DroneTelemetry post = physics->getTelemetry();
+
+  if (currentState->name() == MOVING) {
+    Coord bombLand;
+    bombLand.x = post.pos.x + h_ammo * cos(post.direction);
+    bombLand.y = post.pos.y + h_ammo * sin(post.direction);
+    double missDistance = distanceCalculation(bombLand, chosenPredicted);
+    if (missDistance <= config.hitRadius) {
+      TARGET_HIT = true;
+      ctx.targetHit = true;
+      std::cout << "Target " << simulation.targetIdx << " HIT at t=" << t << "s (step " << N << ")" << std::endl;
+      std::cout << "  Drone:  (" << post.pos.x << ", " << post.pos.y << ")  dir=" << post.direction << std::endl;
+      std::cout << "  Bomb lands at: (" << bombLand.x << ", " << bombLand.y << ")" << std::endl;
+      std::cout << "  Miss distance: " << missDistance << " m" << std::endl;
+    }
+  }
+
+  // output from telemetry
+  simulation.pos = post.pos;
+  simulation.direction = post.direction;
+  simulation.state = currentState->name();
+
+  // provider advance — Phase-1 stand-in for the provider's own clock
+  if (config.simTimeStep > 0.0f) {
+    int ticksPerNode = std::max(1, (int)std::round(config.arrayTimeStep / config.simTimeStep));
+    if (N % ticksPerNode == 0)
+      targets->advance();
+  }
 
   N++;
   t += config.simTimeStep;

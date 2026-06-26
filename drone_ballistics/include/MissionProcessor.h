@@ -5,12 +5,13 @@
 #include "interfaces/IConfigLoader.h"
 #include "interfaces/IDroneState.h"
 #include "state/MissionContext.h"
+#include "threads/DronePhysics.h"
 class Mission {
   std::unique_ptr<IBallisticSolver> solver;
   std::unique_ptr<ITargetProvider> targets;
   std::unique_ptr<IConfigLoader> configs;
   std::unique_ptr<IDroneState> currentState;
-
+  std::unique_ptr<DronePhysics> physics;
   DroneConfig config;
   AmmoParams ammo;
   int currentIteration = 0;

@@ -123,7 +123,7 @@ struct DroneCommand {
 struct DroneTelemetry {
   Coord pos;
   float direction = 0.0f;
-  float speed;
+  Coord speed;
   float currentSpeed = 0.0f;
   float remainingTurnTime = 0.0f;
   float timeSecSinceStart = 0.0f;
