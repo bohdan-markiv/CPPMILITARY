@@ -24,6 +24,7 @@ struct MissionContext {
   int N;
   int targetIdx;
   Coord predictedTarget;
+  float desiredDir = 0.0f;
 
   DroneCommand command;
 

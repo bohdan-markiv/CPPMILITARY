@@ -39,6 +39,7 @@ void FileConfigLoader::load()
   this->config.hitRadius = data["simulation"]["hitRadius"];
   this->config.angularSpeed = data["drone"]["angularSpeed"];
   this->config.turnThreshold = data["drone"]["turnThreshold"];
+  this->config.physicsTimeStep = 0.01f;
 
   auto it = ammoByName.find(this->config.ammoName);
   if (it == ammoByName.end()) {

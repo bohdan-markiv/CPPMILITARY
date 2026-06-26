@@ -63,6 +63,7 @@ void Mission::init()
   simulation.dropPoint = {0.0f, 0.0f};
   simulation.aimPoint = {0.0f, 0.0f};
   simulation.predictedTarget = {0.0f, 0.0f};
+  simulation.timeSecSinceStart = 0.0f;
 
   currentSpeed = 0.0f;
   remainingTurnTime = 0.0f;
@@ -76,7 +77,7 @@ void Mission::init()
   h_ammo = flight.hDist;
 
   physics = std::make_unique<DronePhysics>();
-  physics->init(config.startPos, config.initialDir, config.attackSpeed, a, config.angularSpeed, config.simTimeStep);
+  physics->init(config.startPos, config.initialDir, config.attackSpeed, a, config.angularSpeed, config.physicsTimeStep);
   currentIteration = 0;
   currentIdx = 0;
 
@@ -96,6 +97,11 @@ void Mission::init()
   this->ctx.currentSpeed = 0.0f;
   this->ctx.remainingTurnTime = 0.0f;
   this->ctx.timeSteps = timeSteps;
+  fprintf(stderr,
+          "physicsTimeStep=%f simTimeStep=%f physicsSteps=%d\n",
+          config.physicsTimeStep,
+          config.simTimeStep,
+          (int)std::round(config.simTimeStep / config.physicsTimeStep));
 }
 
 bool Mission::hasNext()
@@ -234,6 +240,7 @@ SimStep Mission::step()
   ctx.currentSpeed = tel.currentSpeed;
   ctx.remainingTurnTime = tel.remainingTurnTime;
   ctx.angleDiff = angleDiff;
+  ctx.desiredDir = desiredDir;
   ctx.t = t;
   ctx.N = N;
   ctx.targetIdx = simulation.targetIdx;
@@ -243,11 +250,16 @@ SimStep Mission::step()
   if (next)
     currentState = std::move(next);
 
-  physics->pushCommand(ctx.command);  // hand motion to physics
-  physics->step(config.simTimeStep);  // Phase 1: integrate ONE step manually
+  physics->pushCommand(ctx.command);                                                             // hand motion to physics
+  int physicsSteps = std::max(1, (int)std::round(config.simTimeStep / config.physicsTimeStep));  // 10
+  for (int k = 0; k < physicsSteps; k++) {
+    physics->step(config.physicsTimeStep);
+  }
 
   // --- relocated hit-check: read post-integration telemetry ---
   DroneTelemetry post = physics->getTelemetry();
+
+  simulation.timeSecSinceStart = post.timeSecSinceStart;
 
   if (currentState->name() == MOVING) {
     Coord bombLand;

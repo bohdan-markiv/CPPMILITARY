@@ -13,15 +13,23 @@ void DronePhysics::init(Coord startPos, float initialDir, float attackSpeed, flo
   angularSpeed_ = angularSpeed;
   dt_ = physicsTimeStep;
 }
-
+float DronePhysics::angleDifference(float from, float to)
+{
+  const float pi = std::acos(-1.0f);
+  float diff = std::fmod(to - from + pi, 2.0f * pi);
+  if (diff < 0)
+    diff += 2.0f * pi;
+  return diff - pi;
+}
 void DronePhysics::applyCruise()
 {
   pos_.x += currentSpeed_ * std::cos(direction_) * dt_;
   pos_.y += currentSpeed_ * std::sin(direction_) * dt_;
 }
 
-void DronePhysics::applyTurnInPlace(float angleDiff)
+void DronePhysics::applyTurnInPlace()
 {
+  float angleDiff = angleDifference(direction_, targetDir_);
   float turnStep = angularSpeed_ * dt_;
   if (turnStep > std::fabs(angleDiff))
     turnStep = std::fabs(angleDiff);
@@ -40,8 +48,9 @@ void DronePhysics::applyDeceleration(float angleDiff)
   applyCruise();
 }
 
-void DronePhysics::applySmallTurn(float angleDiff)
+void DronePhysics::applySmallTurn()
 {
+  float angleDiff = angleDifference(direction_, targetDir_);  // recompute each sub-step
   if (std::fabs(angleDiff) > 1e-4f) {
     float turnStep = angularSpeed_ * dt_;
     if (turnStep > std::fabs(angleDiff))
@@ -50,18 +59,18 @@ void DronePhysics::applySmallTurn(float angleDiff)
   }
 }
 
-void DronePhysics::applyMoving(float angleDiff)
+void DronePhysics::applyMoving()
 {
-  applySmallTurn(angleDiff);
+  applySmallTurn();
   applyCruise();
 }
 
-void DronePhysics::applyAcceleration(float angleDiff)
+void DronePhysics::applyAcceleration()
 {
   currentSpeed_ += a_ * dt_;
   if (currentSpeed_ > attackSpeed_)
     currentSpeed_ = attackSpeed_;
-  applySmallTurn(angleDiff);
+  applySmallTurn();
   applyCruise();
 }
 
@@ -74,29 +83,31 @@ void DronePhysics::step(float dt)
 {
   std::lock_guard<std::mutex> lock(mutex_);
 
+  // Drain queue: latch the newest command (don't apply motion here)
   DroneCommand cmd;
-  // Drain all pending commands; the last one wins as current motion intent.
-  // In Phase 1 (manual stepping) there's exactly one per call.
   while (commandQueue_.try_pop(cmd)) {
+    current_ = cmd;
+    targetDir_ = cmd.targetDir;
     if (cmd.remainingTurnSeed >= 0.0f)
       remainingTurnTime_ = cmd.remainingTurnSeed;
+  }
 
-    switch (cmd.motion) {
-      case MotionKind::TurnInPlace:
-        applyTurnInPlace(cmd.angleDiff);
-        break;
-      case MotionKind::Accelerate:
-        applyAcceleration(cmd.angleDiff);
-        break;
-      case MotionKind::Moving:
-        applyMoving(cmd.angleDiff);
-        break;
-      case MotionKind::Decelerate:
-        applyDeceleration(cmd.angleDiff);
-        break;
-      case MotionKind::None:
-        break;
-    }
+  // Apply the latched command EVERY step (runs all 10 sub-steps)
+  switch (current_.motion) {
+    case MotionKind::TurnInPlace:
+      applyTurnInPlace();
+      break;
+    case MotionKind::Accelerate:
+      applyAcceleration();
+      break;
+    case MotionKind::Moving:
+      applyMoving();
+      break;
+    case MotionKind::Decelerate:
+      applyDeceleration(current_.angleDiff);
+      break;
+    case MotionKind::None:
+      break;
   }
 
   timeSec_ += dt;

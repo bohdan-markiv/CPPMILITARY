@@ -36,8 +36,8 @@ auto main(int argc, char **argv) -> int
   while (mission.hasNext()) {
     try {
       SimStep step = mission.step();
-      std::cout << "Step " << mission.getN() << " pos=(" << step.pos.x << "," << step.pos.y << ")" << " dir=" << step.direction
-                << " state=" << step.state << " target=" << step.targetIdx << "\n";
+      // std::cout << "Step " << mission.getN() << " pos=(" << step.pos.x << "," << step.pos.y << ")" << " dir=" << step.direction
+      //           << " state=" << step.state << " timeSecSinceStart" << step.timeSecSinceStart << " target=" << step.targetIdx << "\n";
       simLog.push_back(step);
     }
     catch (const std::exception &e) {
@@ -59,6 +59,7 @@ auto main(int argc, char **argv) -> int
       stepJson["dropPoint"] = {{"x", s.dropPoint.x}, {"y", s.dropPoint.y}};
       stepJson["aimPoint"] = {{"x", s.aimPoint.x}, {"y", s.aimPoint.y}};
       stepJson["predictedTarget"] = {{"x", s.predictedTarget.x}, {"y", s.predictedTarget.y}};
+      stepJson["timeSecSinceStart"] = s.timeSecSinceStart;  // <-- ADD THIS
       out["steps"].push_back(stepJson);
     }
 

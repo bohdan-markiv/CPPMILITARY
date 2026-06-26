@@ -22,13 +22,17 @@ private:
   float angularSpeed_ = 0.0f;
   float dt_ = 0.0f;
 
+  float targetDir_ = 0.0f;  // NEW
+
+  static float angleDifference(float from, float to);  // NEW helper
   void applyCruise();
-  void applyTurnInPlace(float angleDiff);
+  void applyTurnInPlace();
   void applyDeceleration(float angleDiff);
-  void applySmallTurn(float angleDiff);
-  void applyMoving(float angleDiff);
-  void applyAcceleration(float angleDiff);
+  void applySmallTurn();
+  void applyMoving();
+  void applyAcceleration();
 
   ThreadSafeQueue<DroneCommand> commandQueue_;
+  DroneCommand current_{MotionKind::None, 0.0f, -1.0f};
   mutable std::mutex mutex_;
 };
