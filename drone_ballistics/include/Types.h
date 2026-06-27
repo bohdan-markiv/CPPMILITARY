@@ -94,6 +94,7 @@ struct DroneConfig {
   float angularSpeed;    // кутова швидкість (рад/с)
   float turnThreshold;   // поріг повороту (рад)
   float physicsTimeStep;
+  float timeScale;
 };
 
 struct SimStep {

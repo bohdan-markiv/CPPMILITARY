@@ -3,6 +3,9 @@
 #include "config/ComponentFactory.h"
 #include <iostream>
 #include <fstream>
+#include <thread>
+#include <chrono>
+#include "threads/DronePhysics.h"
 
 std::vector<SimStep> simLog;
 
@@ -33,17 +36,37 @@ auto main(int argc, char **argv) -> int
     return 1;
   }
 
-  while (mission.hasNext()) {
-    try {
-      SimStep step = mission.step();
-      // std::cout << "Step " << mission.getN() << " pos=(" << step.pos.x << "," << step.pos.y << ")" << " dir=" << step.direction
-      //           << " state=" << step.state << " timeSecSinceStart" << step.timeSecSinceStart << " target=" << step.targetIdx << "\n";
-      simLog.push_back(step);
+  try {
+    // spawn the three worker threads
+    std::thread providerThread(&ITargetProvider::run, mission.getProvider());
+    std::thread physicsThread(&DronePhysics::run, mission.getPhysics());
+    std::thread missionThread(&Mission::run, &mission);
+
+    // wait until all three are warmed up
+    while (!mission.getProvider()->isThreadReady() || !mission.getPhysics()->isThreadReady() || !mission.isThreadReady()) {
+      std::this_thread::sleep_for(std::chrono::milliseconds(1));
     }
-    catch (const std::exception &e) {
-      std::cerr << "Error during simulation step: " << e.what() << std::endl;
-      return 1;
-    }
+
+    // release them simultaneously
+    mission.getProvider()->start();
+    mission.getPhysics()->start();
+    mission.start();
+
+    // mission is the one we wait on
+    missionThread.join();
+    fprintf(stderr, "[main] missionThread joined\n");
+
+    // mission finished → stop the others
+    mission.getPhysics()->stop();   // sets flag, wakes queue, joins internally
+    mission.getProvider()->stop();  // sets flag, joins internally
+    physicsThread.join();
+    fprintf(stderr, "[main] missionThread joined\n");
+    providerThread.join();
+    fprintf(stderr, "[main] missionThread joined\n");
+  }
+  catch (const std::exception &e) {
+    std::cerr << "Error during simulation: " << e.what() << std::endl;
+    return 1;
   }
 
   try {

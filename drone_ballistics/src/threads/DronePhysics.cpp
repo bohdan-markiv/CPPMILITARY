@@ -1,6 +1,7 @@
 #include "threads/DronePhysics.h"
 #include <cmath>
-
+#include <chrono>
+#include <thread>
 void DronePhysics::init(Coord startPos, float initialDir, float attackSpeed, float accel, float angularSpeed, float physicsTimeStep)
 {
   pos_ = startPos;
@@ -125,4 +126,34 @@ DroneTelemetry DronePhysics::getTelemetry() const
   t.remainingTurnTime = remainingTurnTime_;
   t.timeSecSinceStart = timeSec_;
   return t;
+}
+void DronePhysics::run()
+{
+  ready_.store(true);
+  while (!started_.load() && !stop_.load())
+    std::this_thread::sleep_for(std::chrono::milliseconds(1));
+
+  auto last = std::chrono::steady_clock::now();
+  float accumulator = 0.0f;
+  while (!stop_.load()) {
+    auto now = std::chrono::steady_clock::now();
+    float realElapsed = std::chrono::duration<float>(now - last).count();
+    last = now;
+    accumulator += realElapsed * timeScale_;  // sim-time to integrate
+
+    while (accumulator >= dt_) {  // integrate in fixed dt_ chunks
+      step(dt_);
+      accumulator -= dt_;
+    }
+    std::this_thread::sleep_for(std::chrono::duration<float>(dt_ / timeScale_));
+  }
+}
+
+void DronePhysics::stop()
+{
+  stop_.store(true);
+  commandQueue_.requestStop();
+  fprintf(stderr, "[provider] stop called\n");  // wake a blocked pop, if any
+  if (thread_.joinable())
+    thread_.join();
 }

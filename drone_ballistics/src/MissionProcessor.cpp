@@ -5,6 +5,8 @@
 #include "helpers.h"
 #include "state/StateClasses.h"
 #include "threads/DronePhysics.h"
+#include <thread>
+#include <chrono>
 
 float Mission::calculateTimeToStop(
   float currentSpeed, float attackSpeed, bool targetChanged, DronePhase phase, float remainingTurnTime, float a)
@@ -51,9 +53,11 @@ void Mission::init()
   this->config = configs->getConfig();
 
   this->targets->setArrayTimeStep(config.arrayTimeStep);
+  this->targets->setTimeScale(config.timeScale);
 
   this->ammo = configs->getAmmoParams();
   this->targetCount = targets->getTargetCount();
+  this->targets->setArrayTimeStep(config.arrayTimeStep);
   this->timeSteps = targets->getTimeSteps();
   fprintf(stderr, "timeSteps = %d, targetCount = %d\n", timeSteps, targetCount);
   simulation.pos = config.startPos;
@@ -78,6 +82,7 @@ void Mission::init()
 
   physics = std::make_unique<DronePhysics>();
   physics->init(config.startPos, config.initialDir, config.attackSpeed, a, config.angularSpeed, config.physicsTimeStep);
+  physics->setTimeScale(config.timeScale);
   currentIteration = 0;
   currentIdx = 0;
 
@@ -250,11 +255,11 @@ SimStep Mission::step()
   if (next)
     currentState = std::move(next);
 
-  physics->pushCommand(ctx.command);                                                             // hand motion to physics
-  int physicsSteps = std::max(1, (int)std::round(config.simTimeStep / config.physicsTimeStep));  // 10
-  for (int k = 0; k < physicsSteps; k++) {
-    physics->step(config.physicsTimeStep);
-  }
+  physics->pushCommand(ctx.command);  // hand motion to physics
+  // int physicsSteps = std::max(1, (int)std::round(config.simTimeStep / config.physicsTimeStep));  // 10
+  // for (int k = 0; k < physicsSteps; k++) {
+  //   physics->step(config.physicsTimeStep);
+  // }
 
   // --- relocated hit-check: read post-integration telemetry ---
   DroneTelemetry post = physics->getTelemetry();
@@ -282,11 +287,11 @@ SimStep Mission::step()
   simulation.state = currentState->name();
 
   // provider advance — Phase-1 stand-in for the provider's own clock
-  if (config.simTimeStep > 0.0f) {
-    int ticksPerNode = std::max(1, (int)std::round(config.arrayTimeStep / config.simTimeStep));
-    if (N % ticksPerNode == 0)
-      targets->advance();
-  }
+  // if (config.simTimeStep > 0.0f) {
+  //   int ticksPerNode = std::max(1, (int)std::round(config.arrayTimeStep / config.simTimeStep));
+  //   if (N % ticksPerNode == 0)
+  //     targets->advance();
+  // }
 
   N++;
   t += config.simTimeStep;
@@ -295,4 +300,26 @@ SimStep Mission::step()
 [[nodiscard]] int Mission::getN() const
 {
   return N;
+}
+void Mission::run()
+{
+  ready_.store(true);
+  while (!started_.load() && !stop_.load())
+    std::this_thread::sleep_for(std::chrono::milliseconds(1));
+  fprintf(stderr, "[mission] started loop\n");
+  while (!stop_.load() && hasNext()) {
+    SimStep s = step();
+    simLog.push_back(s);
+    if (N % 100 == 0)
+      fprintf(stderr,
+              "[mission] N=%d pos=(%.1f,%.1f) state=%d tIdx=%d\n",
+              N,
+              simulation.pos.x,
+              simulation.pos.y,
+              (int)simulation.state,
+              simulation.targetIdx);
+    std::this_thread::sleep_for(std::chrono::duration<float>(config.simTimeStep / config.timeScale));
+  }
+  fprintf(stderr, "[mission] loop exited at N=%d (hit=%d)\n", N, (int)TARGET_HIT);
+  stop_.store(true);
 }

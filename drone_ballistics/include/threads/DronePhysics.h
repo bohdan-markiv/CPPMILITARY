@@ -2,6 +2,8 @@
 #include <mutex>
 #include "Types.h"
 #include "ThreadSafeQueue.h"
+#include <atomic>
+#include <thread>
 
 class DronePhysics {
 public:
@@ -9,8 +11,18 @@ public:
   void pushCommand(DroneCommand command);
   void step(float dt);
   DroneTelemetry getTelemetry() const;
+  void run();
+  bool isThreadReady() const { return ready_.load(); }
+  void start() { started_.store(true); }
+  void stop();
+  void setTimeScale(float ts) { timeScale_ = ts; }
 
 private:
+  float timeScale_ = 1.0f;
+  std::atomic<bool> ready_{false};
+  std::atomic<bool> started_{false};
+  std::atomic<bool> stop_{false};
+  std::thread thread_;
   Coord pos_{0.0f, 0.0f};
   float direction_ = 0.0f;  // in radians
   float currentSpeed_ = 0.0f;
