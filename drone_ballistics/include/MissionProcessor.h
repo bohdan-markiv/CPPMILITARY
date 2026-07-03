@@ -1,11 +1,15 @@
+#include <memory>
 #include "Types.h"
 #include "interfaces/IBallisticsSolver.h"
 #include "interfaces/ITargetProvider.h"
 #include "interfaces/IConfigLoader.h"
+#include "interfaces/IDroneState.h"
+#include "state/MissionContext.h"
 class Mission {
-  IBallisticSolver *solver;
-  ITargetProvider *targets;
-  IConfigLoader *configs;
+  std::unique_ptr<IBallisticSolver> solver;
+  std::unique_ptr<ITargetProvider> targets;
+  std::unique_ptr<IConfigLoader> configs;
+  std::unique_ptr<IDroneState> currentState;
 
   DroneConfig config;
   AmmoParams ammo;
@@ -29,11 +33,15 @@ class Mission {
   double a = 0.0;
   int timeSteps = 0;
 
+  double kSwitchCost = 0.1;
+
+  MissionContext ctx;
+
 public:
-  Mission(IBallisticSolver *solver, ITargetProvider *targets, IConfigLoader *configs)
-    : solver(solver)
-    , targets(targets)
-    , configs(configs)
+  Mission(std::unique_ptr<IBallisticSolver> solver, std::unique_ptr<ITargetProvider> targets, std::unique_ptr<IConfigLoader> configs)
+    : solver(std::move(solver))
+    , targets(std::move(targets))
+    , configs(std::move(configs))
   {
   }
 
@@ -43,7 +51,7 @@ public:
   bool hasNext();
   int getCurrentTargetIdx();
   void reset();
-  void changeSolver(IBallisticSolver *newSolver);
+  void changeSolver(std::unique_ptr<IBallisticSolver> newSolver);
   SimStep step();
   [[nodiscard]] int getN() const;
 };
