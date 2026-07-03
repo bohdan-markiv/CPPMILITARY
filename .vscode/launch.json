@@ -111,6 +111,20 @@
   ],
   "inputs": [
     {
+      "id": "fileSelectHW6",
+      "type": "pickString",
+      "description": "Виберіть вхідний файл для перевірки балістики:",
+      "options": [
+        "basic_1.txt",
+        "basic_2.txt",
+        "test_1.txt",
+        "test_2.txt",
+        "test_3.txt",
+        "missing_value.txt",
+        "unknown_ammo.txt",
+        "wrong_var_type.txt"
+      ],
+      "default": "basic_1.txt"
       "id": "telemetryFile",
       "type": "pickString",
       "description": "Which telemetry file to debug?",
