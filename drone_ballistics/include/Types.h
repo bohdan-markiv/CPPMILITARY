@@ -93,6 +93,8 @@ struct DroneConfig {
   float hitRadius;       // радіус влучення
   float angularSpeed;    // кутова швидкість (рад/с)
   float turnThreshold;   // поріг повороту (рад)
+  float physicsTimeStep;
+  float timeScale;
 };
 
 struct SimStep {
@@ -103,6 +105,30 @@ struct SimStep {
   Coord dropPoint;        // точка скиду (куди летить дрон)
   Coord aimPoint;         // куди впаде бомба (якщо скинути зараз)
   Coord predictedTarget;  // прогнозована позиція цілі
+  float timeSecSinceStart;
 };
 
 extern std::vector<SimStep> simLog;
+
+struct Target {
+  Coord pos;
+  Coord velocity;
+};
+
+enum class MotionKind { TurnInPlace, Accelerate, Decelerate, Moving, None };
+
+struct DroneCommand {
+  MotionKind motion = MotionKind::None;
+  float angleDiff = 0.0f;
+  float targetDir = 0.0f;
+  float remainingTurnSeed = 0.0f;
+};
+
+struct DroneTelemetry {
+  Coord pos;
+  float direction = 0.0f;
+  Coord speed;
+  float currentSpeed = 0.0f;
+  float remainingTurnTime = 0.0f;
+  float timeSecSinceStart = 0.0f;
+};

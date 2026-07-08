@@ -124,8 +124,7 @@
         "unknown_ammo.txt",
         "wrong_var_type.txt"
       ],
-      "default": "basic_1.txt"
-      "id": "telemetryFile",
+      "default": "basic_1.txt""id": "telemetryFile",
       "type": "pickString",
       "description": "Which telemetry file to debug?",
       "options": [

@@ -5,12 +5,18 @@
 #include "interfaces/IConfigLoader.h"
 #include "interfaces/IDroneState.h"
 #include "state/MissionContext.h"
+#include "threads/DronePhysics.h"
+#include <atomic>
+
 class Mission {
+  std::atomic<bool> ready_{false};
+  std::atomic<bool> started_{false};
+  std::atomic<bool> stop_{false};
   std::unique_ptr<IBallisticSolver> solver;
   std::unique_ptr<ITargetProvider> targets;
   std::unique_ptr<IConfigLoader> configs;
   std::unique_ptr<IDroneState> currentState;
-
+  std::unique_ptr<DronePhysics> physics;
   DroneConfig config;
   AmmoParams ammo;
   int currentIteration = 0;
@@ -44,7 +50,12 @@ public:
     , configs(std::move(configs))
   {
   }
-
+  void run();
+  bool isThreadReady() const { return ready_.load(); }
+  void start() { started_.store(true); }
+  void stop() { stop_.store(true); }
+  DronePhysics* getPhysics() { return physics.get(); }
+  ITargetProvider* getProvider() { return targets.get(); }
   float calculateTimeToStop(float currentSpeed, float attackSpeed, bool targetChanged, DronePhase phase, float remainingTurnTime, float a);
   float angleDifference(float from, float to);
   void init();

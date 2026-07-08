@@ -41,7 +41,45 @@ int JsonTargetProvider::getTimeSteps()
   return this->TimeSteps;
 }
 
-Coord *JsonTargetProvider::getTarget(int idx)
+Target JsonTargetProvider::getTarget(int idx)
 {
-  return &this->targets[idx][0];
+  std::lock_guard<std::mutex> lock(mutex_);
+  Target out;
+  out.pos = targets[idx][currentNode];
+  int nextNode = (currentNode + 1) % TimeSteps;
+  Coord d = targets[idx][nextNode] - targets[idx][currentNode];
+  out.velocity = d / arrayTimeStep;
+  return out;
+}
+
+void JsonTargetProvider::advance()
+{
+  currentNode = (currentNode + 1) % this->TimeSteps;
+}
+
+void JsonTargetProvider::setArrayTimeStep(float step)
+{
+  this->arrayTimeStep = step;
+}
+
+void JsonTargetProvider::run()
+{
+  ready_.store(true);
+  while (!started_.load() && !stop_.load())
+    std::this_thread::sleep_for(std::chrono::milliseconds(1));
+
+  while (!stop_.load()) {
+    {
+      std::lock_guard<std::mutex> lock(mutex_);
+      currentNode = (currentNode + 1) % TimeSteps;
+    }
+    std::this_thread::sleep_for(std::chrono::duration<float>(arrayTimeStep / timeScale_));  // arrayTimeStep, not targetTimeStep_
+  }
+}
+void JsonTargetProvider::stop()
+{
+  stop_.store(true);
+  if (thread_.joinable())
+    thread_.join();
+  fprintf(stderr, "[provider] stop called\n");
 }
