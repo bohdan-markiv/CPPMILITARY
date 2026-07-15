@@ -1,0 +1,436 @@
+[0.000000] (-) TimerEvent: {}
+[0.000229] (antidrone_turret) JobQueued: {'identifier': 'antidrone_turret', 'dependencies': OrderedDict()}
+[0.000279] (antidrone_turret) JobStarted: {'identifier': 'antidrone_turret'}
+[0.010943] (antidrone_turret) JobProgress: {'identifier': 'antidrone_turret', 'progress': 'cmake'}
+[0.011785] (antidrone_turret) JobProgress: {'identifier': 'antidrone_turret', 'progress': 'build'}
+[0.012696] (antidrone_turret) Command: {'cmd': ['/usr/bin/cmake', '--build', '/home/bmarkiv/CPPMILITARY/homework_13/robot_ws/build/antidrone_turret', '--', '-j16', '-l16'], 'cwd': '/home/bmarkiv/CPPMILITARY/homework_13/robot_ws/build/antidrone_turret', 'env': OrderedDict({'LANGUAGE': 'en_US:en', 'HOSTNAME': 'devcontainer', 'GIT_ASKPASS': '/vscode/vscode-server/bin/linux-x64/fc3def6774c76082adf699d366f31a557ce5573f/extensions/git/dist/askpass.sh', 'SHLVL': '2', 'LD_LIBRARY_PATH': '/home/bmarkiv/CPPMILITARY/homework_13/robot_ws/install/antidrone_turret/lib:/opt/ros/jazzy/opt/rviz_ogre_vendor/lib:/opt/ros/jazzy/lib/x86_64-linux-gnu:/opt/ros/jazzy/opt/gz_math_vendor/lib:/opt/ros/jazzy/opt/gz_utils_vendor/lib:/opt/ros/jazzy/opt/gz_cmake_vendor/lib:/opt/ros/jazzy/lib', 'BROWSER': '/vscode/vscode-server/bin/linux-x64/fc3def6774c76082adf699d366f31a557ce5573f/bin/helpers/browser.sh', 'HOME': '/home/bmarkiv', 'CYCLONEDDS_URI': 'file:///etc/cyclonedds.xml', 'OLDPWD': '/home/bmarkiv/CPPMILITARY/homework_13/robot_ws', 'TERM_PROGRAM_VERSION': '1.128.0', 'VSCODE_IPC_HOOK_CLI': '/tmp/vscode-ipc-4292f3a1-695f-409e-9516-5174a024a46c.sock', 'ROS_PYTHON_VERSION': '3', 'VSCODE_GIT_ASKPASS_MAIN': '/vscode/vscode-server/bin/linux-x64/fc3def6774c76082adf699d366f31a557ce5573f/extensions/git/dist/askpass-main.js', 'VSCODE_GIT_ASKPASS_NODE': '/vscode/vscode-server/bin/linux-x64/fc3def6774c76082adf699d366f31a557ce5573f/node', 'VSCODE_PYTHON_AUTOACTIVATE_GUARD': '1', 'COLORTERM': 'truecolor', 'REMOTE_CONTAINERS': 'true', 'DEBUGINFOD_URLS': 'https://debuginfod.ubuntu.com', 'COLCON_PREFIX_PATH': '/home/bmarkiv/CPPMILITARY/homework_13/robot_ws/install', 'ROS_DISTRO': 'jazzy', 'REMOTE_CONTAINERS_IPC': '/tmp/vscode-remote-containers-ipc-6ff62b37-047b-42f5-98ea-f0b47eda90dc.sock', '_': '/usr/bin/colcon', 'ROS_VERSION': '2', 'TERM': 'xterm-256color', 'PATH': '/home/bmarkiv/.vscode-server/data/User/globalStorage/github.copilot-chat/debugCommand:/home/bmarkiv/.vscode-server/data/User/globalStorage/github.copilot-chat/copilotCli:/vscode/vscode-server/bin/linux-x64/fc3def6774c76082adf699d366f31a557ce5573f/bin/remote-cli:/opt/ros/jazzy/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin', 'REMOTE_CONTAINERS_SOCKETS': '["/tmp/.X11-unix/X1","/home/bmarkiv/.gnupg/S.gpg-agent"]', 'DISPLAY': ':1', 'LANG': 'en_US.UTF-8', 'RMW_IMPLEMENTATION': 'rmw_cyclonedds_cpp', 'LS_COLORS': 'rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=00:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.avif=01;35:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.webp=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:*~=00;90:*#=00;90:*.bak=00;90:*.crdownload=00;90:*.dpkg-dist=00;90:*.dpkg-new=00;90:*.dpkg-old=00;90:*.dpkg-tmp=00;90:*.old=00;90:*.orig=00;90:*.part=00;90:*.rej=00;90:*.rpmnew=00;90:*.rpmorig=00;90:*.rpmsave=00;90:*.swp=00;90:*.tmp=00;90:*.ucf-dist=00;90:*.ucf-new=00;90:*.ucf-old=00;90:', 'VSCODE_GIT_IPC_HANDLE': '/tmp/vscode-git-70f6501bd9.sock', 'TERM_PROGRAM': 'vscode', 'ROS_DOMAIN_ID': '0', 'AMENT_PREFIX_PATH': '/home/bmarkiv/CPPMILITARY/homework_13/robot_ws/install/antidrone_turret:/opt/ros/jazzy', 'REMOTE_CONTAINERS_DISPLAY_SOCK': '/tmp/.X11-unix/X1', 'SHELL': '/bin/bash', 'PROMPT_COMMAND': '__vsc_prompt_cmd_original', 'ROS_AUTOMATIC_DISCOVERY_RANGE': 'SUBNET', 'VSCODE_GIT_ASKPASS_EXTRA_ARGS': '', 'PWD': '/home/bmarkiv/CPPMILITARY/homework_13/robot_ws/build/antidrone_turret', 'LC_ALL': 'en_US.UTF-8', 'COPILOT_DEBUG_NONCE': '137630ddde7519b1e1e3aa64d3644e1c', 'PYTHONPATH': '/home/bmarkiv/CPPMILITARY/homework_13/robot_ws/install/antidrone_turret/lib/python3.12/site-packages:/opt/ros/jazzy/lib/python3.12/site-packages', 'TZ': 'Etc/UTC', 'COLCON': '1', 'CMAKE_PREFIX_PATH': '/home/bmarkiv/CPPMILITARY/homework_13/robot_ws/install/antidrone_turret:/opt/ros/jazzy/opt/gz_math_vendor:/opt/ros/jazzy/opt/gz_utils_vendor:/opt/ros/jazzy/opt/gz_cmake_vendor:/opt/ros/jazzy'}), 'shell': False}
+[0.058831] (antidrone_turret) StdoutLine: {'line': b'-- Found ament_cmake_auto: 2.5.6 (/opt/ros/jazzy/share/ament_cmake_auto/cmake)\n'}
+[0.098786] (-) TimerEvent: {}
+[0.184689] (antidrone_turret) StdoutLine: {'line': b'-- Override CMake install command with custom implementation using symlinks instead of copying resources\n'}
+[0.198954] (-) TimerEvent: {}
+[0.299365] (-) TimerEvent: {}
+[0.302712] (antidrone_turret) StdoutLine: {'line': b'-- Using all available rosidl_typesupport_c: rosidl_typesupport_fastrtps_c;rosidl_typesupport_introspection_c\n'}
+[0.346566] (antidrone_turret) StdoutLine: {'line': b'-- Using all available rosidl_typesupport_cpp: rosidl_typesupport_fastrtps_cpp;rosidl_typesupport_introspection_cpp\n'}
+[0.377684] (antidrone_turret) StdoutLine: {'line': b'-- Found rosidl_adapter: 4.6.9 (/opt/ros/jazzy/share/rosidl_adapter/cmake)\n'}
+[0.399608] (-) TimerEvent: {}
+[0.455197] (antidrone_turret) StdoutLine: {'line': b'-- Found rmw_implementation_cmake: 7.3.3 (/opt/ros/jazzy/share/rmw_implementation_cmake/cmake)\n'}
+[0.456887] (antidrone_turret) StdoutLine: {'line': b'-- Found rmw_cyclonedds_cpp: 2.2.3 (/opt/ros/jazzy/share/rmw_cyclonedds_cpp/cmake)\n'}
+[0.491214] (antidrone_turret) StdoutLine: {'line': b"-- Using RMW implementation 'rmw_cyclonedds_cpp' as default\n"}
+[0.499697] (-) TimerEvent: {}
+[0.599979] (-) TimerEvent: {}
+[0.700485] (-) TimerEvent: {}
+[0.764611] (antidrone_turret) StdoutLine: {'line': b'-- Found ament_cmake_ros: 0.12.1 (/opt/ros/jazzy/share/ament_cmake_ros/cmake)\n'}
+[0.800631] (-) TimerEvent: {}
+[0.863202] (antidrone_turret) StdoutLine: {'line': b'-- Using all available rosidl_typesupport_c: rosidl_typesupport_fastrtps_c;rosidl_typesupport_introspection_c\n'}
+[0.900745] (-) TimerEvent: {}
+[0.987660] (antidrone_turret) StdoutLine: {'line': b'-- Using all available rosidl_typesupport_cpp: rosidl_typesupport_fastrtps_cpp;rosidl_typesupport_introspection_cpp\n'}
+[0.989147] (antidrone_turret) StdoutLine: {'line': b'-- Found python_cmake_module: 0.11.1 (/opt/ros/jazzy/share/python_cmake_module/cmake)\n'}
+[1.000842] (-) TimerEvent: {}
+[1.101236] (-) TimerEvent: {}
+[1.201595] (-) TimerEvent: {}
+[1.301926] (-) TimerEvent: {}
+[1.303769] (antidrone_turret) StdoutLine: {'line': b'-- Found Python3: /usr/bin/python3 (found version "3.12.3") found components: Interpreter Development NumPy Development.Module Development.Embed \n'}
+[1.354271] (antidrone_turret) StdoutLine: {'line': b'-- Found Python3: /usr/bin/python3 (found version "3.12.3") found components: Interpreter \n'}
+[1.361653] (antidrone_turret) StdoutLine: {'line': b"-- Found gtest sources under '/opt/ros/jazzy/src/gtest_vendor': C++ tests using 'Google Test' will be built\n"}
+[1.382366] (antidrone_turret) StdoutLine: {'line': b'-- Configuring done (1.3s)\n'}
+[1.402047] (-) TimerEvent: {}
+[1.490758] (antidrone_turret) StdoutLine: {'line': b'-- Generating done (0.1s)\n'}
+[1.502161] (-) TimerEvent: {}
+[1.519527] (antidrone_turret) StdoutLine: {'line': b'-- Build files have been written to: /home/bmarkiv/CPPMILITARY/homework_13/robot_ws/build/antidrone_turret\n'}
+[1.559220] (antidrone_turret) StdoutLine: {'line': b'[  1%] Built target antidrone_turret__rs\n'}
+[1.561862] (antidrone_turret) StdoutLine: {'line': b'[  2%] Built target antidrone_turret__rosidl_generator_type_description\n'}
+[1.566022] (antidrone_turret) StdoutLine: {'line': b'[  4%] Built target gtest_main\n'}
+[1.569560] (antidrone_turret) StdoutLine: {'line': b'[  6%] Built target gtest\n'}
+[1.572465] (antidrone_turret) StdoutLine: {'line': b'[  6%] Built target ament_cmake_python_symlink_antidrone_turret\n'}
+[1.579605] (antidrone_turret) StdoutLine: {'line': b'[  7%] Built target antidrone_turret__cpp\n'}
+[1.591463] (antidrone_turret) StdoutLine: {'line': b'[ 27%] Built target antidrone_turret__rosidl_generator_c\n'}
+[1.592745] (antidrone_turret) StdoutLine: {'line': b'[ 30%] Built target turret_logic_test\n'}
+[1.592913] (antidrone_turret) StdoutLine: {'line': b'[ 31%] Built target provided_logic_test\n'}
+[1.602341] (-) TimerEvent: {}
+[1.616159] (antidrone_turret) StdoutLine: {'line': b'[ 38%] Built target antidrone_turret__rosidl_typesupport_c\n'}
+[1.619584] (antidrone_turret) StdoutLine: {'line': b'[ 45%] Built target antidrone_turret__rosidl_typesupport_introspection_c\n'}
+[1.626575] (antidrone_turret) StdoutLine: {'line': b'[ 53%] Built target antidrone_turret__rosidl_typesupport_cpp\n'}
+[1.627766] (antidrone_turret) StdoutLine: {'line': b'[ 61%] Built target antidrone_turret__rosidl_typesupport_fastrtps_c\n'}
+[1.629530] (antidrone_turret) StdoutLine: {'line': b'[ 69%] Built target antidrone_turret__rosidl_typesupport_introspection_cpp\n'}
+[1.635503] (antidrone_turret) StdoutLine: {'line': b'[ 77%] Built target antidrone_turret__rosidl_typesupport_fastrtps_cpp\n'}
+[1.648219] (antidrone_turret) StdoutLine: {'line': b'[ 78%] \x1b[32mBuilding CXX object CMakeFiles/yaw_servo_driver_node.dir/src/yaw_servo_driver_node.cpp.o\x1b[0m\n'}
+[1.651641] (antidrone_turret) StdoutLine: {'line': b'[ 79%] \x1b[32mBuilding CXX object CMakeFiles/gimbal_driver_node.dir/src/gimbal_driver_node.cpp.o\x1b[0m\n'}
+[1.659522] (antidrone_turret) StdoutLine: {'line': b'[ 79%] Built target antidrone_turret\n'}
+[1.665493] (antidrone_turret) StdoutLine: {'line': b'[ 82%] Built target turret_controller_node\n'}
+[1.665748] (antidrone_turret) StdoutLine: {'line': b'[ 83%] Built target target_track_publisher_node\n'}
+[1.666956] (antidrone_turret) StdoutLine: {'line': b'[ 84%] Built target actuator_node\n'}
+[1.682216] (antidrone_turret) StdoutLine: {'line': b'[ 85%] Built target antidrone_turret__py\n'}
+[1.702451] (-) TimerEvent: {}
+[1.710445] (antidrone_turret) StdoutLine: {'line': b'[ 92%] Built target antidrone_turret__rosidl_generator_py\n'}
+[1.734420] (antidrone_turret) StdoutLine: {'line': b'[ 94%] Built target antidrone_turret_s__rosidl_typesupport_introspection_c\n'}
+[1.735563] (antidrone_turret) StdoutLine: {'line': b'[ 98%] Built target antidrone_turret_s__rosidl_typesupport_c\n'}
+[1.735814] (antidrone_turret) StdoutLine: {'line': b'[ 98%] Built target antidrone_turret_s__rosidl_typesupport_fastrtps_c\n'}
+[1.800943] (antidrone_turret) StdoutLine: {'line': b'running egg_info\n'}
+[1.802547] (-) TimerEvent: {}
+[1.815880] (antidrone_turret) StdoutLine: {'line': b'writing antidrone_turret.egg-info/PKG-INFO\n'}
+[1.816316] (antidrone_turret) StdoutLine: {'line': b'writing dependency_links to antidrone_turret.egg-info/dependency_links.txt\n'}
+[1.816606] (antidrone_turret) StdoutLine: {'line': b'writing top-level names to antidrone_turret.egg-info/top_level.txt\n'}
+[1.863557] (antidrone_turret) StdoutLine: {'line': b"reading manifest file 'antidrone_turret.egg-info/SOURCES.txt'\n"}
+[1.864252] (antidrone_turret) StdoutLine: {'line': b"writing manifest file 'antidrone_turret.egg-info/SOURCES.txt'\n"}
+[1.896493] (antidrone_turret) StdoutLine: {'line': b'[ 98%] Built target ament_cmake_python_build_antidrone_turret_egg\n'}
+[1.902637] (-) TimerEvent: {}
+[2.003015] (-) TimerEvent: {}
+[2.103399] (-) TimerEvent: {}
+[2.203808] (-) TimerEvent: {}
+[2.304181] (-) TimerEvent: {}
+[2.404564] (-) TimerEvent: {}
+[2.504987] (-) TimerEvent: {}
+[2.605283] (-) TimerEvent: {}
+[2.705629] (-) TimerEvent: {}
+[2.805990] (-) TimerEvent: {}
+[2.906358] (-) TimerEvent: {}
+[3.006719] (-) TimerEvent: {}
+[3.107211] (-) TimerEvent: {}
+[3.207618] (-) TimerEvent: {}
+[3.308093] (-) TimerEvent: {}
+[3.408489] (-) TimerEvent: {}
+[3.508844] (-) TimerEvent: {}
+[3.609201] (-) TimerEvent: {}
+[3.709683] (-) TimerEvent: {}
+[3.810068] (-) TimerEvent: {}
+[3.910542] (-) TimerEvent: {}
+[4.010925] (-) TimerEvent: {}
+[4.111302] (-) TimerEvent: {}
+[4.211842] (-) TimerEvent: {}
+[4.312227] (-) TimerEvent: {}
+[4.412594] (-) TimerEvent: {}
+[4.512928] (-) TimerEvent: {}
+[4.613484] (-) TimerEvent: {}
+[4.714052] (-) TimerEvent: {}
+[4.814425] (-) TimerEvent: {}
+[4.914910] (-) TimerEvent: {}
+[5.015264] (-) TimerEvent: {}
+[5.115675] (-) TimerEvent: {}
+[5.216039] (-) TimerEvent: {}
+[5.316447] (-) TimerEvent: {}
+[5.416831] (-) TimerEvent: {}
+[5.517196] (-) TimerEvent: {}
+[5.617650] (-) TimerEvent: {}
+[5.718025] (-) TimerEvent: {}
+[5.818453] (-) TimerEvent: {}
+[5.918827] (-) TimerEvent: {}
+[6.019168] (-) TimerEvent: {}
+[6.119648] (-) TimerEvent: {}
+[6.220039] (-) TimerEvent: {}
+[6.320388] (-) TimerEvent: {}
+[6.420740] (-) TimerEvent: {}
+[6.521087] (-) TimerEvent: {}
+[6.621463] (-) TimerEvent: {}
+[6.721882] (-) TimerEvent: {}
+[6.822289] (-) TimerEvent: {}
+[6.922669] (-) TimerEvent: {}
+[7.023032] (-) TimerEvent: {}
+[7.123472] (-) TimerEvent: {}
+[7.223846] (-) TimerEvent: {}
+[7.324240] (-) TimerEvent: {}
+[7.424629] (-) TimerEvent: {}
+[7.525048] (-) TimerEvent: {}
+[7.625464] (-) TimerEvent: {}
+[7.725905] (-) TimerEvent: {}
+[7.826273] (-) TimerEvent: {}
+[7.926670] (-) TimerEvent: {}
+[8.027053] (-) TimerEvent: {}
+[8.127421] (-) TimerEvent: {}
+[8.227786] (-) TimerEvent: {}
+[8.328203] (-) TimerEvent: {}
+[8.428611] (-) TimerEvent: {}
+[8.529025] (-) TimerEvent: {}
+[8.629498] (-) TimerEvent: {}
+[8.730025] (-) TimerEvent: {}
+[8.830443] (-) TimerEvent: {}
+[8.930886] (-) TimerEvent: {}
+[9.031252] (-) TimerEvent: {}
+[9.131634] (-) TimerEvent: {}
+[9.232065] (-) TimerEvent: {}
+[9.332444] (-) TimerEvent: {}
+[9.432877] (-) TimerEvent: {}
+[9.533277] (-) TimerEvent: {}
+[9.633635] (-) TimerEvent: {}
+[9.734013] (-) TimerEvent: {}
+[9.834364] (-) TimerEvent: {}
+[9.934852] (-) TimerEvent: {}
+[10.035185] (-) TimerEvent: {}
+[10.135649] (-) TimerEvent: {}
+[10.236052] (-) TimerEvent: {}
+[10.336437] (-) TimerEvent: {}
+[10.436910] (-) TimerEvent: {}
+[10.537397] (-) TimerEvent: {}
+[10.637849] (-) TimerEvent: {}
+[10.738449] (-) TimerEvent: {}
+[10.838814] (-) TimerEvent: {}
+[10.939179] (-) TimerEvent: {}
+[11.039548] (-) TimerEvent: {}
+[11.139945] (-) TimerEvent: {}
+[11.240420] (-) TimerEvent: {}
+[11.340902] (-) TimerEvent: {}
+[11.441362] (-) TimerEvent: {}
+[11.541981] (-) TimerEvent: {}
+[11.642449] (-) TimerEvent: {}
+[11.742864] (-) TimerEvent: {}
+[11.843317] (-) TimerEvent: {}
+[11.943734] (-) TimerEvent: {}
+[12.044197] (-) TimerEvent: {}
+[12.144778] (-) TimerEvent: {}
+[12.245267] (-) TimerEvent: {}
+[12.345760] (-) TimerEvent: {}
+[12.446197] (-) TimerEvent: {}
+[12.546806] (-) TimerEvent: {}
+[12.647289] (-) TimerEvent: {}
+[12.747672] (-) TimerEvent: {}
+[12.848035] (-) TimerEvent: {}
+[12.948440] (-) TimerEvent: {}
+[13.048986] (-) TimerEvent: {}
+[13.149588] (-) TimerEvent: {}
+[13.250170] (-) TimerEvent: {}
+[13.350698] (-) TimerEvent: {}
+[13.451376] (-) TimerEvent: {}
+[13.551993] (-) TimerEvent: {}
+[13.652673] (-) TimerEvent: {}
+[13.753283] (-) TimerEvent: {}
+[13.853931] (-) TimerEvent: {}
+[13.954486] (-) TimerEvent: {}
+[14.055198] (-) TimerEvent: {}
+[14.155887] (-) TimerEvent: {}
+[14.256465] (-) TimerEvent: {}
+[14.357084] (-) TimerEvent: {}
+[14.457736] (-) TimerEvent: {}
+[14.558366] (-) TimerEvent: {}
+[14.659097] (-) TimerEvent: {}
+[14.759696] (-) TimerEvent: {}
+[14.860319] (-) TimerEvent: {}
+[14.960856] (-) TimerEvent: {}
+[15.061545] (-) TimerEvent: {}
+[15.162182] (-) TimerEvent: {}
+[15.262793] (-) TimerEvent: {}
+[15.363282] (-) TimerEvent: {}
+[15.380222] (antidrone_turret) StdoutLine: {'line': b'[ 99%] \x1b[32m\x1b[1mLinking CXX executable yaw_servo_driver_node\x1b[0m\n'}
+[15.463537] (-) TimerEvent: {}
+[15.564061] (-) TimerEvent: {}
+[15.583028] (antidrone_turret) StdoutLine: {'line': b'[100%] \x1b[32m\x1b[1mLinking CXX executable gimbal_driver_node\x1b[0m\n'}
+[15.664210] (-) TimerEvent: {}
+[15.686058] (antidrone_turret) StdoutLine: {'line': b'[100%] Built target yaw_servo_driver_node\n'}
+[15.764380] (-) TimerEvent: {}
+[15.864857] (-) TimerEvent: {}
+[15.870108] (antidrone_turret) StdoutLine: {'line': b'[100%] Built target gimbal_driver_node\n'}
+[15.883560] (antidrone_turret) CommandEnded: {'returncode': 0}
+[15.884838] (antidrone_turret) JobProgress: {'identifier': 'antidrone_turret', 'progress': 'install'}
+[15.894285] (antidrone_turret) Command: {'cmd': ['/usr/bin/cmake', '--install', '/home/bmarkiv/CPPMILITARY/homework_13/robot_ws/build/antidrone_turret'], 'cwd': '/home/bmarkiv/CPPMILITARY/homework_13/robot_ws/build/antidrone_turret', 'env': OrderedDict({'LANGUAGE': 'en_US:en', 'HOSTNAME': 'devcontainer', 'GIT_ASKPASS': '/vscode/vscode-server/bin/linux-x64/fc3def6774c76082adf699d366f31a557ce5573f/extensions/git/dist/askpass.sh', 'SHLVL': '2', 'LD_LIBRARY_PATH': '/home/bmarkiv/CPPMILITARY/homework_13/robot_ws/install/antidrone_turret/lib:/opt/ros/jazzy/opt/rviz_ogre_vendor/lib:/opt/ros/jazzy/lib/x86_64-linux-gnu:/opt/ros/jazzy/opt/gz_math_vendor/lib:/opt/ros/jazzy/opt/gz_utils_vendor/lib:/opt/ros/jazzy/opt/gz_cmake_vendor/lib:/opt/ros/jazzy/lib', 'BROWSER': '/vscode/vscode-server/bin/linux-x64/fc3def6774c76082adf699d366f31a557ce5573f/bin/helpers/browser.sh', 'HOME': '/home/bmarkiv', 'CYCLONEDDS_URI': 'file:///etc/cyclonedds.xml', 'OLDPWD': '/home/bmarkiv/CPPMILITARY/homework_13/robot_ws', 'TERM_PROGRAM_VERSION': '1.128.0', 'VSCODE_IPC_HOOK_CLI': '/tmp/vscode-ipc-4292f3a1-695f-409e-9516-5174a024a46c.sock', 'ROS_PYTHON_VERSION': '3', 'VSCODE_GIT_ASKPASS_MAIN': '/vscode/vscode-server/bin/linux-x64/fc3def6774c76082adf699d366f31a557ce5573f/extensions/git/dist/askpass-main.js', 'VSCODE_GIT_ASKPASS_NODE': '/vscode/vscode-server/bin/linux-x64/fc3def6774c76082adf699d366f31a557ce5573f/node', 'VSCODE_PYTHON_AUTOACTIVATE_GUARD': '1', 'COLORTERM': 'truecolor', 'REMOTE_CONTAINERS': 'true', 'DEBUGINFOD_URLS': 'https://debuginfod.ubuntu.com', 'COLCON_PREFIX_PATH': '/home/bmarkiv/CPPMILITARY/homework_13/robot_ws/install', 'ROS_DISTRO': 'jazzy', 'REMOTE_CONTAINERS_IPC': '/tmp/vscode-remote-containers-ipc-6ff62b37-047b-42f5-98ea-f0b47eda90dc.sock', '_': '/usr/bin/colcon', 'ROS_VERSION': '2', 'TERM': 'xterm-256color', 'PATH': '/home/bmarkiv/.vscode-server/data/User/globalStorage/github.copilot-chat/debugCommand:/home/bmarkiv/.vscode-server/data/User/globalStorage/github.copilot-chat/copilotCli:/vscode/vscode-server/bin/linux-x64/fc3def6774c76082adf699d366f31a557ce5573f/bin/remote-cli:/opt/ros/jazzy/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin', 'REMOTE_CONTAINERS_SOCKETS': '["/tmp/.X11-unix/X1","/home/bmarkiv/.gnupg/S.gpg-agent"]', 'DISPLAY': ':1', 'LANG': 'en_US.UTF-8', 'RMW_IMPLEMENTATION': 'rmw_cyclonedds_cpp', 'LS_COLORS': 'rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=00:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.avif=01;35:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.webp=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:*~=00;90:*#=00;90:*.bak=00;90:*.crdownload=00;90:*.dpkg-dist=00;90:*.dpkg-new=00;90:*.dpkg-old=00;90:*.dpkg-tmp=00;90:*.old=00;90:*.orig=00;90:*.part=00;90:*.rej=00;90:*.rpmnew=00;90:*.rpmorig=00;90:*.rpmsave=00;90:*.swp=00;90:*.tmp=00;90:*.ucf-dist=00;90:*.ucf-new=00;90:*.ucf-old=00;90:', 'VSCODE_GIT_IPC_HANDLE': '/tmp/vscode-git-70f6501bd9.sock', 'TERM_PROGRAM': 'vscode', 'ROS_DOMAIN_ID': '0', 'AMENT_PREFIX_PATH': '/home/bmarkiv/CPPMILITARY/homework_13/robot_ws/install/antidrone_turret:/opt/ros/jazzy', 'REMOTE_CONTAINERS_DISPLAY_SOCK': '/tmp/.X11-unix/X1', 'SHELL': '/bin/bash', 'PROMPT_COMMAND': '__vsc_prompt_cmd_original', 'ROS_AUTOMATIC_DISCOVERY_RANGE': 'SUBNET', 'VSCODE_GIT_ASKPASS_EXTRA_ARGS': '', 'PWD': '/home/bmarkiv/CPPMILITARY/homework_13/robot_ws/build/antidrone_turret', 'LC_ALL': 'en_US.UTF-8', 'COPILOT_DEBUG_NONCE': '137630ddde7519b1e1e3aa64d3644e1c', 'PYTHONPATH': '/home/bmarkiv/CPPMILITARY/homework_13/robot_ws/install/antidrone_turret/lib/python3.12/site-packages:/opt/ros/jazzy/lib/python3.12/site-packages', 'TZ': 'Etc/UTC', 'COLCON': '1', 'CMAKE_PREFIX_PATH': '/home/bmarkiv/CPPMILITARY/homework_13/robot_ws/install/antidrone_turret:/opt/ros/jazzy/opt/gz_math_vendor:/opt/ros/jazzy/opt/gz_utils_vendor:/opt/ros/jazzy/opt/gz_cmake_vendor:/opt/ros/jazzy'}), 'shell': False}
+[15.902307] (antidrone_turret) StdoutLine: {'line': b'-- Install configuration: ""\n'}
+[15.902848] (antidrone_turret) StdoutLine: {'line': b'-- Execute custom install script\n'}
+[15.903133] (antidrone_turret) StdoutLine: {'line': b'-- Up-to-date symlink: /home/bmarkiv/CPPMILITARY/homework_13/robot_ws/install/antidrone_turret/share/ament_index/resource_index/rosidl_interfaces/antidrone_turret\n'}
+[15.903318] (antidrone_turret) StdoutLine: {'line': b'-- Up-to-date symlink: /home/bmarkiv/CPPMILITARY/homework_13/robot_ws/install/antidrone_turret/share/antidrone_turret/msg/Target.json\n'}
+[15.903540] (antidrone_turret) StdoutLine: {'line': b'-- Up-to-date symlink: /home/bmarkiv/CPPMILITARY/homework_13/robot_ws/install/antidrone_turret/share/antidrone_turret/msg/ActuatorStatus.json\n'}
+[15.903782] (antidrone_turret) StdoutLine: {'line': b'-- Up-to-date symlink: /home/bmarkiv/CPPMILITARY/homework_13/robot_ws/install/antidrone_turret/share/antidrone_turret/msg/GimbalCommand.json\n'}
+[15.903886] (antidrone_turret) StdoutLine: {'line': b'-- Up-to-date symlink: /home/bmarkiv/CPPMILITARY/homework_13/robot_ws/install/antidrone_turret/share/antidrone_turret/msg/ServoCommand.json\n'}
+[15.904029] (antidrone_turret) StdoutLine: {'line': b'-- Up-to-date symlink: /home/bmarkiv/CPPMILITARY/homework_13/robot_ws/install/antidrone_turret/share/antidrone_turret/msg/TurretStatus.json\n'}
+[15.904202] (antidrone_turret) StdoutLine: {'line': b'-- Up-to-date symlink: /home/bmarkiv/CPPMILITARY/homework_13/robot_ws/install/antidrone_turret/share/antidrone_turret/srv/TriggerActuator.json\n'}
+[15.904844] (antidrone_turret) StdoutLine: {'line': b'-- Up-to-date symlink: /home/bmarkiv/CPPMILITARY/homework_13/robot_ws/install/antidrone_turret/include/antidrone_turret/antidrone_turret/msg/actuator_status.h\n'}
+[15.905160] (antidrone_turret) StdoutLine: {'line': b'-- Up-to-date symlink: /home/bmarkiv/CPPMILITARY/homework_13/robot_ws/install/antidrone_turret/include/antidrone_turret/antidrone_turret/msg/detail/actuator_status__functions.h\n'}
+[15.905280] (antidrone_turret) StdoutLine: {'line': b'-- Up-to-date symlink: /home/bmarkiv/CPPMILITARY/homework_13/robot_ws/install/antidrone_turret/include/antidrone_turret/antidrone_turret/msg/detail/actuator_status__struct.h\n'}
+[15.905504] (antidrone_turret) StdoutLine: {'line': b'-- Up-to-date symlink: /home/bmarkiv/CPPMILITARY/homework_13/robot_ws/install/antidrone_turret/include/antidrone_turret/antidrone_turret/msg/detail/actuator_status__type_support.h\n'}
+[15.905685] (antidrone_turret) StdoutLine: {'line': b'-- Up-to-date symlink: /home/bmarkiv/CPPMILITARY/homework_13/robot_ws/install/antidrone_turret/include/antidrone_turret/antidrone_turret/msg/detail/gimbal_command__functions.h\n'}
+[15.905904] (antidrone_turret) StdoutLine: {'line': b'-- Up-to-date symlink: /home/bmarkiv/CPPMILITARY/homework_13/robot_ws/install/antidrone_turret/include/antidrone_turret/antidrone_turret/msg/detail/gimbal_command__struct.h\n'}
+[15.906091] (antidrone_turret) StdoutLine: {'line': b'-- Up-to-date symlink: /home/bmarkiv/CPPMILITARY/homework_13/robot_ws/install/antidrone_turret/include/antidrone_turret/antidrone_turret/msg/detail/gimbal_command__type_support.h\n'}
+[15.906321] (antidrone_turret) StdoutLine: {'line': b'-- Up-to-date symlink: /home/bmarkiv/CPPMILITARY/homework_13/robot_ws/install/antidrone_turret/include/antidrone_turret/antidrone_turret/msg/detail/servo_command__functions.h\n'}
+[15.906818] (antidrone_turret) StdoutLine: {'line': b'-- Up-to-date symlink: /home/bmarkiv/CPPMILITARY/homework_13/robot_ws/install/antidrone_turret/include/antidrone_turret/antidrone_turret/msg/detail/servo_command__struct.h\n'}
+[15.906950] (antidrone_turret) StdoutLine: {'line': b'-- Up-to-date symlink: /home/bmarkiv/CPPMILITARY/homework_13/robot_ws/install/antidrone_turret/include/antidrone_turret/antidrone_turret/msg/detail/servo_command__type_support.h\n'}
+[15.907116] (antidrone_turret) StdoutLine: {'line': b'-- Up-to-date symlink: /home/bmarkiv/CPPMILITARY/homework_13/robot_ws/install/antidrone_turret/include/antidrone_turret/antidrone_turret/msg/detail/target__functions.h\n'}
+[15.907335] (antidrone_turret) StdoutLine: {'line': b'-- Up-to-date symlink: /home/bmarkiv/CPPMILITARY/homework_13/robot_ws/install/antidrone_turret/include/antidrone_turret/antidrone_turret/msg/detail/target__struct.h\n'}
+[15.907583] (antidrone_turret) StdoutLine: {'line': b'-- Up-to-date symlink: /home/bmarkiv/CPPMILITARY/homework_13/robot_ws/install/antidrone_turret/include/antidrone_turret/antidrone_turret/msg/detail/target__type_support.h\n'}
+[15.907723] (antidrone_turret) StdoutLine: {'line': b'-- Up-to-date symlink: /home/bmarkiv/CPPMILITARY/homework_13/robot_ws/install/antidrone_turret/include/antidrone_turret/antidrone_turret/msg/detail/turret_status__functions.h\n'}
+[15.907991] (antidrone_turret) StdoutLine: {'line': b'-- Up-to-date symlink: /home/bmarkiv/CPPMILITARY/homework_13/robot_ws/install/antidrone_turret/include/antidrone_turret/antidrone_turret/msg/detail/turret_status__struct.h\n'}
+[15.908109] (antidrone_turret) StdoutLine: {'line': b'-- Up-to-date symlink: /home/bmarkiv/CPPMILITARY/homework_13/robot_ws/install/antidrone_turret/include/antidrone_turret/antidrone_turret/msg/detail/turret_status__type_support.h\n'}
+[15.908308] (antidrone_turret) StdoutLine: {'line': b'-- Up-to-date symlink: /home/bmarkiv/CPPMILITARY/homework_13/robot_ws/install/antidrone_turret/include/antidrone_turret/antidrone_turret/msg/gimbal_command.h\n'}
+[15.908543] (antidrone_turret) StdoutLine: {'line': b'-- Up-to-date symlink: /home/bmarkiv/CPPMILITARY/homework_13/robot_ws/install/antidrone_turret/include/antidrone_turret/antidrone_turret/msg/rosidl_generator_c__visibility_control.h\n'}
+[15.908797] (antidrone_turret) StdoutLine: {'line': b'-- Up-to-date symlink: /home/bmarkiv/CPPMILITARY/homework_13/robot_ws/install/antidrone_turret/include/antidrone_turret/antidrone_turret/msg/servo_command.h\n'}
+[15.909069] (antidrone_turret) StdoutLine: {'line': b'-- Up-to-date symlink: /home/bmarkiv/CPPMILITARY/homework_13/robot_ws/install/antidrone_turret/include/antidrone_turret/antidrone_turret/msg/target.h\n'}
+[15.909304] (antidrone_turret) StdoutLine: {'line': b'-- Up-to-date symlink: /home/bmarkiv/CPPMILITARY/homework_13/robot_ws/install/antidrone_turret/include/antidrone_turret/antidrone_turret/msg/turret_status.h\n'}
+[15.909417] (antidrone_turret) StdoutLine: {'line': b'-- Up-to-date symlink: /home/bmarkiv/CPPMILITARY/homework_13/robot_ws/install/antidrone_turret/include/antidrone_turret/antidrone_turret/srv/detail/trigger_actuator__functions.h\n'}
+[15.909551] (antidrone_turret) StdoutLine: {'line': b'-- Up-to-date symlink: /home/bmarkiv/CPPMILITARY/homework_13/robot_ws/install/antidrone_turret/include/antidrone_turret/antidrone_turret/srv/detail/trigger_actuator__struct.h\n'}
+[15.909609] (antidrone_turret) StdoutLine: {'line': b'-- Up-to-date symlink: /home/bmarkiv/CPPMILITARY/homework_13/robot_ws/install/antidrone_turret/include/antidrone_turret/antidrone_turret/srv/detail/trigger_actuator__type_support.h\n'}
+[15.909717] (antidrone_turret) StdoutLine: {'line': b'-- Up-to-date symlink: /home/bmarkiv/CPPMILITARY/homework_13/robot_ws/install/antidrone_turret/include/antidrone_turret/antidrone_turret/srv/trigger_actuator.h\n'}
+[15.909777] (antidrone_turret) StdoutLine: {'line': b'-- Up-to-date symlink: /home/bmarkiv/CPPMILITARY/homework_13/robot_ws/install/antidrone_turret/share/antidrone_turret/environment/library_path.sh\n'}
+[15.909926] (antidrone_turret) StdoutLine: {'line': b'-- Up-to-date symlink: /home/bmarkiv/CPPMILITARY/homework_13/robot_ws/install/antidrone_turret/share/antidrone_turret/environment/library_path.dsv\n'}
+[15.910380] (antidrone_turret) StdoutLine: {'line': b'-- Up-to-date symlink: /home/bmarkiv/CPPMILITARY/homework_13/robot_ws/install/antidrone_turret/include/antidrone_turret/antidrone_turret/msg/detail/actuator_status__rosidl_typesupport_fastrtps_c.h\n'}
+[15.910538] (antidrone_turret) StdoutLine: {'line': b'-- Up-to-date symlink: /home/bmarkiv/CPPMILITARY/homework_13/robot_ws/install/antidrone_turret/include/antidrone_turret/antidrone_turret/msg/detail/gimbal_command__rosidl_typesupport_fastrtps_c.h\n'}
+[15.910706] (antidrone_turret) StdoutLine: {'line': b'-- Up-to-date symlink: /home/bmarkiv/CPPMILITARY/homework_13/robot_ws/install/antidrone_turret/include/antidrone_turret/antidrone_turret/msg/detail/servo_command__rosidl_typesupport_fastrtps_c.h\n'}
+[15.910898] (antidrone_turret) StdoutLine: {'line': b'-- Up-to-date symlink: /home/bmarkiv/CPPMILITARY/homework_13/robot_ws/install/antidrone_turret/include/antidrone_turret/antidrone_turret/msg/detail/target__rosidl_typesupport_fastrtps_c.h\n'}
+[15.911076] (antidrone_turret) StdoutLine: {'line': b'-- Up-to-date symlink: /home/bmarkiv/CPPMILITARY/homework_13/robot_ws/install/antidrone_turret/include/antidrone_turret/antidrone_turret/msg/detail/turret_status__rosidl_typesupport_fastrtps_c.h\n'}
+[15.911141] (antidrone_turret) StdoutLine: {'line': b'-- Up-to-date symlink: /home/bmarkiv/CPPMILITARY/homework_13/robot_ws/install/antidrone_turret/include/antidrone_turret/antidrone_turret/msg/rosidl_typesupport_fastrtps_c__visibility_control.h\n'}
+[15.911301] (antidrone_turret) StdoutLine: {'line': b'-- Up-to-date symlink: /home/bmarkiv/CPPMILITARY/homework_13/robot_ws/install/antidrone_turret/include/antidrone_turret/antidrone_turret/srv/detail/trigger_actuator__rosidl_typesupport_fastrtps_c.h\n'}
+[15.911557] (antidrone_turret) StdoutLine: {'line': b'-- Up-to-date symlink: /home/bmarkiv/CPPMILITARY/homework_13/robot_ws/install/antidrone_turret/include/antidrone_turret/antidrone_turret/msg/detail/actuator_status__rosidl_typesupport_introspection_c.h\n'}
+[15.911698] (antidrone_turret) StdoutLine: {'line': b'-- Up-to-date symlink: /home/bmarkiv/CPPMILITARY/homework_13/robot_ws/install/antidrone_turret/include/antidrone_turret/antidrone_turret/msg/detail/gimbal_command__rosidl_typesupport_introspection_c.h\n'}
+[15.911916] (antidrone_turret) StdoutLine: {'line': b'-- Up-to-date symlink: /home/bmarkiv/CPPMILITARY/homework_13/robot_ws/install/antidrone_turret/include/antidrone_turret/antidrone_turret/msg/detail/servo_command__rosidl_typesupport_introspection_c.h\n'}
+[15.911999] (antidrone_turret) StdoutLine: {'line': b'-- Up-to-date symlink: /home/bmarkiv/CPPMILITARY/homework_13/robot_ws/install/antidrone_turret/include/antidrone_turret/antidrone_turret/msg/detail/target__rosidl_typesupport_introspection_c.h\n'}
+[15.912091] (antidrone_turret) StdoutLine: {'line': b'-- Up-to-date symlink: /home/bmarkiv/CPPMILITARY/homework_13/robot_ws/install/antidrone_turret/include/antidrone_turret/antidrone_turret/msg/detail/turret_status__rosidl_typesupport_introspection_c.h\n'}
+[15.912269] (antidrone_turret) StdoutLine: {'line': b'-- Up-to-date symlink: /home/bmarkiv/CPPMILITARY/homework_13/robot_ws/install/antidrone_turret/include/antidrone_turret/antidrone_turret/msg/rosidl_typesupport_introspection_c__visibility_control.h\n'}
+[15.912452] (antidrone_turret) StdoutLine: {'line': b'-- Up-to-date symlink: /home/bmarkiv/CPPMILITARY/homework_13/robot_ws/install/antidrone_turret/include/antidrone_turret/antidrone_turret/srv/detail/trigger_actuator__rosidl_typesupport_introspection_c.h\n'}
+[15.912883] (antidrone_turret) StdoutLine: {'line': b'-- Up-to-date symlink: /home/bmarkiv/CPPMILITARY/homework_13/robot_ws/install/antidrone_turret/include/antidrone_turret/antidrone_turret/msg/actuator_status.hpp\n'}
+[15.913063] (antidrone_turret) StdoutLine: {'line': b'-- Up-to-date symlink: /home/bmarkiv/CPPMILITARY/homework_13/robot_ws/install/antidrone_turret/include/antidrone_turret/antidrone_turret/msg/detail/actuator_status__builder.hpp\n'}
+[15.913248] (antidrone_turret) StdoutLine: {'line': b'-- Up-to-date symlink: /home/bmarkiv/CPPMILITARY/homework_13/robot_ws/install/antidrone_turret/include/antidrone_turret/antidrone_turret/msg/detail/actuator_status__struct.hpp\n'}
+[15.913446] (antidrone_turret) StdoutLine: {'line': b'-- Up-to-date symlink: /home/bmarkiv/CPPMILITARY/homework_13/robot_ws/install/antidrone_turret/include/antidrone_turret/antidrone_turret/msg/detail/actuator_status__traits.hpp\n'}
+[15.913610] (antidrone_turret) StdoutLine: {'line': b'-- Up-to-date symlink: /home/bmarkiv/CPPMILITARY/homework_13/robot_ws/install/antidrone_turret/include/antidrone_turret/antidrone_turret/msg/detail/actuator_status__type_support.hpp\n'}
+[15.913753] (antidrone_turret) StdoutLine: {'line': b'-- Up-to-date symlink: /home/bmarkiv/CPPMILITARY/homework_13/robot_ws/install/antidrone_turret/include/antidrone_turret/antidrone_turret/msg/detail/gimbal_command__builder.hpp\n'}
+[15.913922] (antidrone_turret) StdoutLine: {'line': b'-- Up-to-date symlink: /home/bmarkiv/CPPMILITARY/homework_13/robot_ws/install/antidrone_turret/include/antidrone_turret/antidrone_turret/msg/detail/gimbal_command__struct.hpp\n'}
+[15.914034] (antidrone_turret) StdoutLine: {'line': b'-- Up-to-date symlink: /home/bmarkiv/CPPMILITARY/homework_13/robot_ws/install/antidrone_turret/include/antidrone_turret/antidrone_turret/msg/detail/gimbal_command__traits.hpp\n'}
+[15.914322] (antidrone_turret) StdoutLine: {'line': b'-- Up-to-date symlink: /home/bmarkiv/CPPMILITARY/homework_13/robot_ws/install/antidrone_turret/include/antidrone_turret/antidrone_turret/msg/detail/gimbal_command__type_support.hpp\n'}
+[15.914583] (antidrone_turret) StdoutLine: {'line': b'-- Up-to-date symlink: /home/bmarkiv/CPPMILITARY/homework_13/robot_ws/install/antidrone_turret/include/antidrone_turret/antidrone_turret/msg/detail/servo_command__builder.hpp\n'}
+[15.914907] (antidrone_turret) StdoutLine: {'line': b'-- Up-to-date symlink: /home/bmarkiv/CPPMILITARY/homework_13/robot_ws/install/antidrone_turret/include/antidrone_turret/antidrone_turret/msg/detail/servo_command__struct.hpp\n'}
+[15.915124] (antidrone_turret) StdoutLine: {'line': b'-- Up-to-date symlink: /home/bmarkiv/CPPMILITARY/homework_13/robot_ws/install/antidrone_turret/include/antidrone_turret/antidrone_turret/msg/detail/servo_command__traits.hpp\n'}
+[15.915250] (antidrone_turret) StdoutLine: {'line': b'-- Up-to-date symlink: /home/bmarkiv/CPPMILITARY/homework_13/robot_ws/install/antidrone_turret/include/antidrone_turret/antidrone_turret/msg/detail/servo_command__type_support.hpp\n'}
+[15.915372] (antidrone_turret) StdoutLine: {'line': b'-- Up-to-date symlink: /home/bmarkiv/CPPMILITARY/homework_13/robot_ws/install/antidrone_turret/include/antidrone_turret/antidrone_turret/msg/detail/target__builder.hpp\n'}
+[15.915586] (antidrone_turret) StdoutLine: {'line': b'-- Up-to-date symlink: /home/bmarkiv/CPPMILITARY/homework_13/robot_ws/install/antidrone_turret/include/antidrone_turret/antidrone_turret/msg/detail/target__struct.hpp\n'}
+[15.915708] (antidrone_turret) StdoutLine: {'line': b'-- Up-to-date symlink: /home/bmarkiv/CPPMILITARY/homework_13/robot_ws/install/antidrone_turret/include/antidrone_turret/antidrone_turret/msg/detail/target__traits.hpp\n'}
+[15.915795] (antidrone_turret) StdoutLine: {'line': b'-- Up-to-date symlink: /home/bmarkiv/CPPMILITARY/homework_13/robot_ws/install/antidrone_turret/include/antidrone_turret/antidrone_turret/msg/detail/target__type_support.hpp\n'}
+[15.915885] (antidrone_turret) StdoutLine: {'line': b'-- Up-to-date symlink: /home/bmarkiv/CPPMILITARY/homework_13/robot_ws/install/antidrone_turret/include/antidrone_turret/antidrone_turret/msg/detail/turret_status__builder.hpp\n'}
+[15.916112] (antidrone_turret) StdoutLine: {'line': b'-- Up-to-date symlink: /home/bmarkiv/CPPMILITARY/homework_13/robot_ws/install/antidrone_turret/include/antidrone_turret/antidrone_turret/msg/detail/turret_status__struct.hpp\n'}
+[15.916280] (antidrone_turret) StdoutLine: {'line': b'-- Up-to-date symlink: /home/bmarkiv/CPPMILITARY/homework_13/robot_ws/install/antidrone_turret/include/antidrone_turret/antidrone_turret/msg/detail/turret_status__traits.hpp\n'}
+[15.916419] (antidrone_turret) StdoutLine: {'line': b'-- Up-to-date symlink: /home/bmarkiv/CPPMILITARY/homework_13/robot_ws/install/antidrone_turret/include/antidrone_turret/antidrone_turret/msg/detail/turret_status__type_support.hpp\n'}
+[15.916482] (antidrone_turret) StdoutLine: {'line': b'-- Up-to-date symlink: /home/bmarkiv/CPPMILITARY/homework_13/robot_ws/install/antidrone_turret/include/antidrone_turret/antidrone_turret/msg/gimbal_command.hpp\n'}
+[15.916537] (antidrone_turret) StdoutLine: {'line': b'-- Up-to-date symlink: /home/bmarkiv/CPPMILITARY/homework_13/robot_ws/install/antidrone_turret/include/antidrone_turret/antidrone_turret/msg/rosidl_generator_cpp__visibility_control.hpp\n'}
+[15.916593] (antidrone_turret) StdoutLine: {'line': b'-- Up-to-date symlink: /home/bmarkiv/CPPMILITARY/homework_13/robot_ws/install/antidrone_turret/include/antidrone_turret/antidrone_turret/msg/servo_command.hpp\n'}
+[15.916646] (antidrone_turret) StdoutLine: {'line': b'-- Up-to-date symlink: /home/bmarkiv/CPPMILITARY/homework_13/robot_ws/install/antidrone_turret/include/antidrone_turret/antidrone_turret/msg/target.hpp\n'}
+[15.916746] (antidrone_turret) StdoutLine: {'line': b'-- Up-to-date symlink: /home/bmarkiv/CPPMILITARY/homework_13/robot_ws/install/antidrone_turret/include/antidrone_turret/antidrone_turret/msg/turret_status.hpp\n'}
+[15.916808] (antidrone_turret) StdoutLine: {'line': b'-- Up-to-date symlink: /home/bmarkiv/CPPMILITARY/homework_13/robot_ws/install/antidrone_turret/include/antidrone_turret/antidrone_turret/srv/detail/trigger_actuator__builder.hpp\n'}
+[15.916865] (antidrone_turret) StdoutLine: {'line': b'-- Up-to-date symlink: /home/bmarkiv/CPPMILITARY/homework_13/robot_ws/install/antidrone_turret/include/antidrone_turret/antidrone_turret/srv/detail/trigger_actuator__struct.hpp\n'}
+[15.916919] (antidrone_turret) StdoutLine: {'line': b'-- Up-to-date symlink: /home/bmarkiv/CPPMILITARY/homework_13/robot_ws/install/antidrone_turret/include/antidrone_turret/antidrone_turret/srv/detail/trigger_actuator__traits.hpp\n'}
+[15.917069] (antidrone_turret) StdoutLine: {'line': b'-- Up-to-date symlink: /home/bmarkiv/CPPMILITARY/homework_13/robot_ws/install/antidrone_turret/include/antidrone_turret/antidrone_turret/srv/detail/trigger_actuator__type_support.hpp\n'}
+[15.917232] (antidrone_turret) StdoutLine: {'line': b'-- Up-to-date symlink: /home/bmarkiv/CPPMILITARY/homework_13/robot_ws/install/antidrone_turret/include/antidrone_turret/antidrone_turret/srv/trigger_actuator.hpp\n'}
+[15.917428] (antidrone_turret) StdoutLine: {'line': b'-- Up-to-date symlink: /home/bmarkiv/CPPMILITARY/homework_13/robot_ws/install/antidrone_turret/include/antidrone_turret/antidrone_turret/msg/detail/actuator_status__rosidl_typesupport_fastrtps_cpp.hpp\n'}
+[15.917645] (antidrone_turret) StdoutLine: {'line': b'-- Up-to-date symlink: /home/bmarkiv/CPPMILITARY/homework_13/robot_ws/install/antidrone_turret/include/antidrone_turret/antidrone_turret/msg/detail/gimbal_command__rosidl_typesupport_fastrtps_cpp.hpp\n'}
+[15.917821] (antidrone_turret) StdoutLine: {'line': b'-- Up-to-date symlink: /home/bmarkiv/CPPMILITARY/homework_13/robot_ws/install/antidrone_turret/include/antidrone_turret/antidrone_turret/msg/detail/servo_command__rosidl_typesupport_fastrtps_cpp.hpp\n'}
+[15.917921] (antidrone_turret) StdoutLine: {'line': b'-- Up-to-date symlink: /home/bmarkiv/CPPMILITARY/homework_13/robot_ws/install/antidrone_turret/include/antidrone_turret/antidrone_turret/msg/detail/target__rosidl_typesupport_fastrtps_cpp.hpp\n'}
+[15.917987] (antidrone_turret) StdoutLine: {'line': b'-- Up-to-date symlink: /home/bmarkiv/CPPMILITARY/homework_13/robot_ws/install/antidrone_turret/include/antidrone_turret/antidrone_turret/msg/detail/turret_status__rosidl_typesupport_fastrtps_cpp.hpp\n'}
+[15.918044] (antidrone_turret) StdoutLine: {'line': b'-- Up-to-date symlink: /home/bmarkiv/CPPMILITARY/homework_13/robot_ws/install/antidrone_turret/include/antidrone_turret/antidrone_turret/msg/rosidl_typesupport_fastrtps_cpp__visibility_control.h\n'}
+[15.918099] (antidrone_turret) StdoutLine: {'line': b'-- Up-to-date symlink: /home/bmarkiv/CPPMILITARY/homework_13/robot_ws/install/antidrone_turret/include/antidrone_turret/antidrone_turret/srv/detail/trigger_actuator__rosidl_typesupport_fastrtps_cpp.hpp\n'}
+[15.918284] (antidrone_turret) StdoutLine: {'line': b'-- Up-to-date symlink: /home/bmarkiv/CPPMILITARY/homework_13/robot_ws/install/antidrone_turret/include/antidrone_turret/antidrone_turret/msg/detail/actuator_status__rosidl_typesupport_introspection_cpp.hpp\n'}
+[15.918386] (antidrone_turret) StdoutLine: {'line': b'-- Up-to-date symlink: /home/bmarkiv/CPPMILITARY/homework_13/robot_ws/install/antidrone_turret/include/antidrone_turret/antidrone_turret/msg/detail/gimbal_command__rosidl_typesupport_introspection_cpp.hpp\n'}
+[15.918548] (antidrone_turret) StdoutLine: {'line': b'-- Up-to-date symlink: /home/bmarkiv/CPPMILITARY/homework_13/robot_ws/install/antidrone_turret/include/antidrone_turret/antidrone_turret/msg/detail/servo_command__rosidl_typesupport_introspection_cpp.hpp\n'}
+[15.918771] (antidrone_turret) StdoutLine: {'line': b'-- Up-to-date symlink: /home/bmarkiv/CPPMILITARY/homework_13/robot_ws/install/antidrone_turret/include/antidrone_turret/antidrone_turret/msg/detail/target__rosidl_typesupport_introspection_cpp.hpp\n'}
+[15.919015] (antidrone_turret) StdoutLine: {'line': b'-- Up-to-date symlink: /home/bmarkiv/CPPMILITARY/homework_13/robot_ws/install/antidrone_turret/include/antidrone_turret/antidrone_turret/msg/detail/turret_status__rosidl_typesupport_introspection_cpp.hpp\n'}
+[15.919212] (antidrone_turret) StdoutLine: {'line': b'-- Up-to-date symlink: /home/bmarkiv/CPPMILITARY/homework_13/robot_ws/install/antidrone_turret/include/antidrone_turret/antidrone_turret/srv/detail/trigger_actuator__rosidl_typesupport_introspection_cpp.hpp\n'}
+[15.919312] (antidrone_turret) StdoutLine: {'line': b'-- Up-to-date symlink: /home/bmarkiv/CPPMILITARY/homework_13/robot_ws/install/antidrone_turret/share/antidrone_turret/environment/pythonpath.sh\n'}
+[15.919373] (antidrone_turret) StdoutLine: {'line': b'-- Up-to-date symlink: /home/bmarkiv/CPPMILITARY/homework_13/robot_ws/install/antidrone_turret/share/antidrone_turret/environment/pythonpath.dsv\n'}
+[15.919504] (antidrone_turret) StdoutLine: {'line': b'-- Up-to-date symlink: /home/bmarkiv/CPPMILITARY/homework_13/robot_ws/install/antidrone_turret/lib/python3.12/site-packages/antidrone_turret-0.1.0-py3.12.egg-info/PKG-INFO\n'}
+[15.919736] (antidrone_turret) StdoutLine: {'line': b'-- Up-to-date symlink: /home/bmarkiv/CPPMILITARY/homework_13/robot_ws/install/antidrone_turret/lib/python3.12/site-packages/antidrone_turret-0.1.0-py3.12.egg-info/SOURCES.txt\n'}
+[15.919899] (antidrone_turret) StdoutLine: {'line': b'-- Up-to-date symlink: /home/bmarkiv/CPPMILITARY/homework_13/robot_ws/install/antidrone_turret/lib/python3.12/site-packages/antidrone_turret-0.1.0-py3.12.egg-info/dependency_links.txt\n'}
+[15.919966] (antidrone_turret) StdoutLine: {'line': b'-- Up-to-date symlink: /home/bmarkiv/CPPMILITARY/homework_13/robot_ws/install/antidrone_turret/lib/python3.12/site-packages/antidrone_turret-0.1.0-py3.12.egg-info/top_level.txt\n'}
+[15.920485] (antidrone_turret) StdoutLine: {'line': b'-- Up-to-date symlink: /home/bmarkiv/CPPMILITARY/homework_13/robot_ws/install/antidrone_turret/lib/python3.12/site-packages/antidrone_turret/__init__.py\n'}
+[15.920650] (antidrone_turret) StdoutLine: {'line': b'-- Up-to-date symlink: /home/bmarkiv/CPPMILITARY/homework_13/robot_ws/install/antidrone_turret/lib/python3.12/site-packages/antidrone_turret/_antidrone_turret_s.ep.rosidl_typesupport_c.c\n'}
+[15.920833] (antidrone_turret) StdoutLine: {'line': b'-- Up-to-date symlink: /home/bmarkiv/CPPMILITARY/homework_13/robot_ws/install/antidrone_turret/lib/python3.12/site-packages/antidrone_turret/_antidrone_turret_s.ep.rosidl_typesupport_fastrtps_c.c\n'}
+[15.920986] (antidrone_turret) StdoutLine: {'line': b'-- Up-to-date symlink: /home/bmarkiv/CPPMILITARY/homework_13/robot_ws/install/antidrone_turret/lib/python3.12/site-packages/antidrone_turret/_antidrone_turret_s.ep.rosidl_typesupport_introspection_c.c\n'}
+[15.921243] (antidrone_turret) StdoutLine: {'line': b'-- Up-to-date symlink: /home/bmarkiv/CPPMILITARY/homework_13/robot_ws/install/antidrone_turret/lib/python3.12/site-packages/antidrone_turret/antidrone_turret_s__rosidl_typesupport_c.so\n'}
+[15.921362] (antidrone_turret) StdoutLine: {'line': b'-- Up-to-date symlink: /home/bmarkiv/CPPMILITARY/homework_13/robot_ws/install/antidrone_turret/lib/python3.12/site-packages/antidrone_turret/antidrone_turret_s__rosidl_typesupport_fastrtps_c.so\n'}
+[15.921777] (antidrone_turret) StdoutLine: {'line': b'-- Up-to-date symlink: /home/bmarkiv/CPPMILITARY/homework_13/robot_ws/install/antidrone_turret/lib/python3.12/site-packages/antidrone_turret/antidrone_turret_s__rosidl_typesupport_introspection_c.so\n'}
+[15.921984] (antidrone_turret) StdoutLine: {'line': b'-- Up-to-date symlink: /home/bmarkiv/CPPMILITARY/homework_13/robot_ws/install/antidrone_turret/lib/python3.12/site-packages/antidrone_turret/msg/__init__.py\n'}
+[15.922100] (antidrone_turret) StdoutLine: {'line': b'-- Up-to-date symlink: /home/bmarkiv/CPPMILITARY/homework_13/robot_ws/install/antidrone_turret/lib/python3.12/site-packages/antidrone_turret/msg/_actuator_status.py\n'}
+[15.922261] (antidrone_turret) StdoutLine: {'line': b'-- Up-to-date symlink: /home/bmarkiv/CPPMILITARY/homework_13/robot_ws/install/antidrone_turret/lib/python3.12/site-packages/antidrone_turret/msg/_actuator_status_s.c\n'}
+[15.922406] (antidrone_turret) StdoutLine: {'line': b'-- Up-to-date symlink: /home/bmarkiv/CPPMILITARY/homework_13/robot_ws/install/antidrone_turret/lib/python3.12/site-packages/antidrone_turret/msg/_gimbal_command.py\n'}
+[15.922601] (antidrone_turret) StdoutLine: {'line': b'-- Up-to-date symlink: /home/bmarkiv/CPPMILITARY/homework_13/robot_ws/install/antidrone_turret/lib/python3.12/site-packages/antidrone_turret/msg/_gimbal_command_s.c\n'}
+[15.922807] (antidrone_turret) StdoutLine: {'line': b'-- Up-to-date symlink: /home/bmarkiv/CPPMILITARY/homework_13/robot_ws/install/antidrone_turret/lib/python3.12/site-packages/antidrone_turret/msg/_servo_command.py\n'}
+[15.922966] (antidrone_turret) StdoutLine: {'line': b'-- Up-to-date symlink: /home/bmarkiv/CPPMILITARY/homework_13/robot_ws/install/antidrone_turret/lib/python3.12/site-packages/antidrone_turret/msg/_servo_command_s.c\n'}
+[15.923040] (antidrone_turret) StdoutLine: {'line': b'-- Up-to-date symlink: /home/bmarkiv/CPPMILITARY/homework_13/robot_ws/install/antidrone_turret/lib/python3.12/site-packages/antidrone_turret/msg/_target.py\n'}
+[15.923104] (antidrone_turret) StdoutLine: {'line': b'-- Up-to-date symlink: /home/bmarkiv/CPPMILITARY/homework_13/robot_ws/install/antidrone_turret/lib/python3.12/site-packages/antidrone_turret/msg/_target_s.c\n'}
+[15.923241] (antidrone_turret) StdoutLine: {'line': b'-- Up-to-date symlink: /home/bmarkiv/CPPMILITARY/homework_13/robot_ws/install/antidrone_turret/lib/python3.12/site-packages/antidrone_turret/msg/_turret_status.py\n'}
+[15.923375] (antidrone_turret) StdoutLine: {'line': b'-- Up-to-date symlink: /home/bmarkiv/CPPMILITARY/homework_13/robot_ws/install/antidrone_turret/lib/python3.12/site-packages/antidrone_turret/msg/_turret_status_s.c\n'}
+[15.923465] (antidrone_turret) StdoutLine: {'line': b'-- Up-to-date symlink: /home/bmarkiv/CPPMILITARY/homework_13/robot_ws/install/antidrone_turret/lib/python3.12/site-packages/antidrone_turret/srv/__init__.py\n'}
+[15.923523] (antidrone_turret) StdoutLine: {'line': b'-- Up-to-date symlink: /home/bmarkiv/CPPMILITARY/homework_13/robot_ws/install/antidrone_turret/lib/python3.12/site-packages/antidrone_turret/srv/_trigger_actuator.py\n'}
+[15.923721] (antidrone_turret) StdoutLine: {'line': b'-- Up-to-date symlink: /home/bmarkiv/CPPMILITARY/homework_13/robot_ws/install/antidrone_turret/lib/python3.12/site-packages/antidrone_turret/srv/_trigger_actuator_s.c\n'}
+[15.923840] (antidrone_turret) StdoutLine: {'line': b'-- Up-to-date symlink: /home/bmarkiv/CPPMILITARY/homework_13/robot_ws/install/antidrone_turret/lib/python3.12/site-packages/antidrone_turret/antidrone_turret_s__rosidl_typesupport_fastrtps_c.so\n'}
+[15.924024] (antidrone_turret) StdoutLine: {'line': b'-- Up-to-date symlink: /home/bmarkiv/CPPMILITARY/homework_13/robot_ws/install/antidrone_turret/lib/python3.12/site-packages/antidrone_turret/antidrone_turret_s__rosidl_typesupport_introspection_c.so\n'}
+[15.924138] (antidrone_turret) StdoutLine: {'line': b'-- Up-to-date symlink: /home/bmarkiv/CPPMILITARY/homework_13/robot_ws/install/antidrone_turret/lib/python3.12/site-packages/antidrone_turret/antidrone_turret_s__rosidl_typesupport_c.so\n'}
+[15.924239] (antidrone_turret) StdoutLine: {'line': b'-- Up-to-date symlink: /home/bmarkiv/CPPMILITARY/homework_13/robot_ws/install/antidrone_turret/share/ament_index/resource_index/rust_packages/antidrone_turret\n'}
+[15.924431] (antidrone_turret) StdoutLine: {'line': b'-- Up-to-date symlink: /home/bmarkiv/CPPMILITARY/homework_13/robot_ws/install/antidrone_turret/share/antidrone_turret/rust/Cargo.toml\n'}
+[15.924597] (antidrone_turret) StdoutLine: {'line': b'-- Up-to-date symlink: /home/bmarkiv/CPPMILITARY/homework_13/robot_ws/install/antidrone_turret/share/antidrone_turret/rust/build.rs\n'}
+[15.924788] (antidrone_turret) StdoutLine: {'line': b'-- Up-to-date symlink: /home/bmarkiv/CPPMILITARY/homework_13/robot_ws/install/antidrone_turret/share/antidrone_turret/rust/src/lib.rs\n'}
+[15.924951] (antidrone_turret) StdoutLine: {'line': b'-- Up-to-date symlink: /home/bmarkiv/CPPMILITARY/homework_13/robot_ws/install/antidrone_turret/share/antidrone_turret/rust/src/msg.rs\n'}
+[15.925392] (antidrone_turret) StdoutLine: {'line': b'-- Up-to-date symlink: /home/bmarkiv/CPPMILITARY/homework_13/robot_ws/install/antidrone_turret/share/antidrone_turret/rust/src/msg/rmw.rs\n'}
+[15.925567] (antidrone_turret) StdoutLine: {'line': b'-- Up-to-date symlink: /home/bmarkiv/CPPMILITARY/homework_13/robot_ws/install/antidrone_turret/share/antidrone_turret/rust/src/srv.rs\n'}
+[15.925733] (antidrone_turret) StdoutLine: {'line': b'-- Up-to-date symlink: /home/bmarkiv/CPPMILITARY/homework_13/robot_ws/install/antidrone_turret/share/antidrone_turret/rust/src/srv/rmw.rs\n'}
+[15.925796] (antidrone_turret) StdoutLine: {'line': b'-- Up-to-date symlink: /home/bmarkiv/CPPMILITARY/homework_13/robot_ws/install/antidrone_turret/share/antidrone_turret/msg/Target.idl\n'}
+[15.926043] (antidrone_turret) StdoutLine: {'line': b'-- Up-to-date symlink: /home/bmarkiv/CPPMILITARY/homework_13/robot_ws/install/antidrone_turret/share/antidrone_turret/msg/ActuatorStatus.idl\n'}
+[15.926189] (antidrone_turret) StdoutLine: {'line': b'-- Up-to-date symlink: /home/bmarkiv/CPPMILITARY/homework_13/robot_ws/install/antidrone_turret/share/antidrone_turret/msg/GimbalCommand.idl\n'}
+[15.926398] (antidrone_turret) StdoutLine: {'line': b'-- Up-to-date symlink: /home/bmarkiv/CPPMILITARY/homework_13/robot_ws/install/antidrone_turret/share/antidrone_turret/msg/ServoCommand.idl\n'}
+[15.926589] (antidrone_turret) StdoutLine: {'line': b'-- Up-to-date symlink: /home/bmarkiv/CPPMILITARY/homework_13/robot_ws/install/antidrone_turret/share/antidrone_turret/msg/TurretStatus.idl\n'}
+[15.926759] (antidrone_turret) StdoutLine: {'line': b'-- Up-to-date symlink: /home/bmarkiv/CPPMILITARY/homework_13/robot_ws/install/antidrone_turret/share/antidrone_turret/srv/TriggerActuator.idl\n'}
+[15.926916] (antidrone_turret) StdoutLine: {'line': b'-- Up-to-date symlink: /home/bmarkiv/CPPMILITARY/homework_13/robot_ws/install/antidrone_turret/share/antidrone_turret/msg/Target.msg\n'}
+[15.927071] (antidrone_turret) StdoutLine: {'line': b'-- Up-to-date symlink: /home/bmarkiv/CPPMILITARY/homework_13/robot_ws/install/antidrone_turret/share/antidrone_turret/msg/ActuatorStatus.msg\n'}
+[15.927223] (antidrone_turret) StdoutLine: {'line': b'-- Up-to-date symlink: /home/bmarkiv/CPPMILITARY/homework_13/robot_ws/install/antidrone_turret/share/antidrone_turret/msg/GimbalCommand.msg\n'}
+[15.927353] (antidrone_turret) StdoutLine: {'line': b'-- Up-to-date symlink: /home/bmarkiv/CPPMILITARY/homework_13/robot_ws/install/antidrone_turret/share/antidrone_turret/msg/ServoCommand.msg\n'}
+[15.927630] (antidrone_turret) StdoutLine: {'line': b'-- Up-to-date symlink: /home/bmarkiv/CPPMILITARY/homework_13/robot_ws/install/antidrone_turret/share/antidrone_turret/msg/TurretStatus.msg\n'}
+[15.927733] (antidrone_turret) StdoutLine: {'line': b'-- Up-to-date symlink: /home/bmarkiv/CPPMILITARY/homework_13/robot_ws/install/antidrone_turret/share/antidrone_turret/srv/TriggerActuator.srv\n'}
+[15.927971] (antidrone_turret) StdoutLine: {'line': b'-- Up-to-date symlink: /home/bmarkiv/CPPMILITARY/homework_13/robot_ws/install/antidrone_turret/include/antidrone_turret/antidrone_turret/actuator_model.hpp\n'}
+[15.928114] (antidrone_turret) StdoutLine: {'line': b'-- Up-to-date symlink: /home/bmarkiv/CPPMILITARY/homework_13/robot_ws/install/antidrone_turret/include/antidrone_turret/antidrone_turret/target_sequence.hpp\n'}
+[15.928247] (antidrone_turret) StdoutLine: {'line': b'-- Up-to-date symlink: /home/bmarkiv/CPPMILITARY/homework_13/robot_ws/install/antidrone_turret/include/antidrone_turret/antidrone_turret/target_track_loader.hpp\n'}
+[15.928410] (antidrone_turret) StdoutLine: {'line': b'-- Up-to-date symlink: /home/bmarkiv/CPPMILITARY/homework_13/robot_ws/install/antidrone_turret/include/antidrone_turret/antidrone_turret/target_track_simulation.hpp\n'}
+[15.928575] (antidrone_turret) StdoutLine: {'line': b'-- Up-to-date symlink: /home/bmarkiv/CPPMILITARY/homework_13/robot_ws/install/antidrone_turret/include/antidrone_turret/antidrone_turret/turret_logic.hpp\n'}
+[15.929056] (antidrone_turret) StdoutLine: {'line': b'-- Up-to-date symlink: /home/bmarkiv/CPPMILITARY/homework_13/robot_ws/install/antidrone_turret/lib/antidrone_turret/target_track_publisher_node\n'}
+[15.929216] (antidrone_turret) StdoutLine: {'line': b'-- Up-to-date symlink: /home/bmarkiv/CPPMILITARY/homework_13/robot_ws/install/antidrone_turret/lib/antidrone_turret/actuator_node\n'}
+[15.929410] (antidrone_turret) StdoutLine: {'line': b'-- Up-to-date symlink: /home/bmarkiv/CPPMILITARY/homework_13/robot_ws/install/antidrone_turret/lib/antidrone_turret/turret_controller_node\n'}
+[15.929667] (antidrone_turret) StdoutLine: {'line': b'-- Up-to-date symlink: /home/bmarkiv/CPPMILITARY/homework_13/robot_ws/install/antidrone_turret/share/antidrone_turret/launch/system.launch.py\n'}
+[15.929947] (antidrone_turret) StdoutLine: {'line': b'-- Up-to-date symlink: /home/bmarkiv/CPPMILITARY/homework_13/robot_ws/install/antidrone_turret/share/antidrone_turret/config/sequence.yaml\n'}
+[15.930196] (antidrone_turret) StdoutLine: {'line': b'-- Up-to-date symlink: /home/bmarkiv/CPPMILITARY/homework_13/robot_ws/install/antidrone_turret/share/antidrone_turret/tracks/approach_trigger.csv\n'}
+[15.930357] (antidrone_turret) StdoutLine: {'line': b'-- Up-to-date symlink: /home/bmarkiv/CPPMILITARY/homework_13/robot_ws/install/antidrone_turret/share/antidrone_turret/tracks/far_flyby_no_trigger.csv\n'}
+[15.930591] (antidrone_turret) StdoutLine: {'line': b'-- Up-to-date symlink: /home/bmarkiv/CPPMILITARY/homework_13/robot_ws/install/antidrone_turret/share/antidrone_turret/tracks/low_confidence_no_trigger.csv\n'}
+[15.930694] (antidrone_turret) StdoutLine: {'line': b'-- Up-to-date symlink: /home/bmarkiv/CPPMILITARY/homework_13/robot_ws/install/antidrone_turret/share/antidrone_turret/tracks/reload_pressure.csv\n'}
+[15.930859] (antidrone_turret) StdoutLine: {'line': b'-- Up-to-date symlink: /home/bmarkiv/CPPMILITARY/homework_13/robot_ws/install/antidrone_turret/share/ament_index/resource_index/package_run_dependencies/antidrone_turret\n'}
+[15.931031] (antidrone_turret) StdoutLine: {'line': b'-- Up-to-date symlink: /home/bmarkiv/CPPMILITARY/homework_13/robot_ws/install/antidrone_turret/share/ament_index/resource_index/parent_prefix_path/antidrone_turret\n'}
+[15.931288] (antidrone_turret) StdoutLine: {'line': b'-- Up-to-date symlink: /home/bmarkiv/CPPMILITARY/homework_13/robot_ws/install/antidrone_turret/share/antidrone_turret/environment/ament_prefix_path.sh\n'}
+[15.931464] (antidrone_turret) StdoutLine: {'line': b'-- Up-to-date symlink: /home/bmarkiv/CPPMILITARY/homework_13/robot_ws/install/antidrone_turret/share/antidrone_turret/environment/ament_prefix_path.dsv\n'}
+[15.931662] (antidrone_turret) StdoutLine: {'line': b'-- Up-to-date symlink: /home/bmarkiv/CPPMILITARY/homework_13/robot_ws/install/antidrone_turret/share/antidrone_turret/environment/path.sh\n'}
+[15.931849] (antidrone_turret) StdoutLine: {'line': b'-- Up-to-date symlink: /home/bmarkiv/CPPMILITARY/homework_13/robot_ws/install/antidrone_turret/share/antidrone_turret/environment/path.dsv\n'}
+[15.932082] (antidrone_turret) StdoutLine: {'line': b'-- Up-to-date symlink: /home/bmarkiv/CPPMILITARY/homework_13/robot_ws/install/antidrone_turret/share/antidrone_turret/local_setup.bash\n'}
+[15.932274] (antidrone_turret) StdoutLine: {'line': b'-- Up-to-date symlink: /home/bmarkiv/CPPMILITARY/homework_13/robot_ws/install/antidrone_turret/share/antidrone_turret/local_setup.sh\n'}
+[15.932472] (antidrone_turret) StdoutLine: {'line': b'-- Up-to-date symlink: /home/bmarkiv/CPPMILITARY/homework_13/robot_ws/install/antidrone_turret/share/antidrone_turret/local_setup.zsh\n'}
+[15.932628] (antidrone_turret) StdoutLine: {'line': b'-- Up-to-date symlink: /home/bmarkiv/CPPMILITARY/homework_13/robot_ws/install/antidrone_turret/share/antidrone_turret/local_setup.dsv\n'}
+[15.932782] (antidrone_turret) StdoutLine: {'line': b'-- Symlinking: /home/bmarkiv/CPPMILITARY/homework_13/robot_ws/install/antidrone_turret/share/antidrone_turret/package.dsv\n'}
+[15.941423] (antidrone_turret) StdoutLine: {'line': b'-- Up-to-date symlink: /home/bmarkiv/CPPMILITARY/homework_13/robot_ws/install/antidrone_turret/share/ament_index/resource_index/packages/antidrone_turret\n'}
+[15.941754] (antidrone_turret) StdoutLine: {'line': b'-- Up-to-date symlink: /home/bmarkiv/CPPMILITARY/homework_13/robot_ws/install/antidrone_turret/share/antidrone_turret/cmake/rosidl_cmake-extras.cmake\n'}
+[15.942032] (antidrone_turret) StdoutLine: {'line': b'-- Up-to-date symlink: /home/bmarkiv/CPPMILITARY/homework_13/robot_ws/install/antidrone_turret/share/antidrone_turret/cmake/ament_cmake_export_dependencies-extras.cmake\n'}
+[15.942218] (antidrone_turret) StdoutLine: {'line': b'-- Up-to-date symlink: /home/bmarkiv/CPPMILITARY/homework_13/robot_ws/install/antidrone_turret/share/antidrone_turret/cmake/ament_cmake_export_include_directories-extras.cmake\n'}
+[15.942306] (antidrone_turret) StdoutLine: {'line': b'-- Up-to-date symlink: /home/bmarkiv/CPPMILITARY/homework_13/robot_ws/install/antidrone_turret/share/antidrone_turret/cmake/ament_cmake_export_libraries-extras.cmake\n'}
+[15.942558] (antidrone_turret) StdoutLine: {'line': b'-- Up-to-date symlink: /home/bmarkiv/CPPMILITARY/homework_13/robot_ws/install/antidrone_turret/share/antidrone_turret/cmake/ament_cmake_export_targets-extras.cmake\n'}
+[15.942853] (antidrone_turret) StdoutLine: {'line': b'-- Up-to-date symlink: /home/bmarkiv/CPPMILITARY/homework_13/robot_ws/install/antidrone_turret/share/antidrone_turret/cmake/rosidl_cmake_export_typesupport_targets-extras.cmake\n'}
+[15.943112] (antidrone_turret) StdoutLine: {'line': b'-- Up-to-date symlink: /home/bmarkiv/CPPMILITARY/homework_13/robot_ws/install/antidrone_turret/share/antidrone_turret/cmake/rosidl_cmake_export_typesupport_libraries-extras.cmake\n'}
+[15.943386] (antidrone_turret) StdoutLine: {'line': b'-- Up-to-date symlink: /home/bmarkiv/CPPMILITARY/homework_13/robot_ws/install/antidrone_turret/share/antidrone_turret/cmake/rosidl_cmake_aggregate_target-extras.cmake\n'}
+[15.943482] (antidrone_turret) StdoutLine: {'line': b'-- Up-to-date symlink: /home/bmarkiv/CPPMILITARY/homework_13/robot_ws/install/antidrone_turret/share/antidrone_turret/cmake/antidrone_turretConfig.cmake\n'}
+[15.943699] (antidrone_turret) StdoutLine: {'line': b'-- Up-to-date symlink: /home/bmarkiv/CPPMILITARY/homework_13/robot_ws/install/antidrone_turret/share/antidrone_turret/cmake/antidrone_turretConfig-version.cmake\n'}
+[15.943832] (antidrone_turret) StdoutLine: {'line': b'-- Up-to-date symlink: /home/bmarkiv/CPPMILITARY/homework_13/robot_ws/install/antidrone_turret/share/antidrone_turret/package.xml\n'}
+[15.944162] (antidrone_turret) StdoutLine: {'line': b'-- Up-to-date: /home/bmarkiv/CPPMILITARY/homework_13/robot_ws/install/antidrone_turret/lib/libantidrone_turret__rosidl_generator_c.so\n'}
+[15.944393] (antidrone_turret) StdoutLine: {'line': b'-- Up-to-date: /home/bmarkiv/CPPMILITARY/homework_13/robot_ws/install/antidrone_turret/lib/libantidrone_turret__rosidl_typesupport_fastrtps_c.so\n'}
+[15.944664] (antidrone_turret) StdoutLine: {'line': b'-- Up-to-date: /home/bmarkiv/CPPMILITARY/homework_13/robot_ws/install/antidrone_turret/lib/libantidrone_turret__rosidl_typesupport_introspection_c.so\n'}
+[15.944939] (antidrone_turret) StdoutLine: {'line': b'-- Up-to-date: /home/bmarkiv/CPPMILITARY/homework_13/robot_ws/install/antidrone_turret/lib/libantidrone_turret__rosidl_typesupport_c.so\n'}
+[15.945240] (antidrone_turret) StdoutLine: {'line': b'-- Up-to-date: /home/bmarkiv/CPPMILITARY/homework_13/robot_ws/install/antidrone_turret/lib/libantidrone_turret__rosidl_typesupport_fastrtps_cpp.so\n'}
+[15.945534] (antidrone_turret) StdoutLine: {'line': b'-- Up-to-date: /home/bmarkiv/CPPMILITARY/homework_13/robot_ws/install/antidrone_turret/lib/libantidrone_turret__rosidl_typesupport_introspection_cpp.so\n'}
+[15.945797] (antidrone_turret) StdoutLine: {'line': b'-- Up-to-date: /home/bmarkiv/CPPMILITARY/homework_13/robot_ws/install/antidrone_turret/lib/libantidrone_turret__rosidl_typesupport_cpp.so\n'}
+[15.965093] (-) TimerEvent: {}
+[15.986868] (antidrone_turret) StdoutLine: {'line': b"Listing '/home/bmarkiv/CPPMILITARY/homework_13/robot_ws/install/antidrone_turret/lib/python3.12/site-packages/antidrone_turret'...\n"}
+[15.987163] (antidrone_turret) StdoutLine: {'line': b"Compiling '/home/bmarkiv/CPPMILITARY/homework_13/robot_ws/install/antidrone_turret/lib/python3.12/site-packages/antidrone_turret/__init__.py'...\n"}
+[15.987285] (antidrone_turret) StdoutLine: {'line': b"Listing '/home/bmarkiv/CPPMILITARY/homework_13/robot_ws/install/antidrone_turret/lib/python3.12/site-packages/antidrone_turret/msg'...\n"}
+[15.987432] (antidrone_turret) StdoutLine: {'line': b"Listing '/home/bmarkiv/CPPMILITARY/homework_13/robot_ws/install/antidrone_turret/lib/python3.12/site-packages/antidrone_turret/srv'...\n"}
+[15.995627] (antidrone_turret) StdoutLine: {'line': b'-- Up-to-date: /home/bmarkiv/CPPMILITARY/homework_13/robot_ws/install/antidrone_turret/lib/libantidrone_turret__rosidl_generator_py.so\n'}
+[15.996041] (antidrone_turret) StdoutLine: {'line': b'-- Up-to-date: /home/bmarkiv/CPPMILITARY/homework_13/robot_ws/install/antidrone_turret/share/antidrone_turret/cmake/export_antidrone_turret__rosidl_generator_cExport.cmake\n'}
+[15.996293] (antidrone_turret) StdoutLine: {'line': b'-- Up-to-date: /home/bmarkiv/CPPMILITARY/homework_13/robot_ws/install/antidrone_turret/share/antidrone_turret/cmake/export_antidrone_turret__rosidl_generator_cExport-noconfig.cmake\n'}
+[15.996626] (antidrone_turret) StdoutLine: {'line': b'-- Up-to-date: /home/bmarkiv/CPPMILITARY/homework_13/robot_ws/install/antidrone_turret/share/antidrone_turret/cmake/export_antidrone_turret__rosidl_typesupport_fastrtps_cExport.cmake\n'}
+[15.997007] (antidrone_turret) StdoutLine: {'line': b'-- Up-to-date: /home/bmarkiv/CPPMILITARY/homework_13/robot_ws/install/antidrone_turret/share/antidrone_turret/cmake/export_antidrone_turret__rosidl_typesupport_fastrtps_cExport-noconfig.cmake\n'}
+[15.997670] (antidrone_turret) StdoutLine: {'line': b'-- Up-to-date: /home/bmarkiv/CPPMILITARY/homework_13/robot_ws/install/antidrone_turret/share/antidrone_turret/cmake/antidrone_turret__rosidl_typesupport_introspection_cExport.cmake\n'}
+[15.997819] (antidrone_turret) StdoutLine: {'line': b'-- Up-to-date: /home/bmarkiv/CPPMILITARY/homework_13/robot_ws/install/antidrone_turret/share/antidrone_turret/cmake/antidrone_turret__rosidl_typesupport_introspection_cExport-noconfig.cmake\n'}
+[15.997903] (antidrone_turret) StdoutLine: {'line': b'-- Up-to-date: /home/bmarkiv/CPPMILITARY/homework_13/robot_ws/install/antidrone_turret/share/antidrone_turret/cmake/antidrone_turret__rosidl_typesupport_cExport.cmake\n'}
+[15.997996] (antidrone_turret) StdoutLine: {'line': b'-- Up-to-date: /home/bmarkiv/CPPMILITARY/homework_13/robot_ws/install/antidrone_turret/share/antidrone_turret/cmake/antidrone_turret__rosidl_typesupport_cExport-noconfig.cmake\n'}
+[15.998235] (antidrone_turret) StdoutLine: {'line': b'-- Up-to-date: /home/bmarkiv/CPPMILITARY/homework_13/robot_ws/install/antidrone_turret/share/antidrone_turret/cmake/export_antidrone_turret__rosidl_generator_cppExport.cmake\n'}
+[15.998392] (antidrone_turret) StdoutLine: {'line': b'-- Up-to-date: /home/bmarkiv/CPPMILITARY/homework_13/robot_ws/install/antidrone_turret/share/antidrone_turret/cmake/export_antidrone_turret__rosidl_typesupport_fastrtps_cppExport.cmake\n'}
+[15.998548] (antidrone_turret) StdoutLine: {'line': b'-- Up-to-date: /home/bmarkiv/CPPMILITARY/homework_13/robot_ws/install/antidrone_turret/share/antidrone_turret/cmake/export_antidrone_turret__rosidl_typesupport_fastrtps_cppExport-noconfig.cmake\n'}
+[15.998691] (antidrone_turret) StdoutLine: {'line': b'-- Up-to-date: /home/bmarkiv/CPPMILITARY/homework_13/robot_ws/install/antidrone_turret/share/antidrone_turret/cmake/antidrone_turret__rosidl_typesupport_introspection_cppExport.cmake\n'}
+[15.998996] (antidrone_turret) StdoutLine: {'line': b'-- Up-to-date: /home/bmarkiv/CPPMILITARY/homework_13/robot_ws/install/antidrone_turret/share/antidrone_turret/cmake/antidrone_turret__rosidl_typesupport_introspection_cppExport-noconfig.cmake\n'}
+[15.999602] (antidrone_turret) StdoutLine: {'line': b'-- Up-to-date: /home/bmarkiv/CPPMILITARY/homework_13/robot_ws/install/antidrone_turret/share/antidrone_turret/cmake/antidrone_turret__rosidl_typesupport_cppExport.cmake\n'}
+[16.000348] (antidrone_turret) StdoutLine: {'line': b'-- Up-to-date: /home/bmarkiv/CPPMILITARY/homework_13/robot_ws/install/antidrone_turret/share/antidrone_turret/cmake/antidrone_turret__rosidl_typesupport_cppExport-noconfig.cmake\n'}
+[16.000877] (antidrone_turret) StdoutLine: {'line': b'-- Up-to-date: /home/bmarkiv/CPPMILITARY/homework_13/robot_ws/install/antidrone_turret/share/antidrone_turret/cmake/export_antidrone_turret__rosidl_generator_pyExport.cmake\n'}
+[16.001031] (antidrone_turret) StdoutLine: {'line': b'-- Up-to-date: /home/bmarkiv/CPPMILITARY/homework_13/robot_ws/install/antidrone_turret/share/antidrone_turret/cmake/export_antidrone_turret__rosidl_generator_pyExport-noconfig.cmake\n'}
+[16.001210] (antidrone_turret) CommandEnded: {'returncode': 0}
+[16.029308] (antidrone_turret) JobEnded: {'identifier': 'antidrone_turret', 'rc': 0}
+[16.030494] (-) EventReactorShutdown: {}
