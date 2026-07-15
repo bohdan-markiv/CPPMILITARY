@@ -1,0 +1,6 @@
+[0.159s] DEBUG:colcon:Command line arguments: ['/usr/bin/colcon', 'test-result', '--verbose']
+[0.159s] DEBUG:colcon:Parsed command line arguments: Namespace(log_base=None, log_level=None, verb_name='test-result', test_result_base='build', all=False, result_files_only=False, verbose=True, delete=False, delete_yes=False, mixin_files=None, mixin=None, verb_parser=<colcon_mixin.mixin.mixin_argument.MixinArgumentDecorator object at 0x7f3ace3f1a00>, verb_extension=<colcon_test_result.verb.test_result.TestResultVerb object at 0x7f3ace3f0680>, main=<bound method TestResultVerb.main of <colcon_test_result.verb.test_result.TestResultVerb object at 0x7f3ace3f0680>>, mixin_verb=('test-result',))
+[0.164s] Level 1:colcon.colcon_test_result.test_result:get_test_results(ctest)
+[0.170s] Level 1:colcon.colcon_test_result.test_result:get_test_results(xunit)
+[0.173s] DEBUG:colcon.colcon_test_result.test_result.xunit:Skipping 'build/antidrone_turret/Testing/20260714-1639/Test.xml': the root tag is neither 'testsuite' nor 'testsuites'
+[0.174s] DEBUG:colcon.colcon_test_result.test_result.xunit:Skipping 'build/antidrone_turret/Testing/20260714-1640/Test.xml': the root tag is neither 'testsuite' nor 'testsuites'

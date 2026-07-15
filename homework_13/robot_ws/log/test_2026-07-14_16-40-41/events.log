@@ -1,0 +1,128 @@
+[0.000000] (-) TimerEvent: {}
+[0.000556] (antidrone_turret) JobQueued: {'identifier': 'antidrone_turret', 'dependencies': OrderedDict({'antidrone_turret': '/home/bmarkiv/CPPMILITARY/homework_13/robot_ws/install/antidrone_turret'})}
+[0.001517] (antidrone_turret) JobStarted: {'identifier': 'antidrone_turret'}
+[0.030471] (antidrone_turret) Command: {'cmd': ['/usr/bin/ctest', '-C', 'Release', '-D', 'ExperimentalTest', '--no-compress-output', '-V', '--force-new-ctest-process'], 'cwd': '/home/bmarkiv/CPPMILITARY/homework_13/robot_ws/build/antidrone_turret', 'env': OrderedDict({'LANGUAGE': 'en_US:en', 'HOSTNAME': 'devcontainer', 'GIT_ASKPASS': '/vscode/vscode-server/bin/linux-x64/fc3def6774c76082adf699d366f31a557ce5573f/extensions/git/dist/askpass.sh', 'SHLVL': '2', 'LD_LIBRARY_PATH': '/home/bmarkiv/CPPMILITARY/homework_13/robot_ws/install/antidrone_turret/lib:/opt/ros/jazzy/opt/rviz_ogre_vendor/lib:/opt/ros/jazzy/lib/x86_64-linux-gnu:/opt/ros/jazzy/opt/gz_math_vendor/lib:/opt/ros/jazzy/opt/gz_utils_vendor/lib:/opt/ros/jazzy/opt/gz_cmake_vendor/lib:/opt/ros/jazzy/lib', 'BROWSER': '/vscode/vscode-server/bin/linux-x64/fc3def6774c76082adf699d366f31a557ce5573f/bin/helpers/browser.sh', 'HOME': '/home/bmarkiv', 'CYCLONEDDS_URI': 'file:///etc/cyclonedds.xml', 'OLDPWD': '/home/bmarkiv/CPPMILITARY/homework_13/robot_ws', 'TERM_PROGRAM_VERSION': '1.128.0', 'VSCODE_IPC_HOOK_CLI': '/tmp/vscode-ipc-18805d59-576e-4bb8-a695-9b21328615be.sock', 'ROS_PYTHON_VERSION': '3', 'VSCODE_GIT_ASKPASS_MAIN': '/vscode/vscode-server/bin/linux-x64/fc3def6774c76082adf699d366f31a557ce5573f/extensions/git/dist/askpass-main.js', 'VSCODE_GIT_ASKPASS_NODE': '/vscode/vscode-server/bin/linux-x64/fc3def6774c76082adf699d366f31a557ce5573f/node', 'VSCODE_PYTHON_AUTOACTIVATE_GUARD': '1', 'COLORTERM': 'truecolor', 'REMOTE_CONTAINERS': 'true', 'DEBUGINFOD_URLS': 'https://debuginfod.ubuntu.com', 'COLCON_PREFIX_PATH': '/home/bmarkiv/CPPMILITARY/homework_13/robot_ws/install', 'ROS_DISTRO': 'jazzy', 'REMOTE_CONTAINERS_IPC': '/tmp/vscode-remote-containers-ipc-2295963c-9e74-4ac2-a795-f254dafb7fdf.sock', '_': '/usr/bin/colcon', 'ROS_VERSION': '2', 'TERM': 'xterm-256color', 'PATH': '/home/bmarkiv/.vscode-server/data/User/globalStorage/github.copilot-chat/debugCommand:/home/bmarkiv/.vscode-server/data/User/globalStorage/github.copilot-chat/copilotCli:/vscode/vscode-server/bin/linux-x64/fc3def6774c76082adf699d366f31a557ce5573f/bin/remote-cli:/opt/ros/jazzy/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin', 'REMOTE_CONTAINERS_SOCKETS': '["/tmp/.X11-unix/X0","/home/bmarkiv/.gnupg/S.gpg-agent"]', 'DISPLAY': ':0', 'LANG': 'en_US.UTF-8', 'RMW_IMPLEMENTATION': 'rmw_cyclonedds_cpp', 'LS_COLORS': 'rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=00:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.avif=01;35:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.webp=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:*~=00;90:*#=00;90:*.bak=00;90:*.crdownload=00;90:*.dpkg-dist=00;90:*.dpkg-new=00;90:*.dpkg-old=00;90:*.dpkg-tmp=00;90:*.old=00;90:*.orig=00;90:*.part=00;90:*.rej=00;90:*.rpmnew=00;90:*.rpmorig=00;90:*.rpmsave=00;90:*.swp=00;90:*.tmp=00;90:*.ucf-dist=00;90:*.ucf-new=00;90:*.ucf-old=00;90:', 'VSCODE_GIT_IPC_HANDLE': '/tmp/vscode-git-70f6501bd9.sock', 'TERM_PROGRAM': 'vscode', 'ROS_DOMAIN_ID': '0', 'AMENT_PREFIX_PATH': '/home/bmarkiv/CPPMILITARY/homework_13/robot_ws/install/antidrone_turret:/opt/ros/jazzy', 'REMOTE_CONTAINERS_DISPLAY_SOCK': '/tmp/.X11-unix/X0', 'SHELL': '/bin/bash', 'PROMPT_COMMAND': '__vsc_prompt_cmd_original', 'ROS_AUTOMATIC_DISCOVERY_RANGE': 'SUBNET', 'VSCODE_GIT_ASKPASS_EXTRA_ARGS': '', 'PWD': '/home/bmarkiv/CPPMILITARY/homework_13/robot_ws/build/antidrone_turret', 'LC_ALL': 'en_US.UTF-8', 'COPILOT_DEBUG_NONCE': '137630ddde7519b1e1e3aa64d3644e1c', 'PYTHONPATH': '/home/bmarkiv/CPPMILITARY/homework_13/robot_ws/install/antidrone_turret/lib/python3.12/site-packages:/opt/ros/jazzy/lib/python3.12/site-packages', 'TZ': 'Etc/UTC', 'COLCON': '1', 'CMAKE_PREFIX_PATH': '/home/bmarkiv/CPPMILITARY/homework_13/robot_ws/install/antidrone_turret:/opt/ros/jazzy/opt/gz_math_vendor:/opt/ros/jazzy/opt/gz_utils_vendor:/opt/ros/jazzy/opt/gz_cmake_vendor'}), 'shell': False}
+[0.039733] (antidrone_turret) StdoutLine: {'line': b'UpdateCTestConfiguration  from :/home/bmarkiv/CPPMILITARY/homework_13/robot_ws/build/antidrone_turret/CTestConfiguration.ini\n'}
+[0.040411] (antidrone_turret) StdoutLine: {'line': b'Parse Config file:/home/bmarkiv/CPPMILITARY/homework_13/robot_ws/build/antidrone_turret/CTestConfiguration.ini\n'}
+[0.041399] (antidrone_turret) StdoutLine: {'line': b'   Site: devcontainer\n'}
+[0.045600] (antidrone_turret) StdoutLine: {'line': b'   Build name: (empty)\n'}
+[0.045764] (antidrone_turret) StdoutLine: {'line': b' Add coverage exclude regular expressions.\n'}
+[0.045922] (antidrone_turret) StdoutLine: {'line': b'Create new tag: 20260714-1640 - Experimental\n'}
+[0.046070] (antidrone_turret) StdoutLine: {'line': b'UpdateCTestConfiguration  from :/home/bmarkiv/CPPMILITARY/homework_13/robot_ws/build/antidrone_turret/CTestConfiguration.ini\n'}
+[0.046160] (antidrone_turret) StdoutLine: {'line': b'Parse Config file:/home/bmarkiv/CPPMILITARY/homework_13/robot_ws/build/antidrone_turret/CTestConfiguration.ini\n'}
+[0.046788] (antidrone_turret) StdoutLine: {'line': b'Test project /home/bmarkiv/CPPMILITARY/homework_13/robot_ws/build/antidrone_turret\n'}
+[0.047034] (antidrone_turret) StdoutLine: {'line': b'Constructing a list of tests\n'}
+[0.047372] (antidrone_turret) StdoutLine: {'line': b'Done constructing a list of tests\n'}
+[0.048064] (antidrone_turret) StdoutLine: {'line': b'Updating test list for fixtures\n'}
+[0.048227] (antidrone_turret) StdoutLine: {'line': b'Added 0 tests to meet fixture requirements\n'}
+[0.048342] (antidrone_turret) StdoutLine: {'line': b'Checking test dependency graph...\n'}
+[0.048472] (antidrone_turret) StdoutLine: {'line': b'Checking test dependency graph end\n'}
+[0.048553] (antidrone_turret) StdoutLine: {'line': b'test 1\n'}
+[0.048630] (antidrone_turret) StdoutLine: {'line': b'    Start 1: provided_logic_test\n'}
+[0.048775] (antidrone_turret) StdoutLine: {'line': b'\n'}
+[0.048914] (antidrone_turret) StdoutLine: {'line': b'1: Test command: /usr/bin/python3 "-u" "/opt/ros/jazzy/share/ament_cmake_test/cmake/run_test.py" "/home/bmarkiv/CPPMILITARY/homework_13/robot_ws/build/antidrone_turret/test_results/antidrone_turret/provided_logic_test.gtest.xml" "--package-name" "antidrone_turret" "--output-file" "/home/bmarkiv/CPPMILITARY/homework_13/robot_ws/build/antidrone_turret/ament_cmake_gtest/provided_logic_test.txt" "--command" "/home/bmarkiv/CPPMILITARY/homework_13/robot_ws/build/antidrone_turret/provided_logic_test" "--gtest_output=xml:/home/bmarkiv/CPPMILITARY/homework_13/robot_ws/build/antidrone_turret/test_results/antidrone_turret/provided_logic_test.gtest.xml"\n'}
+[0.049055] (antidrone_turret) StdoutLine: {'line': b'1: Working Directory: /home/bmarkiv/CPPMILITARY/homework_13/robot_ws/build/antidrone_turret\n'}
+[0.049739] (antidrone_turret) StdoutLine: {'line': b'1: Test timeout computed to be: 60\n'}
+[0.099788] (-) TimerEvent: {}
+[0.144611] (antidrone_turret) StdoutLine: {'line': b"1: -- run_test.py: invoking following command in '/home/bmarkiv/CPPMILITARY/homework_13/robot_ws/build/antidrone_turret':\n"}
+[0.145044] (antidrone_turret) StdoutLine: {'line': b'1:  - /home/bmarkiv/CPPMILITARY/homework_13/robot_ws/build/antidrone_turret/provided_logic_test --gtest_output=xml:/home/bmarkiv/CPPMILITARY/homework_13/robot_ws/build/antidrone_turret/test_results/antidrone_turret/provided_logic_test.gtest.xml\n'}
+[0.147493] (antidrone_turret) StdoutLine: {'line': b'1: Running main() from /opt/ros/jazzy/src/gtest_vendor/src/gtest_main.cc\n'}
+[0.147878] (antidrone_turret) StdoutLine: {'line': b'1: [==========] Running 14 tests from 4 test suites.\n'}
+[0.148042] (antidrone_turret) StdoutLine: {'line': b'1: [----------] Global test environment set-up.\n'}
+[0.148144] (antidrone_turret) StdoutLine: {'line': b'1: [----------] 4 tests from TargetSequenceTest\n'}
+[0.148238] (antidrone_turret) StdoutLine: {'line': b'1: [ RUN      ] TargetSequenceTest.DefaultSamplesMatchHomeworkScenario\n'}
+[0.148408] (antidrone_turret) StdoutLine: {'line': b'1: [       OK ] TargetSequenceTest.DefaultSamplesMatchHomeworkScenario (0 ms)\n'}
+[0.148506] (antidrone_turret) StdoutLine: {'line': b'1: [ RUN      ] TargetSequenceTest.StopsWhenRepeatIsDisabled\n'}
+[0.148836] (antidrone_turret) StdoutLine: {'line': b'1: [       OK ] TargetSequenceTest.StopsWhenRepeatIsDisabled (0 ms)\n'}
+[0.148950] (antidrone_turret) StdoutLine: {'line': b'1: [ RUN      ] TargetSequenceTest.WrapsWhenRepeatIsEnabled\n'}
+[0.149041] (antidrone_turret) StdoutLine: {'line': b'1: [       OK ] TargetSequenceTest.WrapsWhenRepeatIsEnabled (0 ms)\n'}
+[0.149126] (antidrone_turret) StdoutLine: {'line': b'1: [ RUN      ] TargetSequenceTest.SkipMovesToNextVisibleSegment\n'}
+[0.149209] (antidrone_turret) StdoutLine: {'line': b'1: [       OK ] TargetSequenceTest.SkipMovesToNextVisibleSegment (0 ms)\n'}
+[0.149290] (antidrone_turret) StdoutLine: {'line': b'1: [----------] 4 tests from TargetSequenceTest (0 ms total)\n'}
+[0.149373] (antidrone_turret) StdoutLine: {'line': b'1: \n'}
+[0.149457] (antidrone_turret) StdoutLine: {'line': b'1: [----------] 2 tests from TargetTrackSimulationTest\n'}
+[0.149534] (antidrone_turret) StdoutLine: {'line': b'1: [ RUN      ] TargetTrackSimulationTest.AcceptedTriggerSkipsCurrentDrone\n'}
+[0.149612] (antidrone_turret) StdoutLine: {'line': b'1: [       OK ] TargetTrackSimulationTest.AcceptedTriggerSkipsCurrentDrone (0 ms)\n'}
+[0.149690] (antidrone_turret) StdoutLine: {'line': b'1: [ RUN      ] TargetTrackSimulationTest.ReachedProtectedZoneWhileReloadingSkipsCurrentDrone\n'}
+[0.149768] (antidrone_turret) StdoutLine: {'line': b'1: [       OK ] TargetTrackSimulationTest.ReachedProtectedZoneWhileReloadingSkipsCurrentDrone (0 ms)\n'}
+[0.149844] (antidrone_turret) StdoutLine: {'line': b'1: [----------] 2 tests from TargetTrackSimulationTest (0 ms total)\n'}
+[0.150094] (antidrone_turret) StdoutLine: {'line': b'1: \n'}
+[0.150356] (antidrone_turret) StdoutLine: {'line': b'1: [----------] 4 tests from TargetTrackLoaderTest\n'}
+[0.150511] (antidrone_turret) StdoutLine: {'line': b'1: [ RUN      ] TargetTrackLoaderTest.LoadsCsvRowsAndSkipsCommentsAndHeader\n'}
+[0.150705] (antidrone_turret) StdoutLine: {'line': b'1: [       OK ] TargetTrackLoaderTest.LoadsCsvRowsAndSkipsCommentsAndHeader (0 ms)\n'}
+[0.150850] (antidrone_turret) StdoutLine: {'line': b'1: [ RUN      ] TargetTrackLoaderTest.ReportsInvalidRows\n'}
+[0.150939] (antidrone_turret) StdoutLine: {'line': b'1: [       OK ] TargetTrackLoaderTest.ReportsInvalidRows (0 ms)\n'}
+[0.151077] (antidrone_turret) StdoutLine: {'line': b'1: [ RUN      ] TargetTrackLoaderTest.LoadsAllProvidedTracks\n'}
+[0.151200] (antidrone_turret) StdoutLine: {'line': b'1: [       OK ] TargetTrackLoaderTest.LoadsAllProvidedTracks (0 ms)\n'}
+[0.151284] (antidrone_turret) StdoutLine: {'line': b'1: [ RUN      ] TargetTrackLoaderTest.LoadsDefaultTracksAsOneSequenceWithGaps\n'}
+[0.151370] (antidrone_turret) StdoutLine: {'line': b'1: [       OK ] TargetTrackLoaderTest.LoadsDefaultTracksAsOneSequenceWithGaps (1 ms)\n'}
+[0.151452] (antidrone_turret) StdoutLine: {'line': b'1: [----------] 4 tests from TargetTrackLoaderTest (2 ms total)\n'}
+[0.151576] (antidrone_turret) StdoutLine: {'line': b'1: \n'}
+[0.151734] (antidrone_turret) StdoutLine: {'line': b'1: [----------] 4 tests from ActuatorModelTest\n'}
+[0.151898] (antidrone_turret) StdoutLine: {'line': b'1: [ RUN      ] ActuatorModelTest.StartsReady\n'}
+[0.152034] (antidrone_turret) StdoutLine: {'line': b'1: [       OK ] ActuatorModelTest.StartsReady (0 ms)\n'}
+[0.152446] (antidrone_turret) StdoutLine: {'line': b'1: [ RUN      ] ActuatorModelTest.AcceptedTriggerMovesToReloading\n'}
+[0.152755] (antidrone_turret) StdoutLine: {'line': b'1: [       OK ] ActuatorModelTest.AcceptedTriggerMovesToReloading (0 ms)\n'}
+[0.153002] (antidrone_turret) StdoutLine: {'line': b'1: [ RUN      ] ActuatorModelTest.RejectsTriggerWhileReloading\n'}
+[0.153128] (antidrone_turret) StdoutLine: {'line': b'1: [       OK ] ActuatorModelTest.RejectsTriggerWhileReloading (0 ms)\n'}
+[0.153262] (antidrone_turret) StdoutLine: {'line': b'1: [ RUN      ] ActuatorModelTest.MarkReadyAllowsNextTrigger\n'}
+[0.153513] (antidrone_turret) StdoutLine: {'line': b'1: [       OK ] ActuatorModelTest.MarkReadyAllowsNextTrigger (0 ms)\n'}
+[0.153620] (antidrone_turret) StdoutLine: {'line': b'1: [----------] 4 tests from ActuatorModelTest (0 ms total)\n'}
+[0.153743] (antidrone_turret) StdoutLine: {'line': b'1: \n'}
+[0.153825] (antidrone_turret) StdoutLine: {'line': b'1: [----------] Global test environment tear-down\n'}
+[0.153900] (antidrone_turret) StdoutLine: {'line': b'1: [==========] 14 tests from 4 test suites ran. (2 ms total)\n'}
+[0.153972] (antidrone_turret) StdoutLine: {'line': b'1: [  PASSED  ] 14 tests.\n'}
+[0.154040] (antidrone_turret) StdoutLine: {'line': b'1: -- run_test.py: return code 0\n'}
+[0.154106] (antidrone_turret) StdoutLine: {'line': b"1: -- run_test.py: inject classname prefix into gtest result file '/home/bmarkiv/CPPMILITARY/homework_13/robot_ws/build/antidrone_turret/test_results/antidrone_turret/provided_logic_test.gtest.xml'\n"}
+[0.154180] (antidrone_turret) StdoutLine: {'line': b"1: -- run_test.py: verify result file '/home/bmarkiv/CPPMILITARY/homework_13/robot_ws/build/antidrone_turret/test_results/antidrone_turret/provided_logic_test.gtest.xml'\n"}
+[0.165371] (antidrone_turret) StdoutLine: {'line': b'1/2 Test #1: provided_logic_test ..............   Passed    0.12 sec\n'}
+[0.165780] (antidrone_turret) StdoutLine: {'line': b'test 2\n'}
+[0.166000] (antidrone_turret) StdoutLine: {'line': b'    Start 2: turret_logic_test\n'}
+[0.166125] (antidrone_turret) StdoutLine: {'line': b'\n'}
+[0.166205] (antidrone_turret) StdoutLine: {'line': b'2: Test command: /usr/bin/python3 "-u" "/opt/ros/jazzy/share/ament_cmake_test/cmake/run_test.py" "/home/bmarkiv/CPPMILITARY/homework_13/robot_ws/build/antidrone_turret/test_results/antidrone_turret/turret_logic_test.gtest.xml" "--package-name" "antidrone_turret" "--output-file" "/home/bmarkiv/CPPMILITARY/homework_13/robot_ws/build/antidrone_turret/ament_cmake_gtest/turret_logic_test.txt" "--command" "/home/bmarkiv/CPPMILITARY/homework_13/robot_ws/build/antidrone_turret/turret_logic_test" "--gtest_output=xml:/home/bmarkiv/CPPMILITARY/homework_13/robot_ws/build/antidrone_turret/test_results/antidrone_turret/turret_logic_test.gtest.xml"\n'}
+[0.166326] (antidrone_turret) StdoutLine: {'line': b'2: Working Directory: /home/bmarkiv/CPPMILITARY/homework_13/robot_ws/build/antidrone_turret\n'}
+[0.166449] (antidrone_turret) StdoutLine: {'line': b'2: Test timeout computed to be: 60\n'}
+[0.199932] (-) TimerEvent: {}
+[0.250189] (antidrone_turret) StdoutLine: {'line': b"2: -- run_test.py: invoking following command in '/home/bmarkiv/CPPMILITARY/homework_13/robot_ws/build/antidrone_turret':\n"}
+[0.250507] (antidrone_turret) StdoutLine: {'line': b'2:  - /home/bmarkiv/CPPMILITARY/homework_13/robot_ws/build/antidrone_turret/turret_logic_test --gtest_output=xml:/home/bmarkiv/CPPMILITARY/homework_13/robot_ws/build/antidrone_turret/test_results/antidrone_turret/turret_logic_test.gtest.xml\n'}
+[0.252503] (antidrone_turret) StdoutLine: {'line': b'2: Running main() from /opt/ros/jazzy/src/gtest_vendor/src/gtest_main.cc\n'}
+[0.252776] (antidrone_turret) StdoutLine: {'line': b'2: [==========] Running 9 tests from 1 test suite.\n'}
+[0.252958] (antidrone_turret) StdoutLine: {'line': b'2: [----------] Global test environment set-up.\n'}
+[0.253581] (antidrone_turret) StdoutLine: {'line': b'2: [----------] 9 tests from TurretLogicTest\n'}
+[0.253941] (antidrone_turret) StdoutLine: {'line': b'2: [ RUN      ] TurretLogicTest.LowConfidenceTargetIsNotLocked\n'}
+[0.254503] (antidrone_turret) StdoutLine: {'line': b'2: [       OK ] TurretLogicTest.LowConfidenceTargetIsNotLocked (0 ms)\n'}
+[0.254662] (antidrone_turret) StdoutLine: {'line': b'2: [ RUN      ] TurretLogicTest.ConfidenceAtThresholdIsLocked\n'}
+[0.254807] (antidrone_turret) StdoutLine: {'line': b'2: [       OK ] TurretLogicTest.ConfidenceAtThresholdIsLocked (0 ms)\n'}
+[0.254927] (antidrone_turret) StdoutLine: {'line': b'2: [ RUN      ] TurretLogicTest.InvisibleTargetIsNone\n'}
+[0.255063] (antidrone_turret) StdoutLine: {'line': b'2: [       OK ] TurretLogicTest.InvisibleTargetIsNone (0 ms)\n'}
+[0.255163] (antidrone_turret) StdoutLine: {'line': b'2: [ RUN      ] TurretLogicTest.ServoTargetRightOfCenterTurnsRight\n'}
+[0.255284] (antidrone_turret) StdoutLine: {'line': b'2: [       OK ] TurretLogicTest.ServoTargetRightOfCenterTurnsRight (0 ms)\n'}
+[0.255363] (antidrone_turret) StdoutLine: {'line': b'2: [ RUN      ] TurretLogicTest.GimbalTargetAboveCenterAimsUp\n'}
+[0.255480] (antidrone_turret) StdoutLine: {'line': b'2: [       OK ] TurretLogicTest.GimbalTargetAboveCenterAimsUp (0 ms)\n'}
+[0.255602] (antidrone_turret) StdoutLine: {'line': b'2: [ RUN      ] TurretLogicTest.CloseTargetWithReadyActuatorRequestsFire\n'}
+[0.255726] (antidrone_turret) StdoutLine: {'line': b'2: [       OK ] TurretLogicTest.CloseTargetWithReadyActuatorRequestsFire (0 ms)\n'}
+[0.255810] (antidrone_turret) StdoutLine: {'line': b'2: [ RUN      ] TurretLogicTest.CloseTargetWithReloadingActuatorHoldsFire\n'}
+[0.256017] (antidrone_turret) StdoutLine: {'line': b'2: [       OK ] TurretLogicTest.CloseTargetWithReloadingActuatorHoldsFire (0 ms)\n'}
+[0.256175] (antidrone_turret) StdoutLine: {'line': b'2: [ RUN      ] TurretLogicTest.FarTargetSkipsEvenWhenReady\n'}
+[0.256308] (antidrone_turret) StdoutLine: {'line': b'2: [       OK ] TurretLogicTest.FarTargetSkipsEvenWhenReady (0 ms)\n'}
+[0.256441] (antidrone_turret) StdoutLine: {'line': b'2: [ RUN      ] TurretLogicTest.FarValidTargetLocksTracksButSkips\n'}
+[0.256591] (antidrone_turret) StdoutLine: {'line': b'2: [       OK ] TurretLogicTest.FarValidTargetLocksTracksButSkips (0 ms)\n'}
+[0.256745] (antidrone_turret) StdoutLine: {'line': b'2: [----------] 9 tests from TurretLogicTest (0 ms total)\n'}
+[0.256882] (antidrone_turret) StdoutLine: {'line': b'2: \n'}
+[0.256964] (antidrone_turret) StdoutLine: {'line': b'2: [----------] Global test environment tear-down\n'}
+[0.257040] (antidrone_turret) StdoutLine: {'line': b'2: [==========] 9 tests from 1 test suite ran. (0 ms total)\n'}
+[0.257114] (antidrone_turret) StdoutLine: {'line': b'2: [  PASSED  ] 9 tests.\n'}
+[0.257184] (antidrone_turret) StdoutLine: {'line': b'2: -- run_test.py: return code 0\n'}
+[0.257875] (antidrone_turret) StdoutLine: {'line': b"2: -- run_test.py: inject classname prefix into gtest result file '/home/bmarkiv/CPPMILITARY/homework_13/robot_ws/build/antidrone_turret/test_results/antidrone_turret/turret_logic_test.gtest.xml'\n"}
+[0.258505] (antidrone_turret) StdoutLine: {'line': b"2: -- run_test.py: verify result file '/home/bmarkiv/CPPMILITARY/homework_13/robot_ws/build/antidrone_turret/test_results/antidrone_turret/turret_logic_test.gtest.xml'\n"}
+[0.267352] (antidrone_turret) StdoutLine: {'line': b'2/2 Test #2: turret_logic_test ................   Passed    0.10 sec\n'}
+[0.268172] (antidrone_turret) StdoutLine: {'line': b'\n'}
+[0.268512] (antidrone_turret) StdoutLine: {'line': b'\x1b[0;32m100% tests passed\x1b[0;0m, 0 tests failed\x1b[0;0m out of 2\n'}
+[0.268710] (antidrone_turret) StdoutLine: {'line': b'\n'}
+[0.268793] (antidrone_turret) StdoutLine: {'line': b'Label Time Summary:\n'}
+[0.268867] (antidrone_turret) StdoutLine: {'line': b'gtest    =   0.22 sec*proc (2 tests)\n'}
+[0.268990] (antidrone_turret) StdoutLine: {'line': b'\n'}
+[0.269119] (antidrone_turret) StdoutLine: {'line': b'Total Test time (real) =   0.23 sec\n'}
+[0.273734] (antidrone_turret) CommandEnded: {'returncode': 0}
+[0.275042] (antidrone_turret) JobEnded: {'identifier': 'antidrone_turret', 'rc': 0}
+[0.275589] (-) EventReactorShutdown: {}

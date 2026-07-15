@@ -1,0 +1,80 @@
+UpdateCTestConfiguration  from :/home/bmarkiv/CPPMILITARY/homework_13/robot_ws/build/antidrone_turret/CTestConfiguration.ini
+Parse Config file:/home/bmarkiv/CPPMILITARY/homework_13/robot_ws/build/antidrone_turret/CTestConfiguration.ini
+   Site: devcontainer
+   Build name: (empty)
+ Add coverage exclude regular expressions.
+Create new tag: 20260714-1639 - Experimental
+UpdateCTestConfiguration  from :/home/bmarkiv/CPPMILITARY/homework_13/robot_ws/build/antidrone_turret/CTestConfiguration.ini
+Parse Config file:/home/bmarkiv/CPPMILITARY/homework_13/robot_ws/build/antidrone_turret/CTestConfiguration.ini
+Test project /home/bmarkiv/CPPMILITARY/homework_13/robot_ws/build/antidrone_turret
+Constructing a list of tests
+Done constructing a list of tests
+Updating test list for fixtures
+Added 0 tests to meet fixture requirements
+Checking test dependency graph...
+Checking test dependency graph end
+test 1
+    Start 1: provided_logic_test
+
+1: Test command: /usr/bin/python3 "-u" "/opt/ros/jazzy/share/ament_cmake_test/cmake/run_test.py" "/home/bmarkiv/CPPMILITARY/homework_13/robot_ws/build/antidrone_turret/test_results/antidrone_turret/provided_logic_test.gtest.xml" "--package-name" "antidrone_turret" "--output-file" "/home/bmarkiv/CPPMILITARY/homework_13/robot_ws/build/antidrone_turret/ament_cmake_gtest/provided_logic_test.txt" "--command" "/home/bmarkiv/CPPMILITARY/homework_13/robot_ws/build/antidrone_turret/provided_logic_test" "--gtest_output=xml:/home/bmarkiv/CPPMILITARY/homework_13/robot_ws/build/antidrone_turret/test_results/antidrone_turret/provided_logic_test.gtest.xml"
+1: Working Directory: /home/bmarkiv/CPPMILITARY/homework_13/robot_ws/build/antidrone_turret
+1: Test timeout computed to be: 60
+1: -- run_test.py: invoking following command in '/home/bmarkiv/CPPMILITARY/homework_13/robot_ws/build/antidrone_turret':
+1:  - /home/bmarkiv/CPPMILITARY/homework_13/robot_ws/build/antidrone_turret/provided_logic_test --gtest_output=xml:/home/bmarkiv/CPPMILITARY/homework_13/robot_ws/build/antidrone_turret/test_results/antidrone_turret/provided_logic_test.gtest.xml
+1: Running main() from /opt/ros/jazzy/src/gtest_vendor/src/gtest_main.cc
+1: [==========] Running 14 tests from 4 test suites.
+1: [----------] Global test environment set-up.
+1: [----------] 4 tests from TargetSequenceTest
+1: [ RUN      ] TargetSequenceTest.DefaultSamplesMatchHomeworkScenario
+1: [       OK ] TargetSequenceTest.DefaultSamplesMatchHomeworkScenario (0 ms)
+1: [ RUN      ] TargetSequenceTest.StopsWhenRepeatIsDisabled
+1: [       OK ] TargetSequenceTest.StopsWhenRepeatIsDisabled (0 ms)
+1: [ RUN      ] TargetSequenceTest.WrapsWhenRepeatIsEnabled
+1: [       OK ] TargetSequenceTest.WrapsWhenRepeatIsEnabled (0 ms)
+1: [ RUN      ] TargetSequenceTest.SkipMovesToNextVisibleSegment
+1: [       OK ] TargetSequenceTest.SkipMovesToNextVisibleSegment (0 ms)
+1: [----------] 4 tests from TargetSequenceTest (0 ms total)
+1: 
+1: [----------] 2 tests from TargetTrackSimulationTest
+1: [ RUN      ] TargetTrackSimulationTest.AcceptedTriggerSkipsCurrentDrone
+1: [       OK ] TargetTrackSimulationTest.AcceptedTriggerSkipsCurrentDrone (0 ms)
+1: [ RUN      ] TargetTrackSimulationTest.ReachedProtectedZoneWhileReloadingSkipsCurrentDrone
+1: [       OK ] TargetTrackSimulationTest.ReachedProtectedZoneWhileReloadingSkipsCurrentDrone (0 ms)
+1: [----------] 2 tests from TargetTrackSimulationTest (0 ms total)
+1: 
+1: [----------] 4 tests from TargetTrackLoaderTest
+1: [ RUN      ] TargetTrackLoaderTest.LoadsCsvRowsAndSkipsCommentsAndHeader
+1: [       OK ] TargetTrackLoaderTest.LoadsCsvRowsAndSkipsCommentsAndHeader (3 ms)
+1: [ RUN      ] TargetTrackLoaderTest.ReportsInvalidRows
+1: [       OK ] TargetTrackLoaderTest.ReportsInvalidRows (0 ms)
+1: [ RUN      ] TargetTrackLoaderTest.LoadsAllProvidedTracks
+1: [       OK ] TargetTrackLoaderTest.LoadsAllProvidedTracks (2 ms)
+1: [ RUN      ] TargetTrackLoaderTest.LoadsDefaultTracksAsOneSequenceWithGaps
+1: [       OK ] TargetTrackLoaderTest.LoadsDefaultTracksAsOneSequenceWithGaps (0 ms)
+1: [----------] 4 tests from TargetTrackLoaderTest (6 ms total)
+1: 
+1: [----------] 4 tests from ActuatorModelTest
+1: [ RUN      ] ActuatorModelTest.StartsReady
+1: [       OK ] ActuatorModelTest.StartsReady (0 ms)
+1: [ RUN      ] ActuatorModelTest.AcceptedTriggerMovesToReloading
+1: [       OK ] ActuatorModelTest.AcceptedTriggerMovesToReloading (0 ms)
+1: [ RUN      ] ActuatorModelTest.RejectsTriggerWhileReloading
+1: [       OK ] ActuatorModelTest.RejectsTriggerWhileReloading (0 ms)
+1: [ RUN      ] ActuatorModelTest.MarkReadyAllowsNextTrigger
+1: [       OK ] ActuatorModelTest.MarkReadyAllowsNextTrigger (0 ms)
+1: [----------] 4 tests from ActuatorModelTest (0 ms total)
+1: 
+1: [----------] Global test environment tear-down
+1: [==========] 14 tests from 4 test suites ran. (6 ms total)
+1: [  PASSED  ] 14 tests.
+1: -- run_test.py: return code 0
+1: -- run_test.py: inject classname prefix into gtest result file '/home/bmarkiv/CPPMILITARY/homework_13/robot_ws/build/antidrone_turret/test_results/antidrone_turret/provided_logic_test.gtest.xml'
+1: -- run_test.py: verify result file '/home/bmarkiv/CPPMILITARY/homework_13/robot_ws/build/antidrone_turret/test_results/antidrone_turret/provided_logic_test.gtest.xml'
+1/1 Test #1: provided_logic_test ..............   Passed    0.12 sec
+
+[0;32m100% tests passed[0;0m, 0 tests failed[0;0m out of 1
+
+Label Time Summary:
+gtest    =   0.12 sec*proc (1 test)
+
+Total Test time (real) =   0.12 sec

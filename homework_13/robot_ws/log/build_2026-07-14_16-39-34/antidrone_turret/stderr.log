@@ -1,0 +1,20 @@
+[31mCMake Error at /opt/ros/jazzy/share/ament_cmake_gtest/cmake/ament_add_gtest_executable.cmake:50 (add_executable):
+  Cannot find source file:
+
+    test/turret_logic_test.cpp
+Call Stack (most recent call first):
+  /opt/ros/jazzy/share/ament_cmake_gtest/cmake/ament_add_gtest_executable.cmake:37 (_ament_add_gtest_executable)
+  /opt/ros/jazzy/share/ament_cmake_gtest/cmake/ament_add_gtest.cmake:68 (ament_add_gtest_executable)
+  CMakeLists.txt:44 (ament_add_gtest)
+
+[0m
+[31mCMake Error at /opt/ros/jazzy/share/ament_cmake_gtest/cmake/ament_add_gtest_executable.cmake:50 (add_executable):
+  No SOURCES given to target: turret_logic_test
+Call Stack (most recent call first):
+  /opt/ros/jazzy/share/ament_cmake_gtest/cmake/ament_add_gtest_executable.cmake:37 (_ament_add_gtest_executable)
+  /opt/ros/jazzy/share/ament_cmake_gtest/cmake/ament_add_gtest.cmake:68 (ament_add_gtest_executable)
+  CMakeLists.txt:44 (ament_add_gtest)
+
+[0m
+[0mCMake Generate step failed.  Build files cannot be regenerated correctly.[0m
+gmake: *** [Makefile:2330: cmake_check_build_system] Error 1

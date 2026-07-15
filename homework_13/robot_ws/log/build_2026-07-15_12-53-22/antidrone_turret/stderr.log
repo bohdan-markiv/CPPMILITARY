@@ -1,0 +1,16 @@
+[31mCMake Error at /opt/ros/jazzy/share/ament_cmake_auto/cmake/ament_auto_add_executable.cmake:66 (add_executable):
+  Cannot find source file:
+
+    src/turret_controller_node.cpp
+Call Stack (most recent call first):
+  CMakeLists.txt:27 (ament_auto_add_executable)
+
+[0m
+[31mCMake Error at /opt/ros/jazzy/share/ament_cmake_auto/cmake/ament_auto_add_executable.cmake:66 (add_executable):
+  No SOURCES given to target: turret_controller_node
+Call Stack (most recent call first):
+  CMakeLists.txt:27 (ament_auto_add_executable)
+
+[0m
+[0mCMake Generate step failed.  Build files cannot be regenerated correctly.[0m
+gmake: *** [Makefile:2371: cmake_check_build_system] Error 1

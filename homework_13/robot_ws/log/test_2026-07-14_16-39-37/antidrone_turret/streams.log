@@ -1,0 +1,82 @@
+[0.074s] Invoking command in '/home/bmarkiv/CPPMILITARY/homework_13/robot_ws/build/antidrone_turret': DEBUGINFOD_URLS=https://debuginfod.ubuntu.com /usr/bin/ctest -C Release -D ExperimentalTest --no-compress-output -V --force-new-ctest-process
+[0.079s] UpdateCTestConfiguration  from :/home/bmarkiv/CPPMILITARY/homework_13/robot_ws/build/antidrone_turret/CTestConfiguration.ini
+[0.079s] Parse Config file:/home/bmarkiv/CPPMILITARY/homework_13/robot_ws/build/antidrone_turret/CTestConfiguration.ini
+[0.079s]    Site: devcontainer
+[0.080s]    Build name: (empty)
+[0.080s]  Add coverage exclude regular expressions.
+[0.080s] Create new tag: 20260714-1639 - Experimental
+[0.080s] UpdateCTestConfiguration  from :/home/bmarkiv/CPPMILITARY/homework_13/robot_ws/build/antidrone_turret/CTestConfiguration.ini
+[0.080s] Parse Config file:/home/bmarkiv/CPPMILITARY/homework_13/robot_ws/build/antidrone_turret/CTestConfiguration.ini
+[0.080s] Test project /home/bmarkiv/CPPMILITARY/homework_13/robot_ws/build/antidrone_turret
+[0.081s] Constructing a list of tests
+[0.081s] Done constructing a list of tests
+[0.081s] Updating test list for fixtures
+[0.082s] Added 0 tests to meet fixture requirements
+[0.082s] Checking test dependency graph...
+[0.082s] Checking test dependency graph end
+[0.082s] test 1
+[0.082s]     Start 1: provided_logic_test
+[0.083s] 
+[0.083s] 1: Test command: /usr/bin/python3 "-u" "/opt/ros/jazzy/share/ament_cmake_test/cmake/run_test.py" "/home/bmarkiv/CPPMILITARY/homework_13/robot_ws/build/antidrone_turret/test_results/antidrone_turret/provided_logic_test.gtest.xml" "--package-name" "antidrone_turret" "--output-file" "/home/bmarkiv/CPPMILITARY/homework_13/robot_ws/build/antidrone_turret/ament_cmake_gtest/provided_logic_test.txt" "--command" "/home/bmarkiv/CPPMILITARY/homework_13/robot_ws/build/antidrone_turret/provided_logic_test" "--gtest_output=xml:/home/bmarkiv/CPPMILITARY/homework_13/robot_ws/build/antidrone_turret/test_results/antidrone_turret/provided_logic_test.gtest.xml"
+[0.083s] 1: Working Directory: /home/bmarkiv/CPPMILITARY/homework_13/robot_ws/build/antidrone_turret
+[0.083s] 1: Test timeout computed to be: 60
+[0.176s] 1: -- run_test.py: invoking following command in '/home/bmarkiv/CPPMILITARY/homework_13/robot_ws/build/antidrone_turret':
+[0.177s] 1:  - /home/bmarkiv/CPPMILITARY/homework_13/robot_ws/build/antidrone_turret/provided_logic_test --gtest_output=xml:/home/bmarkiv/CPPMILITARY/homework_13/robot_ws/build/antidrone_turret/test_results/antidrone_turret/provided_logic_test.gtest.xml
+[0.181s] 1: Running main() from /opt/ros/jazzy/src/gtest_vendor/src/gtest_main.cc
+[0.181s] 1: [==========] Running 14 tests from 4 test suites.
+[0.181s] 1: [----------] Global test environment set-up.
+[0.181s] 1: [----------] 4 tests from TargetSequenceTest
+[0.181s] 1: [ RUN      ] TargetSequenceTest.DefaultSamplesMatchHomeworkScenario
+[0.181s] 1: [       OK ] TargetSequenceTest.DefaultSamplesMatchHomeworkScenario (0 ms)
+[0.182s] 1: [ RUN      ] TargetSequenceTest.StopsWhenRepeatIsDisabled
+[0.182s] 1: [       OK ] TargetSequenceTest.StopsWhenRepeatIsDisabled (0 ms)
+[0.182s] 1: [ RUN      ] TargetSequenceTest.WrapsWhenRepeatIsEnabled
+[0.182s] 1: [       OK ] TargetSequenceTest.WrapsWhenRepeatIsEnabled (0 ms)
+[0.182s] 1: [ RUN      ] TargetSequenceTest.SkipMovesToNextVisibleSegment
+[0.182s] 1: [       OK ] TargetSequenceTest.SkipMovesToNextVisibleSegment (0 ms)
+[0.182s] 1: [----------] 4 tests from TargetSequenceTest (0 ms total)
+[0.182s] 1: 
+[0.182s] 1: [----------] 2 tests from TargetTrackSimulationTest
+[0.182s] 1: [ RUN      ] TargetTrackSimulationTest.AcceptedTriggerSkipsCurrentDrone
+[0.183s] 1: [       OK ] TargetTrackSimulationTest.AcceptedTriggerSkipsCurrentDrone (0 ms)
+[0.183s] 1: [ RUN      ] TargetTrackSimulationTest.ReachedProtectedZoneWhileReloadingSkipsCurrentDrone
+[0.183s] 1: [       OK ] TargetTrackSimulationTest.ReachedProtectedZoneWhileReloadingSkipsCurrentDrone (0 ms)
+[0.183s] 1: [----------] 2 tests from TargetTrackSimulationTest (0 ms total)
+[0.183s] 1: 
+[0.183s] 1: [----------] 4 tests from TargetTrackLoaderTest
+[0.183s] 1: [ RUN      ] TargetTrackLoaderTest.LoadsCsvRowsAndSkipsCommentsAndHeader
+[0.184s] 1: [       OK ] TargetTrackLoaderTest.LoadsCsvRowsAndSkipsCommentsAndHeader (3 ms)
+[0.184s] 1: [ RUN      ] TargetTrackLoaderTest.ReportsInvalidRows
+[0.184s] 1: [       OK ] TargetTrackLoaderTest.ReportsInvalidRows (0 ms)
+[0.184s] 1: [ RUN      ] TargetTrackLoaderTest.LoadsAllProvidedTracks
+[0.187s] 1: [       OK ] TargetTrackLoaderTest.LoadsAllProvidedTracks (2 ms)
+[0.187s] 1: [ RUN      ] TargetTrackLoaderTest.LoadsDefaultTracksAsOneSequenceWithGaps
+[0.187s] 1: [       OK ] TargetTrackLoaderTest.LoadsDefaultTracksAsOneSequenceWithGaps (0 ms)
+[0.187s] 1: [----------] 4 tests from TargetTrackLoaderTest (6 ms total)
+[0.187s] 1: 
+[0.188s] 1: [----------] 4 tests from ActuatorModelTest
+[0.188s] 1: [ RUN      ] ActuatorModelTest.StartsReady
+[0.188s] 1: [       OK ] ActuatorModelTest.StartsReady (0 ms)
+[0.188s] 1: [ RUN      ] ActuatorModelTest.AcceptedTriggerMovesToReloading
+[0.188s] 1: [       OK ] ActuatorModelTest.AcceptedTriggerMovesToReloading (0 ms)
+[0.188s] 1: [ RUN      ] ActuatorModelTest.RejectsTriggerWhileReloading
+[0.188s] 1: [       OK ] ActuatorModelTest.RejectsTriggerWhileReloading (0 ms)
+[0.188s] 1: [ RUN      ] ActuatorModelTest.MarkReadyAllowsNextTrigger
+[0.188s] 1: [       OK ] ActuatorModelTest.MarkReadyAllowsNextTrigger (0 ms)
+[0.188s] 1: [----------] 4 tests from ActuatorModelTest (0 ms total)
+[0.189s] 1: 
+[0.189s] 1: [----------] Global test environment tear-down
+[0.189s] 1: [==========] 14 tests from 4 test suites ran. (6 ms total)
+[0.189s] 1: [  PASSED  ] 14 tests.
+[0.189s] 1: -- run_test.py: return code 0
+[0.190s] 1: -- run_test.py: inject classname prefix into gtest result file '/home/bmarkiv/CPPMILITARY/homework_13/robot_ws/build/antidrone_turret/test_results/antidrone_turret/provided_logic_test.gtest.xml'
+[0.190s] 1: -- run_test.py: verify result file '/home/bmarkiv/CPPMILITARY/homework_13/robot_ws/build/antidrone_turret/test_results/antidrone_turret/provided_logic_test.gtest.xml'
+[0.202s] 1/1 Test #1: provided_logic_test ..............   Passed    0.12 sec
+[0.202s] 
+[0.202s] [0;32m100% tests passed[0;0m, 0 tests failed[0;0m out of 1
+[0.203s] 
+[0.203s] Label Time Summary:
+[0.203s] gtest    =   0.12 sec*proc (1 test)
+[0.203s] 
+[0.203s] Total Test time (real) =   0.12 sec
+[0.209s] Invoked command in '/home/bmarkiv/CPPMILITARY/homework_13/robot_ws/build/antidrone_turret' returned '0': DEBUGINFOD_URLS=https://debuginfod.ubuntu.com /usr/bin/ctest -C Release -D ExperimentalTest --no-compress-output -V --force-new-ctest-process
