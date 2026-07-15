@@ -1,0 +1,38 @@
+[0.024s] Invoking command in '/home/bmarkiv/CPPMILITARY/homework_13/robot_ws/build/antidrone_turret': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/jazzy DEBUGINFOD_URLS=https://debuginfod.ubuntu.com /usr/bin/cmake --build /home/bmarkiv/CPPMILITARY/homework_13/robot_ws/build/antidrone_turret -- -j16 -l16
+[0.127s] -- Found ament_cmake_auto: 2.5.6 (/opt/ros/jazzy/share/ament_cmake_auto/cmake)
+[0.305s] -- Override CMake install command with custom implementation using symlinks instead of copying resources
+[0.487s] -- Using all available rosidl_typesupport_c: rosidl_typesupport_fastrtps_c;rosidl_typesupport_introspection_c
+[0.555s] -- Using all available rosidl_typesupport_cpp: rosidl_typesupport_fastrtps_cpp;rosidl_typesupport_introspection_cpp
+[0.612s] -- Found rosidl_adapter: 4.6.9 (/opt/ros/jazzy/share/rosidl_adapter/cmake)
+[0.762s] -- Found rmw_implementation_cmake: 7.3.3 (/opt/ros/jazzy/share/rmw_implementation_cmake/cmake)
+[0.771s] -- Found rmw_cyclonedds_cpp: 2.2.3 (/opt/ros/jazzy/share/rmw_cyclonedds_cpp/cmake)
+[0.811s] -- Using RMW implementation 'rmw_cyclonedds_cpp' as default
+[1.248s] -- Found ament_cmake_ros: 0.12.1 (/opt/ros/jazzy/share/ament_cmake_ros/cmake)
+[1.406s] -- Using all available rosidl_typesupport_c: rosidl_typesupport_fastrtps_c;rosidl_typesupport_introspection_c
+[1.642s] -- Using all available rosidl_typesupport_cpp: rosidl_typesupport_fastrtps_cpp;rosidl_typesupport_introspection_cpp
+[1.645s] -- Found python_cmake_module: 0.11.1 (/opt/ros/jazzy/share/python_cmake_module/cmake)
+[2.172s] -- Found Python3: /usr/bin/python3 (found version "3.12.3") found components: Interpreter Development NumPy Development.Module Development.Embed 
+[2.238s] -- Found Python3: /usr/bin/python3 (found version "3.12.3") found components: Interpreter 
+[2.247s] -- Found gtest sources under '/opt/ros/jazzy/src/gtest_vendor': C++ tests using 'Google Test' will be built
+[2.268s] -- Configuring done (2.2s)
+[2.278s] [31mCMake Error at /opt/ros/jazzy/share/ament_cmake_gtest/cmake/ament_add_gtest_executable.cmake:50 (add_executable):
+[2.279s]   Cannot find source file:
+[2.279s] 
+[2.279s]     test/turret_logic_test.cpp
+[2.279s] Call Stack (most recent call first):
+[2.279s]   /opt/ros/jazzy/share/ament_cmake_gtest/cmake/ament_add_gtest_executable.cmake:37 (_ament_add_gtest_executable)
+[2.279s]   /opt/ros/jazzy/share/ament_cmake_gtest/cmake/ament_add_gtest.cmake:68 (ament_add_gtest_executable)
+[2.279s]   CMakeLists.txt:44 (ament_add_gtest)
+[2.279s] 
+[2.280s] [0m
+[2.287s] [31mCMake Error at /opt/ros/jazzy/share/ament_cmake_gtest/cmake/ament_add_gtest_executable.cmake:50 (add_executable):
+[2.288s]   No SOURCES given to target: turret_logic_test
+[2.288s] Call Stack (most recent call first):
+[2.288s]   /opt/ros/jazzy/share/ament_cmake_gtest/cmake/ament_add_gtest_executable.cmake:37 (_ament_add_gtest_executable)
+[2.288s]   /opt/ros/jazzy/share/ament_cmake_gtest/cmake/ament_add_gtest.cmake:68 (ament_add_gtest_executable)
+[2.288s]   CMakeLists.txt:44 (ament_add_gtest)
+[2.288s] 
+[2.288s] [0m
+[2.288s] [0mCMake Generate step failed.  Build files cannot be regenerated correctly.[0m
+[2.300s] gmake: *** [Makefile:2330: cmake_check_build_system] Error 1
+[2.302s] Invoked command in '/home/bmarkiv/CPPMILITARY/homework_13/robot_ws/build/antidrone_turret' returned '2': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/jazzy DEBUGINFOD_URLS=https://debuginfod.ubuntu.com /usr/bin/cmake --build /home/bmarkiv/CPPMILITARY/homework_13/robot_ws/build/antidrone_turret -- -j16 -l16

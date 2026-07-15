@@ -1,0 +1,1 @@
+/home/bmarkiv/CPPMILITARY/homework_13/robot_ws/build/antidrone_turret/rosidl_typesupport_introspection_c/antidrone_turret/srv/detail/trigger_actuator__rosidl_typesupport_introspection_c.h

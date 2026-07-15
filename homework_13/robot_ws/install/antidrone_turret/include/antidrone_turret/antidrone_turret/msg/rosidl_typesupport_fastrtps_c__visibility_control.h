@@ -1,0 +1,1 @@
+/home/bmarkiv/CPPMILITARY/homework_13/robot_ws/build/antidrone_turret/rosidl_typesupport_fastrtps_c/antidrone_turret/msg/rosidl_typesupport_fastrtps_c__visibility_control.h

@@ -1,0 +1,385 @@
+-- The C compiler identification is GNU 13.3.0
+-- The CXX compiler identification is GNU 13.3.0
+-- Detecting C compiler ABI info
+-- Detecting C compiler ABI info - done
+-- Check for working C compiler: /usr/bin/cc - skipped
+-- Detecting C compile features
+-- Detecting C compile features - done
+-- Detecting CXX compiler ABI info
+-- Detecting CXX compiler ABI info - done
+-- Check for working CXX compiler: /usr/bin/c++ - skipped
+-- Detecting CXX compile features
+-- Detecting CXX compile features - done
+-- Found ament_cmake_auto: 2.5.6 (/opt/ros/jazzy/share/ament_cmake_auto/cmake)
+-- Found Python3: /usr/bin/python3 (found version "3.12.3") found components: Interpreter 
+-- Override CMake install command with custom implementation using symlinks instead of copying resources
+-- Using all available rosidl_typesupport_c: rosidl_typesupport_fastrtps_c;rosidl_typesupport_introspection_c
+-- Using all available rosidl_typesupport_cpp: rosidl_typesupport_fastrtps_cpp;rosidl_typesupport_introspection_cpp
+-- Found rosidl_adapter: 4.6.9 (/opt/ros/jazzy/share/rosidl_adapter/cmake)
+-- Found rmw_implementation_cmake: 7.3.3 (/opt/ros/jazzy/share/rmw_implementation_cmake/cmake)
+-- Found rmw_cyclonedds_cpp: 2.2.3 (/opt/ros/jazzy/share/rmw_cyclonedds_cpp/cmake)
+-- Using RMW implementation 'rmw_cyclonedds_cpp' as default
+-- Found ament_cmake_ros: 0.12.1 (/opt/ros/jazzy/share/ament_cmake_ros/cmake)
+-- Using all available rosidl_typesupport_c: rosidl_typesupport_fastrtps_c;rosidl_typesupport_introspection_c
+-- Using all available rosidl_typesupport_cpp: rosidl_typesupport_fastrtps_cpp;rosidl_typesupport_introspection_cpp
+-- Found python_cmake_module: 0.11.1 (/opt/ros/jazzy/share/python_cmake_module/cmake)
+-- Found PythonExtra: /usr/bin/python3  
+-- Found Python3: /usr/bin/python3 (found version "3.12.3") found components: Interpreter Development NumPy Development.Module Development.Embed 
+-- Found Python3: /usr/bin/python3 (found version "3.12.3") found components: Interpreter 
+-- Found gtest sources under '/opt/ros/jazzy/src/gtest_vendor': C++ tests using 'Google Test' will be built
+-- Performing Test CMAKE_HAVE_LIBC_PTHREAD
+-- Performing Test CMAKE_HAVE_LIBC_PTHREAD - Success
+-- Found Threads: TRUE  
+-- Configuring done (5.9s)
+-- Generating done (0.1s)
+-- Build files have been written to: /home/bmarkiv/CPPMILITARY/homework_13/robot_ws/build/antidrone_turret
+[  1%] [34m[1mGenerating Rust code for ROS interfaces[0m
+[  2%] [34m[1mGenerating type hashes for ROS interfaces[0m
+[  4%] [32mBuilding CXX object gtest/CMakeFiles/gtest_main.dir/src/gtest_main.cc.o[0m
+[  4%] [32mBuilding CXX object gtest/CMakeFiles/gtest.dir/src/gtest-all.cc.o[0m
+[  4%] Built target ament_cmake_python_symlink_antidrone_turret
+running egg_info
+creating antidrone_turret.egg-info
+writing antidrone_turret.egg-info/PKG-INFO
+writing dependency_links to antidrone_turret.egg-info/dependency_links.txt
+writing top-level names to antidrone_turret.egg-info/top_level.txt
+writing manifest file 'antidrone_turret.egg-info/SOURCES.txt'
+reading manifest file 'antidrone_turret.egg-info/SOURCES.txt'
+writing manifest file 'antidrone_turret.egg-info/SOURCES.txt'
+[  4%] Built target antidrone_turret__rosidl_generator_type_description
+[  4%] Built target ament_cmake_python_build_antidrone_turret_egg
+[  5%] [34m[1mGenerating C code for ROS interfaces[0m
+[  6%] [34m[1mGenerating C++ code for ROS interfaces[0m
+[  6%] Built target antidrone_turret__rs
+[  6%] Built target antidrone_turret__cpp
+[  7%] [32mBuilding C object CMakeFiles/antidrone_turret__rosidl_generator_c.dir/rosidl_generator_c/antidrone_turret/msg/detail/actuator_status__description.c.o[0m
+[  8%] [32mBuilding C object CMakeFiles/antidrone_turret__rosidl_generator_c.dir/rosidl_generator_c/antidrone_turret/msg/detail/actuator_status__functions.c.o[0m
+[  9%] [32mBuilding C object CMakeFiles/antidrone_turret__rosidl_generator_c.dir/rosidl_generator_c/antidrone_turret/msg/detail/target__description.c.o[0m
+[ 11%] [32mBuilding C object CMakeFiles/antidrone_turret__rosidl_generator_c.dir/rosidl_generator_c/antidrone_turret/msg/detail/target__type_support.c.o[0m
+[ 11%] [32mBuilding C object CMakeFiles/antidrone_turret__rosidl_generator_c.dir/rosidl_generator_c/antidrone_turret/msg/detail/gimbal_command__type_support.c.o[0m
+[ 15%] [32mBuilding C object CMakeFiles/antidrone_turret__rosidl_generator_c.dir/rosidl_generator_c/antidrone_turret/msg/detail/servo_command__description.c.o[0m
+[ 15%] [32mBuilding C object CMakeFiles/antidrone_turret__rosidl_generator_c.dir/rosidl_generator_c/antidrone_turret/msg/detail/target__functions.c.o[0m
+[ 15%] [32mBuilding C object CMakeFiles/antidrone_turret__rosidl_generator_c.dir/rosidl_generator_c/antidrone_turret/msg/detail/turret_status__description.c.o[0m
+[ 15%] [32mBuilding C object CMakeFiles/antidrone_turret__rosidl_generator_c.dir/rosidl_generator_c/antidrone_turret/msg/detail/gimbal_command__functions.c.o[0m
+[ 16%] [32mBuilding C object CMakeFiles/antidrone_turret__rosidl_generator_c.dir/rosidl_generator_c/antidrone_turret/msg/detail/servo_command__functions.c.o[0m
+[ 17%] [32mBuilding C object CMakeFiles/antidrone_turret__rosidl_generator_c.dir/rosidl_generator_c/antidrone_turret/msg/detail/gimbal_command__description.c.o[0m
+[ 18%] [32mBuilding C object CMakeFiles/antidrone_turret__rosidl_generator_c.dir/rosidl_generator_c/antidrone_turret/msg/detail/actuator_status__type_support.c.o[0m
+[ 20%] [32mBuilding C object CMakeFiles/antidrone_turret__rosidl_generator_c.dir/rosidl_generator_c/antidrone_turret/msg/detail/servo_command__type_support.c.o[0m
+[ 21%] [32mBuilding C object CMakeFiles/antidrone_turret__rosidl_generator_c.dir/rosidl_generator_c/antidrone_turret/msg/detail/turret_status__functions.c.o[0m
+[ 22%] [32mBuilding C object CMakeFiles/antidrone_turret__rosidl_generator_c.dir/rosidl_generator_c/antidrone_turret/msg/detail/turret_status__type_support.c.o[0m
+[ 23%] [32mBuilding C object CMakeFiles/antidrone_turret__rosidl_generator_c.dir/rosidl_generator_c/antidrone_turret/srv/detail/trigger_actuator__description.c.o[0m
+[ 24%] [32mBuilding C object CMakeFiles/antidrone_turret__rosidl_generator_c.dir/rosidl_generator_c/antidrone_turret/srv/detail/trigger_actuator__functions.c.o[0m
+[ 25%] [32mBuilding C object CMakeFiles/antidrone_turret__rosidl_generator_c.dir/rosidl_generator_c/antidrone_turret/srv/detail/trigger_actuator__type_support.c.o[0m
+[ 26%] [32m[1mLinking C shared library libantidrone_turret__rosidl_generator_c.so[0m
+[ 26%] Built target antidrone_turret__rosidl_generator_c
+[ 27%] [34m[1mGenerating C type support for eProsima Fast-RTPS[0m
+[ 28%] [34m[1mGenerating C++ introspection for ROS interfaces[0m
+[ 29%] [34m[1mGenerating C type support dispatch for ROS interfaces[0m
+[ 30%] [34m[1mGenerating C introspection for ROS interfaces[0m
+[ 31%] [34m[1mGenerating C++ type support dispatch for ROS interfaces[0m
+[ 32%] [34m[1mGenerating C++ type support for eProsima Fast-RTPS[0m
+[ 33%] [32m[1mLinking CXX static library libgtest_main.a[0m
+[ 33%] Built target gtest_main
+[ 35%] [32mBuilding CXX object CMakeFiles/antidrone_turret__rosidl_typesupport_c.dir/rosidl_typesupport_c/antidrone_turret/msg/turret_status__type_support.cpp.o[0m
+[ 36%] [32mBuilding CXX object CMakeFiles/antidrone_turret__rosidl_typesupport_c.dir/rosidl_typesupport_c/antidrone_turret/msg/gimbal_command__type_support.cpp.o[0m
+[ 37%] [32mBuilding CXX object CMakeFiles/antidrone_turret__rosidl_typesupport_c.dir/rosidl_typesupport_c/antidrone_turret/msg/target__type_support.cpp.o[0m
+[ 37%] [32mBuilding CXX object CMakeFiles/antidrone_turret__rosidl_typesupport_c.dir/rosidl_typesupport_c/antidrone_turret/srv/trigger_actuator__type_support.cpp.o[0m
+[ 38%] [32mBuilding CXX object CMakeFiles/antidrone_turret__rosidl_typesupport_c.dir/rosidl_typesupport_c/antidrone_turret/msg/servo_command__type_support.cpp.o[0m
+[ 40%] [32mBuilding CXX object CMakeFiles/antidrone_turret__rosidl_typesupport_c.dir/rosidl_typesupport_c/antidrone_turret/msg/actuator_status__type_support.cpp.o[0m
+[ 41%] [32mBuilding CXX object CMakeFiles/antidrone_turret__rosidl_typesupport_cpp.dir/rosidl_typesupport_cpp/antidrone_turret/msg/target__type_support.cpp.o[0m
+[ 44%] [32mBuilding CXX object CMakeFiles/antidrone_turret__rosidl_typesupport_cpp.dir/rosidl_typesupport_cpp/antidrone_turret/msg/actuator_status__type_support.cpp.o[0m
+[ 44%] [32mBuilding CXX object CMakeFiles/antidrone_turret__rosidl_typesupport_cpp.dir/rosidl_typesupport_cpp/antidrone_turret/msg/servo_command__type_support.cpp.o[0m
+[ 44%] [32mBuilding CXX object CMakeFiles/antidrone_turret__rosidl_typesupport_cpp.dir/rosidl_typesupport_cpp/antidrone_turret/msg/gimbal_command__type_support.cpp.o[0m
+[ 45%] [32mBuilding CXX object CMakeFiles/antidrone_turret__rosidl_typesupport_cpp.dir/rosidl_typesupport_cpp/antidrone_turret/srv/trigger_actuator__type_support.cpp.o[0m
+[ 46%] [32mBuilding CXX object CMakeFiles/antidrone_turret__rosidl_typesupport_cpp.dir/rosidl_typesupport_cpp/antidrone_turret/msg/turret_status__type_support.cpp.o[0m
+[ 47%] [32m[1mLinking CXX shared library libantidrone_turret__rosidl_typesupport_c.so[0m
+[ 47%] Built target antidrone_turret__rosidl_typesupport_c
+[ 48%] [32mBuilding CXX object CMakeFiles/antidrone_turret__rosidl_typesupport_introspection_cpp.dir/rosidl_typesupport_introspection_cpp/antidrone_turret/msg/detail/target__type_support.cpp.o[0m
+[ 49%] [32mBuilding CXX object CMakeFiles/antidrone_turret__rosidl_typesupport_introspection_cpp.dir/rosidl_typesupport_introspection_cpp/antidrone_turret/msg/detail/actuator_status__type_support.cpp.o[0m
+[ 50%] [32mBuilding CXX object CMakeFiles/antidrone_turret__rosidl_typesupport_introspection_cpp.dir/rosidl_typesupport_introspection_cpp/antidrone_turret/msg/detail/gimbal_command__type_support.cpp.o[0m
+[ 51%] [32mBuilding CXX object CMakeFiles/antidrone_turret__rosidl_typesupport_introspection_cpp.dir/rosidl_typesupport_introspection_cpp/antidrone_turret/msg/detail/servo_command__type_support.cpp.o[0m
+[ 52%] [32mBuilding CXX object CMakeFiles/antidrone_turret__rosidl_typesupport_introspection_cpp.dir/rosidl_typesupport_introspection_cpp/antidrone_turret/srv/detail/trigger_actuator__type_support.cpp.o[0m
+[ 53%] [32mBuilding CXX object CMakeFiles/antidrone_turret__rosidl_typesupport_introspection_cpp.dir/rosidl_typesupport_introspection_cpp/antidrone_turret/msg/detail/turret_status__type_support.cpp.o[0m
+[ 54%] [32mBuilding C object CMakeFiles/antidrone_turret__rosidl_typesupport_introspection_c.dir/rosidl_typesupport_introspection_c/antidrone_turret/msg/detail/target__type_support.c.o[0m
+[ 55%] [32mBuilding C object CMakeFiles/antidrone_turret__rosidl_typesupport_introspection_c.dir/rosidl_typesupport_introspection_c/antidrone_turret/msg/detail/actuator_status__type_support.c.o[0m
+[ 56%] [32mBuilding C object CMakeFiles/antidrone_turret__rosidl_typesupport_introspection_c.dir/rosidl_typesupport_introspection_c/antidrone_turret/msg/detail/gimbal_command__type_support.c.o[0m
+[ 58%] [32mBuilding CXX object CMakeFiles/antidrone_turret__rosidl_typesupport_fastrtps_c.dir/rosidl_typesupport_fastrtps_c/antidrone_turret/msg/detail/target__type_support_c.cpp.o[0m
+[ 58%] [32mBuilding C object CMakeFiles/antidrone_turret__rosidl_typesupport_introspection_c.dir/rosidl_typesupport_introspection_c/antidrone_turret/msg/detail/servo_command__type_support.c.o[0m
+[ 60%] [32mBuilding C object CMakeFiles/antidrone_turret__rosidl_typesupport_introspection_c.dir/rosidl_typesupport_introspection_c/antidrone_turret/msg/detail/turret_status__type_support.c.o[0m
+[ 61%] [32mBuilding CXX object CMakeFiles/antidrone_turret__rosidl_typesupport_fastrtps_cpp.dir/rosidl_typesupport_fastrtps_cpp/antidrone_turret/msg/detail/dds_fastrtps/target__type_support.cpp.o[0m
+[ 62%] [32mBuilding C object CMakeFiles/antidrone_turret__rosidl_typesupport_introspection_c.dir/rosidl_typesupport_introspection_c/antidrone_turret/srv/detail/trigger_actuator__type_support.c.o[0m
+[ 63%] [32mBuilding CXX object CMakeFiles/antidrone_turret__rosidl_typesupport_fastrtps_c.dir/rosidl_typesupport_fastrtps_c/antidrone_turret/msg/detail/actuator_status__type_support_c.cpp.o[0m
+[ 64%] [32mBuilding CXX object CMakeFiles/antidrone_turret__rosidl_typesupport_fastrtps_c.dir/rosidl_typesupport_fastrtps_c/antidrone_turret/msg/detail/gimbal_command__type_support_c.cpp.o[0m
+[ 65%] [32m[1mLinking C shared library libantidrone_turret__rosidl_typesupport_introspection_c.so[0m
+[ 66%] [32mBuilding CXX object CMakeFiles/antidrone_turret__rosidl_typesupport_fastrtps_c.dir/rosidl_typesupport_fastrtps_c/antidrone_turret/msg/detail/servo_command__type_support_c.cpp.o[0m
+[ 67%] [32mBuilding CXX object CMakeFiles/antidrone_turret__rosidl_typesupport_fastrtps_cpp.dir/rosidl_typesupport_fastrtps_cpp/antidrone_turret/msg/detail/dds_fastrtps/actuator_status__type_support.cpp.o[0m
+[ 67%] Built target antidrone_turret__rosidl_typesupport_introspection_c
+[ 68%] [32mBuilding CXX object CMakeFiles/antidrone_turret__rosidl_typesupport_fastrtps_c.dir/rosidl_typesupport_fastrtps_c/antidrone_turret/msg/detail/turret_status__type_support_c.cpp.o[0m
+[ 69%] [32mBuilding CXX object CMakeFiles/antidrone_turret__rosidl_typesupport_fastrtps_c.dir/rosidl_typesupport_fastrtps_c/antidrone_turret/srv/detail/trigger_actuator__type_support_c.cpp.o[0m
+[ 70%] [32mBuilding CXX object CMakeFiles/antidrone_turret__rosidl_typesupport_fastrtps_cpp.dir/rosidl_typesupport_fastrtps_cpp/antidrone_turret/msg/detail/dds_fastrtps/gimbal_command__type_support.cpp.o[0m
+[ 71%] [32mBuilding CXX object CMakeFiles/antidrone_turret__rosidl_typesupport_fastrtps_cpp.dir/rosidl_typesupport_fastrtps_cpp/antidrone_turret/msg/detail/dds_fastrtps/servo_command__type_support.cpp.o[0m
+[ 72%] [32mBuilding CXX object CMakeFiles/antidrone_turret__rosidl_typesupport_fastrtps_cpp.dir/rosidl_typesupport_fastrtps_cpp/antidrone_turret/msg/detail/dds_fastrtps/turret_status__type_support.cpp.o[0m
+[ 73%] [32mBuilding CXX object CMakeFiles/antidrone_turret__rosidl_typesupport_fastrtps_cpp.dir/rosidl_typesupport_fastrtps_cpp/antidrone_turret/srv/detail/dds_fastrtps/trigger_actuator__type_support.cpp.o[0m
+[ 74%] [32m[1mLinking CXX shared library libantidrone_turret__rosidl_typesupport_cpp.so[0m
+[ 74%] Built target antidrone_turret__rosidl_typesupport_cpp
+[ 75%] [32mBuilding CXX object CMakeFiles/target_track_publisher_node.dir/src/target_track_publisher_node.cpp.o[0m
+[ 76%] [32mBuilding CXX object CMakeFiles/actuator_node.dir/src/actuator_node.cpp.o[0m
+[ 77%] [32m[1mLinking CXX shared library libantidrone_turret__rosidl_typesupport_introspection_cpp.so[0m
+[ 77%] Built target antidrone_turret__rosidl_typesupport_introspection_cpp
+[ 78%] [32m[1mLinking CXX shared library libantidrone_turret__rosidl_typesupport_fastrtps_c.so[0m
+[ 78%] Built target antidrone_turret__rosidl_typesupport_fastrtps_c
+[ 80%] [32m[1mLinking CXX shared library libantidrone_turret__rosidl_typesupport_fastrtps_cpp.so[0m
+[ 80%] Built target antidrone_turret__rosidl_typesupport_fastrtps_cpp
+[ 80%] Built target antidrone_turret
+[ 81%] [34m[1mGenerating Python code for ROS interfaces[0m
+[ 81%] Built target antidrone_turret__py
+[ 82%] [32mBuilding C object CMakeFiles/antidrone_turret__rosidl_generator_py.dir/rosidl_generator_py/antidrone_turret/msg/_gimbal_command_s.c.o[0m
+[ 83%] [32mBuilding C object CMakeFiles/antidrone_turret__rosidl_generator_py.dir/rosidl_generator_py/antidrone_turret/msg/_target_s.c.o[0m
+[ 85%] [32mBuilding C object CMakeFiles/antidrone_turret__rosidl_generator_py.dir/rosidl_generator_py/antidrone_turret/msg/_actuator_status_s.c.o[0m
+[ 85%] [32mBuilding C object CMakeFiles/antidrone_turret__rosidl_generator_py.dir/rosidl_generator_py/antidrone_turret/msg/_turret_status_s.c.o[0m
+[ 87%] [32mBuilding C object CMakeFiles/antidrone_turret__rosidl_generator_py.dir/rosidl_generator_py/antidrone_turret/srv/_trigger_actuator_s.c.o[0m
+[ 87%] [32mBuilding C object CMakeFiles/antidrone_turret__rosidl_generator_py.dir/rosidl_generator_py/antidrone_turret/msg/_servo_command_s.c.o[0m
+[ 88%] [32m[1mLinking C shared library libantidrone_turret__rosidl_generator_py.so[0m
+[ 88%] Built target antidrone_turret__rosidl_generator_py
+[ 89%] [32mBuilding C object CMakeFiles/antidrone_turret_s__rosidl_typesupport_fastrtps_c.dir/rosidl_generator_py/antidrone_turret/_antidrone_turret_s.ep.rosidl_typesupport_fastrtps_c.c.o[0m
+[ 90%] [32mBuilding C object CMakeFiles/antidrone_turret_s__rosidl_typesupport_c.dir/rosidl_generator_py/antidrone_turret/_antidrone_turret_s.ep.rosidl_typesupport_c.c.o[0m
+[ 91%] [32mBuilding C object CMakeFiles/antidrone_turret_s__rosidl_typesupport_introspection_c.dir/rosidl_generator_py/antidrone_turret/_antidrone_turret_s.ep.rosidl_typesupport_introspection_c.c.o[0m
+[ 92%] [32m[1mLinking C shared module rosidl_generator_py/antidrone_turret/antidrone_turret_s__rosidl_typesupport_introspection_c.so[0m
+[ 93%] [32m[1mLinking C shared module rosidl_generator_py/antidrone_turret/antidrone_turret_s__rosidl_typesupport_fastrtps_c.so[0m
+[ 94%] [32m[1mLinking C shared module rosidl_generator_py/antidrone_turret/antidrone_turret_s__rosidl_typesupport_c.so[0m
+[ 94%] Built target antidrone_turret_s__rosidl_typesupport_introspection_c
+[ 94%] Built target antidrone_turret_s__rosidl_typesupport_fastrtps_c
+[ 94%] Built target antidrone_turret_s__rosidl_typesupport_c
+[ 95%] [32m[1mLinking CXX static library libgtest.a[0m
+[ 95%] Built target gtest
+[ 96%] [32mBuilding CXX object CMakeFiles/provided_logic_test.dir/test/provided_logic_test.cpp.o[0m
+[ 97%] [32m[1mLinking CXX executable provided_logic_test[0m
+[ 97%] Built target provided_logic_test
+[ 98%] [32m[1mLinking CXX executable actuator_node[0m
+[ 98%] Built target actuator_node
+[100%] [32m[1mLinking CXX executable target_track_publisher_node[0m
+[100%] Built target target_track_publisher_node
+-- Install configuration: ""
+-- Execute custom install script
+-- Symlinking: /home/bmarkiv/CPPMILITARY/homework_13/robot_ws/install/antidrone_turret/share/ament_index/resource_index/rosidl_interfaces/antidrone_turret
+-- Symlinking: /home/bmarkiv/CPPMILITARY/homework_13/robot_ws/install/antidrone_turret/share/antidrone_turret/msg/Target.json
+-- Symlinking: /home/bmarkiv/CPPMILITARY/homework_13/robot_ws/install/antidrone_turret/share/antidrone_turret/msg/ActuatorStatus.json
+-- Symlinking: /home/bmarkiv/CPPMILITARY/homework_13/robot_ws/install/antidrone_turret/share/antidrone_turret/msg/GimbalCommand.json
+-- Symlinking: /home/bmarkiv/CPPMILITARY/homework_13/robot_ws/install/antidrone_turret/share/antidrone_turret/msg/ServoCommand.json
+-- Symlinking: /home/bmarkiv/CPPMILITARY/homework_13/robot_ws/install/antidrone_turret/share/antidrone_turret/msg/TurretStatus.json
+-- Symlinking: /home/bmarkiv/CPPMILITARY/homework_13/robot_ws/install/antidrone_turret/share/antidrone_turret/srv/TriggerActuator.json
+-- Symlinking: /home/bmarkiv/CPPMILITARY/homework_13/robot_ws/install/antidrone_turret/include/antidrone_turret/antidrone_turret/msg/actuator_status.h
+-- Symlinking: /home/bmarkiv/CPPMILITARY/homework_13/robot_ws/install/antidrone_turret/include/antidrone_turret/antidrone_turret/msg/detail/actuator_status__functions.h
+-- Symlinking: /home/bmarkiv/CPPMILITARY/homework_13/robot_ws/install/antidrone_turret/include/antidrone_turret/antidrone_turret/msg/detail/actuator_status__struct.h
+-- Symlinking: /home/bmarkiv/CPPMILITARY/homework_13/robot_ws/install/antidrone_turret/include/antidrone_turret/antidrone_turret/msg/detail/actuator_status__type_support.h
+-- Symlinking: /home/bmarkiv/CPPMILITARY/homework_13/robot_ws/install/antidrone_turret/include/antidrone_turret/antidrone_turret/msg/detail/gimbal_command__functions.h
+-- Symlinking: /home/bmarkiv/CPPMILITARY/homework_13/robot_ws/install/antidrone_turret/include/antidrone_turret/antidrone_turret/msg/detail/gimbal_command__struct.h
+-- Symlinking: /home/bmarkiv/CPPMILITARY/homework_13/robot_ws/install/antidrone_turret/include/antidrone_turret/antidrone_turret/msg/detail/gimbal_command__type_support.h
+-- Symlinking: /home/bmarkiv/CPPMILITARY/homework_13/robot_ws/install/antidrone_turret/include/antidrone_turret/antidrone_turret/msg/detail/servo_command__functions.h
+-- Symlinking: /home/bmarkiv/CPPMILITARY/homework_13/robot_ws/install/antidrone_turret/include/antidrone_turret/antidrone_turret/msg/detail/servo_command__struct.h
+-- Symlinking: /home/bmarkiv/CPPMILITARY/homework_13/robot_ws/install/antidrone_turret/include/antidrone_turret/antidrone_turret/msg/detail/servo_command__type_support.h
+-- Symlinking: /home/bmarkiv/CPPMILITARY/homework_13/robot_ws/install/antidrone_turret/include/antidrone_turret/antidrone_turret/msg/detail/target__functions.h
+-- Symlinking: /home/bmarkiv/CPPMILITARY/homework_13/robot_ws/install/antidrone_turret/include/antidrone_turret/antidrone_turret/msg/detail/target__struct.h
+-- Symlinking: /home/bmarkiv/CPPMILITARY/homework_13/robot_ws/install/antidrone_turret/include/antidrone_turret/antidrone_turret/msg/detail/target__type_support.h
+-- Symlinking: /home/bmarkiv/CPPMILITARY/homework_13/robot_ws/install/antidrone_turret/include/antidrone_turret/antidrone_turret/msg/detail/turret_status__functions.h
+-- Symlinking: /home/bmarkiv/CPPMILITARY/homework_13/robot_ws/install/antidrone_turret/include/antidrone_turret/antidrone_turret/msg/detail/turret_status__struct.h
+-- Symlinking: /home/bmarkiv/CPPMILITARY/homework_13/robot_ws/install/antidrone_turret/include/antidrone_turret/antidrone_turret/msg/detail/turret_status__type_support.h
+-- Symlinking: /home/bmarkiv/CPPMILITARY/homework_13/robot_ws/install/antidrone_turret/include/antidrone_turret/antidrone_turret/msg/gimbal_command.h
+-- Symlinking: /home/bmarkiv/CPPMILITARY/homework_13/robot_ws/install/antidrone_turret/include/antidrone_turret/antidrone_turret/msg/rosidl_generator_c__visibility_control.h
+-- Symlinking: /home/bmarkiv/CPPMILITARY/homework_13/robot_ws/install/antidrone_turret/include/antidrone_turret/antidrone_turret/msg/servo_command.h
+-- Symlinking: /home/bmarkiv/CPPMILITARY/homework_13/robot_ws/install/antidrone_turret/include/antidrone_turret/antidrone_turret/msg/target.h
+-- Symlinking: /home/bmarkiv/CPPMILITARY/homework_13/robot_ws/install/antidrone_turret/include/antidrone_turret/antidrone_turret/msg/turret_status.h
+-- Symlinking: /home/bmarkiv/CPPMILITARY/homework_13/robot_ws/install/antidrone_turret/include/antidrone_turret/antidrone_turret/srv/detail/trigger_actuator__functions.h
+-- Symlinking: /home/bmarkiv/CPPMILITARY/homework_13/robot_ws/install/antidrone_turret/include/antidrone_turret/antidrone_turret/srv/detail/trigger_actuator__struct.h
+-- Symlinking: /home/bmarkiv/CPPMILITARY/homework_13/robot_ws/install/antidrone_turret/include/antidrone_turret/antidrone_turret/srv/detail/trigger_actuator__type_support.h
+-- Symlinking: /home/bmarkiv/CPPMILITARY/homework_13/robot_ws/install/antidrone_turret/include/antidrone_turret/antidrone_turret/srv/trigger_actuator.h
+-- Symlinking: /home/bmarkiv/CPPMILITARY/homework_13/robot_ws/install/antidrone_turret/share/antidrone_turret/environment/library_path.sh
+-- Symlinking: /home/bmarkiv/CPPMILITARY/homework_13/robot_ws/install/antidrone_turret/share/antidrone_turret/environment/library_path.dsv
+-- Symlinking: /home/bmarkiv/CPPMILITARY/homework_13/robot_ws/install/antidrone_turret/include/antidrone_turret/antidrone_turret/msg/detail/actuator_status__rosidl_typesupport_fastrtps_c.h
+-- Symlinking: /home/bmarkiv/CPPMILITARY/homework_13/robot_ws/install/antidrone_turret/include/antidrone_turret/antidrone_turret/msg/detail/gimbal_command__rosidl_typesupport_fastrtps_c.h
+-- Symlinking: /home/bmarkiv/CPPMILITARY/homework_13/robot_ws/install/antidrone_turret/include/antidrone_turret/antidrone_turret/msg/detail/servo_command__rosidl_typesupport_fastrtps_c.h
+-- Symlinking: /home/bmarkiv/CPPMILITARY/homework_13/robot_ws/install/antidrone_turret/include/antidrone_turret/antidrone_turret/msg/detail/target__rosidl_typesupport_fastrtps_c.h
+-- Symlinking: /home/bmarkiv/CPPMILITARY/homework_13/robot_ws/install/antidrone_turret/include/antidrone_turret/antidrone_turret/msg/detail/turret_status__rosidl_typesupport_fastrtps_c.h
+-- Symlinking: /home/bmarkiv/CPPMILITARY/homework_13/robot_ws/install/antidrone_turret/include/antidrone_turret/antidrone_turret/msg/rosidl_typesupport_fastrtps_c__visibility_control.h
+-- Symlinking: /home/bmarkiv/CPPMILITARY/homework_13/robot_ws/install/antidrone_turret/include/antidrone_turret/antidrone_turret/srv/detail/trigger_actuator__rosidl_typesupport_fastrtps_c.h
+-- Symlinking: /home/bmarkiv/CPPMILITARY/homework_13/robot_ws/install/antidrone_turret/include/antidrone_turret/antidrone_turret/msg/detail/actuator_status__rosidl_typesupport_introspection_c.h
+-- Symlinking: /home/bmarkiv/CPPMILITARY/homework_13/robot_ws/install/antidrone_turret/include/antidrone_turret/antidrone_turret/msg/detail/gimbal_command__rosidl_typesupport_introspection_c.h
+-- Symlinking: /home/bmarkiv/CPPMILITARY/homework_13/robot_ws/install/antidrone_turret/include/antidrone_turret/antidrone_turret/msg/detail/servo_command__rosidl_typesupport_introspection_c.h
+-- Symlinking: /home/bmarkiv/CPPMILITARY/homework_13/robot_ws/install/antidrone_turret/include/antidrone_turret/antidrone_turret/msg/detail/target__rosidl_typesupport_introspection_c.h
+-- Symlinking: /home/bmarkiv/CPPMILITARY/homework_13/robot_ws/install/antidrone_turret/include/antidrone_turret/antidrone_turret/msg/detail/turret_status__rosidl_typesupport_introspection_c.h
+-- Symlinking: /home/bmarkiv/CPPMILITARY/homework_13/robot_ws/install/antidrone_turret/include/antidrone_turret/antidrone_turret/msg/rosidl_typesupport_introspection_c__visibility_control.h
+-- Symlinking: /home/bmarkiv/CPPMILITARY/homework_13/robot_ws/install/antidrone_turret/include/antidrone_turret/antidrone_turret/srv/detail/trigger_actuator__rosidl_typesupport_introspection_c.h
+-- Symlinking: /home/bmarkiv/CPPMILITARY/homework_13/robot_ws/install/antidrone_turret/include/antidrone_turret/antidrone_turret/msg/actuator_status.hpp
+-- Symlinking: /home/bmarkiv/CPPMILITARY/homework_13/robot_ws/install/antidrone_turret/include/antidrone_turret/antidrone_turret/msg/detail/actuator_status__builder.hpp
+-- Symlinking: /home/bmarkiv/CPPMILITARY/homework_13/robot_ws/install/antidrone_turret/include/antidrone_turret/antidrone_turret/msg/detail/actuator_status__struct.hpp
+-- Symlinking: /home/bmarkiv/CPPMILITARY/homework_13/robot_ws/install/antidrone_turret/include/antidrone_turret/antidrone_turret/msg/detail/actuator_status__traits.hpp
+-- Symlinking: /home/bmarkiv/CPPMILITARY/homework_13/robot_ws/install/antidrone_turret/include/antidrone_turret/antidrone_turret/msg/detail/actuator_status__type_support.hpp
+-- Symlinking: /home/bmarkiv/CPPMILITARY/homework_13/robot_ws/install/antidrone_turret/include/antidrone_turret/antidrone_turret/msg/detail/gimbal_command__builder.hpp
+-- Symlinking: /home/bmarkiv/CPPMILITARY/homework_13/robot_ws/install/antidrone_turret/include/antidrone_turret/antidrone_turret/msg/detail/gimbal_command__struct.hpp
+-- Symlinking: /home/bmarkiv/CPPMILITARY/homework_13/robot_ws/install/antidrone_turret/include/antidrone_turret/antidrone_turret/msg/detail/gimbal_command__traits.hpp
+-- Symlinking: /home/bmarkiv/CPPMILITARY/homework_13/robot_ws/install/antidrone_turret/include/antidrone_turret/antidrone_turret/msg/detail/gimbal_command__type_support.hpp
+-- Symlinking: /home/bmarkiv/CPPMILITARY/homework_13/robot_ws/install/antidrone_turret/include/antidrone_turret/antidrone_turret/msg/detail/servo_command__builder.hpp
+-- Symlinking: /home/bmarkiv/CPPMILITARY/homework_13/robot_ws/install/antidrone_turret/include/antidrone_turret/antidrone_turret/msg/detail/servo_command__struct.hpp
+-- Symlinking: /home/bmarkiv/CPPMILITARY/homework_13/robot_ws/install/antidrone_turret/include/antidrone_turret/antidrone_turret/msg/detail/servo_command__traits.hpp
+-- Symlinking: /home/bmarkiv/CPPMILITARY/homework_13/robot_ws/install/antidrone_turret/include/antidrone_turret/antidrone_turret/msg/detail/servo_command__type_support.hpp
+-- Symlinking: /home/bmarkiv/CPPMILITARY/homework_13/robot_ws/install/antidrone_turret/include/antidrone_turret/antidrone_turret/msg/detail/target__builder.hpp
+-- Symlinking: /home/bmarkiv/CPPMILITARY/homework_13/robot_ws/install/antidrone_turret/include/antidrone_turret/antidrone_turret/msg/detail/target__struct.hpp
+-- Symlinking: /home/bmarkiv/CPPMILITARY/homework_13/robot_ws/install/antidrone_turret/include/antidrone_turret/antidrone_turret/msg/detail/target__traits.hpp
+-- Symlinking: /home/bmarkiv/CPPMILITARY/homework_13/robot_ws/install/antidrone_turret/include/antidrone_turret/antidrone_turret/msg/detail/target__type_support.hpp
+-- Symlinking: /home/bmarkiv/CPPMILITARY/homework_13/robot_ws/install/antidrone_turret/include/antidrone_turret/antidrone_turret/msg/detail/turret_status__builder.hpp
+-- Symlinking: /home/bmarkiv/CPPMILITARY/homework_13/robot_ws/install/antidrone_turret/include/antidrone_turret/antidrone_turret/msg/detail/turret_status__struct.hpp
+-- Symlinking: /home/bmarkiv/CPPMILITARY/homework_13/robot_ws/install/antidrone_turret/include/antidrone_turret/antidrone_turret/msg/detail/turret_status__traits.hpp
+-- Symlinking: /home/bmarkiv/CPPMILITARY/homework_13/robot_ws/install/antidrone_turret/include/antidrone_turret/antidrone_turret/msg/detail/turret_status__type_support.hpp
+-- Symlinking: /home/bmarkiv/CPPMILITARY/homework_13/robot_ws/install/antidrone_turret/include/antidrone_turret/antidrone_turret/msg/gimbal_command.hpp
+-- Symlinking: /home/bmarkiv/CPPMILITARY/homework_13/robot_ws/install/antidrone_turret/include/antidrone_turret/antidrone_turret/msg/rosidl_generator_cpp__visibility_control.hpp
+-- Symlinking: /home/bmarkiv/CPPMILITARY/homework_13/robot_ws/install/antidrone_turret/include/antidrone_turret/antidrone_turret/msg/servo_command.hpp
+-- Symlinking: /home/bmarkiv/CPPMILITARY/homework_13/robot_ws/install/antidrone_turret/include/antidrone_turret/antidrone_turret/msg/target.hpp
+-- Symlinking: /home/bmarkiv/CPPMILITARY/homework_13/robot_ws/install/antidrone_turret/include/antidrone_turret/antidrone_turret/msg/turret_status.hpp
+-- Symlinking: /home/bmarkiv/CPPMILITARY/homework_13/robot_ws/install/antidrone_turret/include/antidrone_turret/antidrone_turret/srv/detail/trigger_actuator__builder.hpp
+-- Symlinking: /home/bmarkiv/CPPMILITARY/homework_13/robot_ws/install/antidrone_turret/include/antidrone_turret/antidrone_turret/srv/detail/trigger_actuator__struct.hpp
+-- Symlinking: /home/bmarkiv/CPPMILITARY/homework_13/robot_ws/install/antidrone_turret/include/antidrone_turret/antidrone_turret/srv/detail/trigger_actuator__traits.hpp
+-- Symlinking: /home/bmarkiv/CPPMILITARY/homework_13/robot_ws/install/antidrone_turret/include/antidrone_turret/antidrone_turret/srv/detail/trigger_actuator__type_support.hpp
+-- Symlinking: /home/bmarkiv/CPPMILITARY/homework_13/robot_ws/install/antidrone_turret/include/antidrone_turret/antidrone_turret/srv/trigger_actuator.hpp
+-- Symlinking: /home/bmarkiv/CPPMILITARY/homework_13/robot_ws/install/antidrone_turret/include/antidrone_turret/antidrone_turret/msg/detail/actuator_status__rosidl_typesupport_fastrtps_cpp.hpp
+-- Symlinking: /home/bmarkiv/CPPMILITARY/homework_13/robot_ws/install/antidrone_turret/include/antidrone_turret/antidrone_turret/msg/detail/gimbal_command__rosidl_typesupport_fastrtps_cpp.hpp
+-- Symlinking: /home/bmarkiv/CPPMILITARY/homework_13/robot_ws/install/antidrone_turret/include/antidrone_turret/antidrone_turret/msg/detail/servo_command__rosidl_typesupport_fastrtps_cpp.hpp
+-- Symlinking: /home/bmarkiv/CPPMILITARY/homework_13/robot_ws/install/antidrone_turret/include/antidrone_turret/antidrone_turret/msg/detail/target__rosidl_typesupport_fastrtps_cpp.hpp
+-- Symlinking: /home/bmarkiv/CPPMILITARY/homework_13/robot_ws/install/antidrone_turret/include/antidrone_turret/antidrone_turret/msg/detail/turret_status__rosidl_typesupport_fastrtps_cpp.hpp
+-- Symlinking: /home/bmarkiv/CPPMILITARY/homework_13/robot_ws/install/antidrone_turret/include/antidrone_turret/antidrone_turret/msg/rosidl_typesupport_fastrtps_cpp__visibility_control.h
+-- Symlinking: /home/bmarkiv/CPPMILITARY/homework_13/robot_ws/install/antidrone_turret/include/antidrone_turret/antidrone_turret/srv/detail/trigger_actuator__rosidl_typesupport_fastrtps_cpp.hpp
+-- Symlinking: /home/bmarkiv/CPPMILITARY/homework_13/robot_ws/install/antidrone_turret/include/antidrone_turret/antidrone_turret/msg/detail/actuator_status__rosidl_typesupport_introspection_cpp.hpp
+-- Symlinking: /home/bmarkiv/CPPMILITARY/homework_13/robot_ws/install/antidrone_turret/include/antidrone_turret/antidrone_turret/msg/detail/gimbal_command__rosidl_typesupport_introspection_cpp.hpp
+-- Symlinking: /home/bmarkiv/CPPMILITARY/homework_13/robot_ws/install/antidrone_turret/include/antidrone_turret/antidrone_turret/msg/detail/servo_command__rosidl_typesupport_introspection_cpp.hpp
+-- Symlinking: /home/bmarkiv/CPPMILITARY/homework_13/robot_ws/install/antidrone_turret/include/antidrone_turret/antidrone_turret/msg/detail/target__rosidl_typesupport_introspection_cpp.hpp
+-- Symlinking: /home/bmarkiv/CPPMILITARY/homework_13/robot_ws/install/antidrone_turret/include/antidrone_turret/antidrone_turret/msg/detail/turret_status__rosidl_typesupport_introspection_cpp.hpp
+-- Symlinking: /home/bmarkiv/CPPMILITARY/homework_13/robot_ws/install/antidrone_turret/include/antidrone_turret/antidrone_turret/srv/detail/trigger_actuator__rosidl_typesupport_introspection_cpp.hpp
+-- Symlinking: /home/bmarkiv/CPPMILITARY/homework_13/robot_ws/install/antidrone_turret/share/antidrone_turret/environment/pythonpath.sh
+-- Symlinking: /home/bmarkiv/CPPMILITARY/homework_13/robot_ws/install/antidrone_turret/share/antidrone_turret/environment/pythonpath.dsv
+-- Symlinking: /home/bmarkiv/CPPMILITARY/homework_13/robot_ws/install/antidrone_turret/lib/python3.12/site-packages/antidrone_turret-0.1.0-py3.12.egg-info/PKG-INFO
+-- Symlinking: /home/bmarkiv/CPPMILITARY/homework_13/robot_ws/install/antidrone_turret/lib/python3.12/site-packages/antidrone_turret-0.1.0-py3.12.egg-info/SOURCES.txt
+-- Symlinking: /home/bmarkiv/CPPMILITARY/homework_13/robot_ws/install/antidrone_turret/lib/python3.12/site-packages/antidrone_turret-0.1.0-py3.12.egg-info/dependency_links.txt
+-- Symlinking: /home/bmarkiv/CPPMILITARY/homework_13/robot_ws/install/antidrone_turret/lib/python3.12/site-packages/antidrone_turret-0.1.0-py3.12.egg-info/top_level.txt
+-- Symlinking: /home/bmarkiv/CPPMILITARY/homework_13/robot_ws/install/antidrone_turret/lib/python3.12/site-packages/antidrone_turret/__init__.py
+-- Symlinking: /home/bmarkiv/CPPMILITARY/homework_13/robot_ws/install/antidrone_turret/lib/python3.12/site-packages/antidrone_turret/_antidrone_turret_s.ep.rosidl_typesupport_c.c
+-- Symlinking: /home/bmarkiv/CPPMILITARY/homework_13/robot_ws/install/antidrone_turret/lib/python3.12/site-packages/antidrone_turret/_antidrone_turret_s.ep.rosidl_typesupport_fastrtps_c.c
+-- Symlinking: /home/bmarkiv/CPPMILITARY/homework_13/robot_ws/install/antidrone_turret/lib/python3.12/site-packages/antidrone_turret/_antidrone_turret_s.ep.rosidl_typesupport_introspection_c.c
+-- Symlinking: /home/bmarkiv/CPPMILITARY/homework_13/robot_ws/install/antidrone_turret/lib/python3.12/site-packages/antidrone_turret/antidrone_turret_s__rosidl_typesupport_c.so
+-- Symlinking: /home/bmarkiv/CPPMILITARY/homework_13/robot_ws/install/antidrone_turret/lib/python3.12/site-packages/antidrone_turret/antidrone_turret_s__rosidl_typesupport_fastrtps_c.so
+-- Symlinking: /home/bmarkiv/CPPMILITARY/homework_13/robot_ws/install/antidrone_turret/lib/python3.12/site-packages/antidrone_turret/antidrone_turret_s__rosidl_typesupport_introspection_c.so
+-- Symlinking: /home/bmarkiv/CPPMILITARY/homework_13/robot_ws/install/antidrone_turret/lib/python3.12/site-packages/antidrone_turret/msg/__init__.py
+-- Symlinking: /home/bmarkiv/CPPMILITARY/homework_13/robot_ws/install/antidrone_turret/lib/python3.12/site-packages/antidrone_turret/msg/_actuator_status.py
+-- Symlinking: /home/bmarkiv/CPPMILITARY/homework_13/robot_ws/install/antidrone_turret/lib/python3.12/site-packages/antidrone_turret/msg/_actuator_status_s.c
+-- Symlinking: /home/bmarkiv/CPPMILITARY/homework_13/robot_ws/install/antidrone_turret/lib/python3.12/site-packages/antidrone_turret/msg/_gimbal_command.py
+-- Symlinking: /home/bmarkiv/CPPMILITARY/homework_13/robot_ws/install/antidrone_turret/lib/python3.12/site-packages/antidrone_turret/msg/_gimbal_command_s.c
+-- Symlinking: /home/bmarkiv/CPPMILITARY/homework_13/robot_ws/install/antidrone_turret/lib/python3.12/site-packages/antidrone_turret/msg/_servo_command.py
+-- Symlinking: /home/bmarkiv/CPPMILITARY/homework_13/robot_ws/install/antidrone_turret/lib/python3.12/site-packages/antidrone_turret/msg/_servo_command_s.c
+-- Symlinking: /home/bmarkiv/CPPMILITARY/homework_13/robot_ws/install/antidrone_turret/lib/python3.12/site-packages/antidrone_turret/msg/_target.py
+-- Symlinking: /home/bmarkiv/CPPMILITARY/homework_13/robot_ws/install/antidrone_turret/lib/python3.12/site-packages/antidrone_turret/msg/_target_s.c
+-- Symlinking: /home/bmarkiv/CPPMILITARY/homework_13/robot_ws/install/antidrone_turret/lib/python3.12/site-packages/antidrone_turret/msg/_turret_status.py
+-- Symlinking: /home/bmarkiv/CPPMILITARY/homework_13/robot_ws/install/antidrone_turret/lib/python3.12/site-packages/antidrone_turret/msg/_turret_status_s.c
+-- Symlinking: /home/bmarkiv/CPPMILITARY/homework_13/robot_ws/install/antidrone_turret/lib/python3.12/site-packages/antidrone_turret/srv/__init__.py
+-- Symlinking: /home/bmarkiv/CPPMILITARY/homework_13/robot_ws/install/antidrone_turret/lib/python3.12/site-packages/antidrone_turret/srv/_trigger_actuator.py
+-- Symlinking: /home/bmarkiv/CPPMILITARY/homework_13/robot_ws/install/antidrone_turret/lib/python3.12/site-packages/antidrone_turret/srv/_trigger_actuator_s.c
+-- Up-to-date symlink: /home/bmarkiv/CPPMILITARY/homework_13/robot_ws/install/antidrone_turret/lib/python3.12/site-packages/antidrone_turret/antidrone_turret_s__rosidl_typesupport_fastrtps_c.so
+-- Up-to-date symlink: /home/bmarkiv/CPPMILITARY/homework_13/robot_ws/install/antidrone_turret/lib/python3.12/site-packages/antidrone_turret/antidrone_turret_s__rosidl_typesupport_introspection_c.so
+-- Up-to-date symlink: /home/bmarkiv/CPPMILITARY/homework_13/robot_ws/install/antidrone_turret/lib/python3.12/site-packages/antidrone_turret/antidrone_turret_s__rosidl_typesupport_c.so
+-- Symlinking: /home/bmarkiv/CPPMILITARY/homework_13/robot_ws/install/antidrone_turret/share/ament_index/resource_index/rust_packages/antidrone_turret
+-- Symlinking: /home/bmarkiv/CPPMILITARY/homework_13/robot_ws/install/antidrone_turret/share/antidrone_turret/rust/Cargo.toml
+-- Symlinking: /home/bmarkiv/CPPMILITARY/homework_13/robot_ws/install/antidrone_turret/share/antidrone_turret/rust/build.rs
+-- Symlinking: /home/bmarkiv/CPPMILITARY/homework_13/robot_ws/install/antidrone_turret/share/antidrone_turret/rust/src/lib.rs
+-- Symlinking: /home/bmarkiv/CPPMILITARY/homework_13/robot_ws/install/antidrone_turret/share/antidrone_turret/rust/src/msg.rs
+-- Symlinking: /home/bmarkiv/CPPMILITARY/homework_13/robot_ws/install/antidrone_turret/share/antidrone_turret/rust/src/msg/rmw.rs
+-- Symlinking: /home/bmarkiv/CPPMILITARY/homework_13/robot_ws/install/antidrone_turret/share/antidrone_turret/rust/src/srv.rs
+-- Symlinking: /home/bmarkiv/CPPMILITARY/homework_13/robot_ws/install/antidrone_turret/share/antidrone_turret/rust/src/srv/rmw.rs
+-- Symlinking: /home/bmarkiv/CPPMILITARY/homework_13/robot_ws/install/antidrone_turret/share/antidrone_turret/msg/Target.idl
+-- Symlinking: /home/bmarkiv/CPPMILITARY/homework_13/robot_ws/install/antidrone_turret/share/antidrone_turret/msg/ActuatorStatus.idl
+-- Symlinking: /home/bmarkiv/CPPMILITARY/homework_13/robot_ws/install/antidrone_turret/share/antidrone_turret/msg/GimbalCommand.idl
+-- Symlinking: /home/bmarkiv/CPPMILITARY/homework_13/robot_ws/install/antidrone_turret/share/antidrone_turret/msg/ServoCommand.idl
+-- Symlinking: /home/bmarkiv/CPPMILITARY/homework_13/robot_ws/install/antidrone_turret/share/antidrone_turret/msg/TurretStatus.idl
+-- Symlinking: /home/bmarkiv/CPPMILITARY/homework_13/robot_ws/install/antidrone_turret/share/antidrone_turret/srv/TriggerActuator.idl
+-- Symlinking: /home/bmarkiv/CPPMILITARY/homework_13/robot_ws/install/antidrone_turret/share/antidrone_turret/msg/Target.msg
+-- Symlinking: /home/bmarkiv/CPPMILITARY/homework_13/robot_ws/install/antidrone_turret/share/antidrone_turret/msg/ActuatorStatus.msg
+-- Symlinking: /home/bmarkiv/CPPMILITARY/homework_13/robot_ws/install/antidrone_turret/share/antidrone_turret/msg/GimbalCommand.msg
+-- Symlinking: /home/bmarkiv/CPPMILITARY/homework_13/robot_ws/install/antidrone_turret/share/antidrone_turret/msg/ServoCommand.msg
+-- Symlinking: /home/bmarkiv/CPPMILITARY/homework_13/robot_ws/install/antidrone_turret/share/antidrone_turret/msg/TurretStatus.msg
+-- Symlinking: /home/bmarkiv/CPPMILITARY/homework_13/robot_ws/install/antidrone_turret/share/antidrone_turret/srv/TriggerActuator.srv
+-- Symlinking: /home/bmarkiv/CPPMILITARY/homework_13/robot_ws/install/antidrone_turret/include/antidrone_turret/antidrone_turret/actuator_model.hpp
+-- Symlinking: /home/bmarkiv/CPPMILITARY/homework_13/robot_ws/install/antidrone_turret/include/antidrone_turret/antidrone_turret/target_sequence.hpp
+-- Symlinking: /home/bmarkiv/CPPMILITARY/homework_13/robot_ws/install/antidrone_turret/include/antidrone_turret/antidrone_turret/target_track_loader.hpp
+-- Symlinking: /home/bmarkiv/CPPMILITARY/homework_13/robot_ws/install/antidrone_turret/include/antidrone_turret/antidrone_turret/target_track_simulation.hpp
+-- Symlinking: /home/bmarkiv/CPPMILITARY/homework_13/robot_ws/install/antidrone_turret/lib/antidrone_turret/target_track_publisher_node
+-- Symlinking: /home/bmarkiv/CPPMILITARY/homework_13/robot_ws/install/antidrone_turret/lib/antidrone_turret/actuator_node
+-- Symlinking: /home/bmarkiv/CPPMILITARY/homework_13/robot_ws/install/antidrone_turret/share/antidrone_turret/launch/system.launch.py
+-- Symlinking: /home/bmarkiv/CPPMILITARY/homework_13/robot_ws/install/antidrone_turret/share/antidrone_turret/config/sequence.yaml
+-- Symlinking: /home/bmarkiv/CPPMILITARY/homework_13/robot_ws/install/antidrone_turret/share/antidrone_turret/tracks/approach_trigger.csv
+-- Symlinking: /home/bmarkiv/CPPMILITARY/homework_13/robot_ws/install/antidrone_turret/share/antidrone_turret/tracks/far_flyby_no_trigger.csv
+-- Symlinking: /home/bmarkiv/CPPMILITARY/homework_13/robot_ws/install/antidrone_turret/share/antidrone_turret/tracks/low_confidence_no_trigger.csv
+-- Symlinking: /home/bmarkiv/CPPMILITARY/homework_13/robot_ws/install/antidrone_turret/share/antidrone_turret/tracks/reload_pressure.csv
+-- Symlinking: /home/bmarkiv/CPPMILITARY/homework_13/robot_ws/install/antidrone_turret/share/ament_index/resource_index/package_run_dependencies/antidrone_turret
+-- Symlinking: /home/bmarkiv/CPPMILITARY/homework_13/robot_ws/install/antidrone_turret/share/ament_index/resource_index/parent_prefix_path/antidrone_turret
+-- Symlinking: /home/bmarkiv/CPPMILITARY/homework_13/robot_ws/install/antidrone_turret/share/antidrone_turret/environment/ament_prefix_path.sh
+-- Symlinking: /home/bmarkiv/CPPMILITARY/homework_13/robot_ws/install/antidrone_turret/share/antidrone_turret/environment/ament_prefix_path.dsv
+-- Symlinking: /home/bmarkiv/CPPMILITARY/homework_13/robot_ws/install/antidrone_turret/share/antidrone_turret/environment/path.sh
+-- Symlinking: /home/bmarkiv/CPPMILITARY/homework_13/robot_ws/install/antidrone_turret/share/antidrone_turret/environment/path.dsv
+-- Symlinking: /home/bmarkiv/CPPMILITARY/homework_13/robot_ws/install/antidrone_turret/share/antidrone_turret/local_setup.bash
+-- Symlinking: /home/bmarkiv/CPPMILITARY/homework_13/robot_ws/install/antidrone_turret/share/antidrone_turret/local_setup.sh
+-- Symlinking: /home/bmarkiv/CPPMILITARY/homework_13/robot_ws/install/antidrone_turret/share/antidrone_turret/local_setup.zsh
+-- Symlinking: /home/bmarkiv/CPPMILITARY/homework_13/robot_ws/install/antidrone_turret/share/antidrone_turret/local_setup.dsv
+-- Symlinking: /home/bmarkiv/CPPMILITARY/homework_13/robot_ws/install/antidrone_turret/share/antidrone_turret/package.dsv
+-- Symlinking: /home/bmarkiv/CPPMILITARY/homework_13/robot_ws/install/antidrone_turret/share/ament_index/resource_index/packages/antidrone_turret
+-- Symlinking: /home/bmarkiv/CPPMILITARY/homework_13/robot_ws/install/antidrone_turret/share/antidrone_turret/cmake/rosidl_cmake-extras.cmake
+-- Symlinking: /home/bmarkiv/CPPMILITARY/homework_13/robot_ws/install/antidrone_turret/share/antidrone_turret/cmake/ament_cmake_export_dependencies-extras.cmake
+-- Symlinking: /home/bmarkiv/CPPMILITARY/homework_13/robot_ws/install/antidrone_turret/share/antidrone_turret/cmake/ament_cmake_export_include_directories-extras.cmake
+-- Symlinking: /home/bmarkiv/CPPMILITARY/homework_13/robot_ws/install/antidrone_turret/share/antidrone_turret/cmake/ament_cmake_export_libraries-extras.cmake
+-- Symlinking: /home/bmarkiv/CPPMILITARY/homework_13/robot_ws/install/antidrone_turret/share/antidrone_turret/cmake/ament_cmake_export_targets-extras.cmake
+-- Symlinking: /home/bmarkiv/CPPMILITARY/homework_13/robot_ws/install/antidrone_turret/share/antidrone_turret/cmake/rosidl_cmake_export_typesupport_targets-extras.cmake
+-- Symlinking: /home/bmarkiv/CPPMILITARY/homework_13/robot_ws/install/antidrone_turret/share/antidrone_turret/cmake/rosidl_cmake_export_typesupport_libraries-extras.cmake
+-- Symlinking: /home/bmarkiv/CPPMILITARY/homework_13/robot_ws/install/antidrone_turret/share/antidrone_turret/cmake/rosidl_cmake_aggregate_target-extras.cmake
+-- Symlinking: /home/bmarkiv/CPPMILITARY/homework_13/robot_ws/install/antidrone_turret/share/antidrone_turret/cmake/antidrone_turretConfig.cmake
+-- Symlinking: /home/bmarkiv/CPPMILITARY/homework_13/robot_ws/install/antidrone_turret/share/antidrone_turret/cmake/antidrone_turretConfig-version.cmake
+-- Symlinking: /home/bmarkiv/CPPMILITARY/homework_13/robot_ws/install/antidrone_turret/share/antidrone_turret/package.xml
+-- Installing: /home/bmarkiv/CPPMILITARY/homework_13/robot_ws/install/antidrone_turret/lib/libantidrone_turret__rosidl_generator_c.so
+-- Set non-toolchain portion of runtime path of "/home/bmarkiv/CPPMILITARY/homework_13/robot_ws/install/antidrone_turret/lib/libantidrone_turret__rosidl_generator_c.so" to ""
+-- Installing: /home/bmarkiv/CPPMILITARY/homework_13/robot_ws/install/antidrone_turret/lib/libantidrone_turret__rosidl_typesupport_fastrtps_c.so
+-- Set non-toolchain portion of runtime path of "/home/bmarkiv/CPPMILITARY/homework_13/robot_ws/install/antidrone_turret/lib/libantidrone_turret__rosidl_typesupport_fastrtps_c.so" to ""
+-- Installing: /home/bmarkiv/CPPMILITARY/homework_13/robot_ws/install/antidrone_turret/lib/libantidrone_turret__rosidl_typesupport_introspection_c.so
+-- Set non-toolchain portion of runtime path of "/home/bmarkiv/CPPMILITARY/homework_13/robot_ws/install/antidrone_turret/lib/libantidrone_turret__rosidl_typesupport_introspection_c.so" to ""
+-- Installing: /home/bmarkiv/CPPMILITARY/homework_13/robot_ws/install/antidrone_turret/lib/libantidrone_turret__rosidl_typesupport_c.so
+-- Set non-toolchain portion of runtime path of "/home/bmarkiv/CPPMILITARY/homework_13/robot_ws/install/antidrone_turret/lib/libantidrone_turret__rosidl_typesupport_c.so" to ""
+-- Installing: /home/bmarkiv/CPPMILITARY/homework_13/robot_ws/install/antidrone_turret/lib/libantidrone_turret__rosidl_typesupport_fastrtps_cpp.so
+-- Set non-toolchain portion of runtime path of "/home/bmarkiv/CPPMILITARY/homework_13/robot_ws/install/antidrone_turret/lib/libantidrone_turret__rosidl_typesupport_fastrtps_cpp.so" to ""
+-- Installing: /home/bmarkiv/CPPMILITARY/homework_13/robot_ws/install/antidrone_turret/lib/libantidrone_turret__rosidl_typesupport_introspection_cpp.so
+-- Set non-toolchain portion of runtime path of "/home/bmarkiv/CPPMILITARY/homework_13/robot_ws/install/antidrone_turret/lib/libantidrone_turret__rosidl_typesupport_introspection_cpp.so" to ""
+-- Installing: /home/bmarkiv/CPPMILITARY/homework_13/robot_ws/install/antidrone_turret/lib/libantidrone_turret__rosidl_typesupport_cpp.so
+-- Set non-toolchain portion of runtime path of "/home/bmarkiv/CPPMILITARY/homework_13/robot_ws/install/antidrone_turret/lib/libantidrone_turret__rosidl_typesupport_cpp.so" to ""
+Listing '/home/bmarkiv/CPPMILITARY/homework_13/robot_ws/install/antidrone_turret/lib/python3.12/site-packages/antidrone_turret'...
+Compiling '/home/bmarkiv/CPPMILITARY/homework_13/robot_ws/install/antidrone_turret/lib/python3.12/site-packages/antidrone_turret/__init__.py'...
+Listing '/home/bmarkiv/CPPMILITARY/homework_13/robot_ws/install/antidrone_turret/lib/python3.12/site-packages/antidrone_turret/msg'...
+Compiling '/home/bmarkiv/CPPMILITARY/homework_13/robot_ws/install/antidrone_turret/lib/python3.12/site-packages/antidrone_turret/msg/__init__.py'...
+Compiling '/home/bmarkiv/CPPMILITARY/homework_13/robot_ws/install/antidrone_turret/lib/python3.12/site-packages/antidrone_turret/msg/_actuator_status.py'...
+Compiling '/home/bmarkiv/CPPMILITARY/homework_13/robot_ws/install/antidrone_turret/lib/python3.12/site-packages/antidrone_turret/msg/_gimbal_command.py'...
+Compiling '/home/bmarkiv/CPPMILITARY/homework_13/robot_ws/install/antidrone_turret/lib/python3.12/site-packages/antidrone_turret/msg/_servo_command.py'...
+Compiling '/home/bmarkiv/CPPMILITARY/homework_13/robot_ws/install/antidrone_turret/lib/python3.12/site-packages/antidrone_turret/msg/_target.py'...
+Compiling '/home/bmarkiv/CPPMILITARY/homework_13/robot_ws/install/antidrone_turret/lib/python3.12/site-packages/antidrone_turret/msg/_turret_status.py'...
+Listing '/home/bmarkiv/CPPMILITARY/homework_13/robot_ws/install/antidrone_turret/lib/python3.12/site-packages/antidrone_turret/srv'...
+Compiling '/home/bmarkiv/CPPMILITARY/homework_13/robot_ws/install/antidrone_turret/lib/python3.12/site-packages/antidrone_turret/srv/__init__.py'...
+Compiling '/home/bmarkiv/CPPMILITARY/homework_13/robot_ws/install/antidrone_turret/lib/python3.12/site-packages/antidrone_turret/srv/_trigger_actuator.py'...
+-- Installing: /home/bmarkiv/CPPMILITARY/homework_13/robot_ws/install/antidrone_turret/lib/libantidrone_turret__rosidl_generator_py.so
+-- Set non-toolchain portion of runtime path of "/home/bmarkiv/CPPMILITARY/homework_13/robot_ws/install/antidrone_turret/lib/libantidrone_turret__rosidl_generator_py.so" to ""
+-- Installing: /home/bmarkiv/CPPMILITARY/homework_13/robot_ws/install/antidrone_turret/share/antidrone_turret/cmake/export_antidrone_turret__rosidl_generator_cExport.cmake
+-- Installing: /home/bmarkiv/CPPMILITARY/homework_13/robot_ws/install/antidrone_turret/share/antidrone_turret/cmake/export_antidrone_turret__rosidl_generator_cExport-noconfig.cmake
+-- Installing: /home/bmarkiv/CPPMILITARY/homework_13/robot_ws/install/antidrone_turret/share/antidrone_turret/cmake/export_antidrone_turret__rosidl_typesupport_fastrtps_cExport.cmake
+-- Installing: /home/bmarkiv/CPPMILITARY/homework_13/robot_ws/install/antidrone_turret/share/antidrone_turret/cmake/export_antidrone_turret__rosidl_typesupport_fastrtps_cExport-noconfig.cmake
+-- Installing: /home/bmarkiv/CPPMILITARY/homework_13/robot_ws/install/antidrone_turret/share/antidrone_turret/cmake/antidrone_turret__rosidl_typesupport_introspection_cExport.cmake
+-- Installing: /home/bmarkiv/CPPMILITARY/homework_13/robot_ws/install/antidrone_turret/share/antidrone_turret/cmake/antidrone_turret__rosidl_typesupport_introspection_cExport-noconfig.cmake
+-- Installing: /home/bmarkiv/CPPMILITARY/homework_13/robot_ws/install/antidrone_turret/share/antidrone_turret/cmake/antidrone_turret__rosidl_typesupport_cExport.cmake
+-- Installing: /home/bmarkiv/CPPMILITARY/homework_13/robot_ws/install/antidrone_turret/share/antidrone_turret/cmake/antidrone_turret__rosidl_typesupport_cExport-noconfig.cmake
+-- Installing: /home/bmarkiv/CPPMILITARY/homework_13/robot_ws/install/antidrone_turret/share/antidrone_turret/cmake/export_antidrone_turret__rosidl_generator_cppExport.cmake
+-- Installing: /home/bmarkiv/CPPMILITARY/homework_13/robot_ws/install/antidrone_turret/share/antidrone_turret/cmake/export_antidrone_turret__rosidl_typesupport_fastrtps_cppExport.cmake
+-- Installing: /home/bmarkiv/CPPMILITARY/homework_13/robot_ws/install/antidrone_turret/share/antidrone_turret/cmake/export_antidrone_turret__rosidl_typesupport_fastrtps_cppExport-noconfig.cmake
+-- Installing: /home/bmarkiv/CPPMILITARY/homework_13/robot_ws/install/antidrone_turret/share/antidrone_turret/cmake/antidrone_turret__rosidl_typesupport_introspection_cppExport.cmake
+-- Installing: /home/bmarkiv/CPPMILITARY/homework_13/robot_ws/install/antidrone_turret/share/antidrone_turret/cmake/antidrone_turret__rosidl_typesupport_introspection_cppExport-noconfig.cmake
+-- Installing: /home/bmarkiv/CPPMILITARY/homework_13/robot_ws/install/antidrone_turret/share/antidrone_turret/cmake/antidrone_turret__rosidl_typesupport_cppExport.cmake
+-- Installing: /home/bmarkiv/CPPMILITARY/homework_13/robot_ws/install/antidrone_turret/share/antidrone_turret/cmake/antidrone_turret__rosidl_typesupport_cppExport-noconfig.cmake
+-- Installing: /home/bmarkiv/CPPMILITARY/homework_13/robot_ws/install/antidrone_turret/share/antidrone_turret/cmake/export_antidrone_turret__rosidl_generator_pyExport.cmake
+-- Installing: /home/bmarkiv/CPPMILITARY/homework_13/robot_ws/install/antidrone_turret/share/antidrone_turret/cmake/export_antidrone_turret__rosidl_generator_pyExport-noconfig.cmake

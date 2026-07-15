@@ -1,0 +1,1 @@
+/home/bmarkiv/CPPMILITARY/homework_13/robot_ws/build/antidrone_turret/rosidl_cmake/rosidl_cmake_export_typesupport_libraries-extras.cmake

@@ -1,0 +1,1 @@
+/home/bmarkiv/CPPMILITARY/homework_13/robot_ws/build/antidrone_turret/rosidl_generator_rs/antidrone_turret/rust/build.rs
