@@ -39,6 +39,16 @@ RUN apt update && \
 # запуску - тобто вони знайдуться незалежно від того, де всередині
 # контейнера змонтовано проєкт.
 COPY .clang-format /.clang-format
+RUN apt update && apt install --no-install-recommends -y \
+      software-properties-common curl gnupg && \
+    add-apt-repository universe -y && \
+    curl -sSL https://raw.githubusercontent.com/ros/rosdistro/master/ros.key \
+      -o /usr/share/keyrings/ros-archive-keyring.gpg && \
+    echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/ros-archive-keyring.gpg] http://packages.ros.org/ros2/ubuntu noble main" \
+      > /etc/apt/sources.list.d/ros2.list && \
+    apt update && \
+    apt install --no-install-recommends -y ros-jazzy-desktop ros-dev-tools && \
+    rm -rf /var/lib/apt/lists/* && apt-get clean -y
 COPY .clang-tidy /.clang-tidy
 COPY .clangd /.clangd
 COPY .cmake-format.json /.cmake-format.json
@@ -92,7 +102,8 @@ RUN if id ubuntu >/dev/null 2>&1; then \
       userdel -r ubuntu && groupdel ubuntu 2>/dev/null || true; \
     fi && \
     useradd -s /bin/bash -m ${CONTAINER_USER} && \
-  echo "\nexport PROMPT_COMMAND=\"history -a; history -n\n\"" >> /home/${CONTAINER_USER}/.bashrc
+  echo "\nexport PROMPT_COMMAND=\"history -a; history -n\n\"" >> /home/${CONTAINER_USER}/.bashrc && \
+  echo "source /opt/ros/jazzy/setup.bash" >> /home/${CONTAINER_USER}/.bashrc
 
 # Всі подальші команди у контейнері (включно з процесами VS Code remote
 # extension) виконуються від CONTAINER_USER, не від root.
