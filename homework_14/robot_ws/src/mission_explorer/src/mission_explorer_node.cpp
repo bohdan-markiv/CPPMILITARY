@@ -4,7 +4,7 @@
 #include <string>
 #include <utility>
 #include <vector>
-
+#include <chrono>
 #include "rclcpp/rclcpp.hpp"
 
 #include "underground_world/msg/local_scan.hpp"
@@ -62,6 +62,16 @@ public:
     trigger_client_ = create_client<PayloadTrigger>("/payload/trigger");
 
     scan_sub_ = create_subscription<LocalScan>("/robot/local_scan", qos, [this](const LocalScan::SharedPtr msg) { on_scan(*msg); });
+    kickstart_timer_ = create_wall_timer(std::chrono::seconds(1), [this]() {
+      if (first_scan_received_) {
+        kickstart_timer_->cancel();
+        return;
+      }
+      RCLCPP_WARN(get_logger(), "no scan after 1s — sending kickstart");
+      MoveCommand kick;
+      kick.direction = 99;  // out-of-range → forces republish, no invalid_move
+      cmd_move_pub_->publish(kick);
+    });
 
     RCLCPP_INFO(get_logger(), "mission_explorer ready");
   }
@@ -127,6 +137,7 @@ private:
 
   void on_scan(const LocalScan& scan)
   {
+    first_scan_received_ = true;
     const explorer::Coord robot{scan.robot_x, scan.robot_y};
     map_.mark_visited(robot);
 
@@ -166,7 +177,8 @@ private:
   rclcpp::Publisher<StudentStatus>::SharedPtr status_pub_;
   rclcpp::Client<PayloadTrigger>::SharedPtr trigger_client_;
   rclcpp::Subscription<LocalScan>::SharedPtr scan_sub_;
-
+  bool first_scan_received_ = false;
+  rclcpp::TimerBase::SharedPtr kickstart_timer_;
   explorer::MapMemory map_;
   std::vector<explorer::Coord> path_stack_;
 };
