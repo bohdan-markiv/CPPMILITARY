@@ -42,3 +42,5 @@ add_subdirectory(drone_ballistics)
 # Домашні роботи. По мірі появи додаємо кожну окремим add_subdirectory.
 add_subdirectory(homework_06)
 add_subdirectory(homework_05)
+# add_subdirectory(homework_05)
+add_subdirectory(results_poster)
