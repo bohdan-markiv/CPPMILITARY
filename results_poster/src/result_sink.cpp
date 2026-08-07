@@ -24,7 +24,14 @@ std::optional<int> HttpResultSink::post(const nlohmann::json& envelope)
 
 bool HttpResultSink::verify(const std::string& testId, const std::string& studentId)
 {
-  return false;
+  httplib::Client client(host_);
+  client.set_connection_timeout(2, 0);
+  client.set_read_timeout(2, 0);
+  httplib::Headers headers = {{"x-api-key", apiKey_}};
+
+  std::string path = "/api/dz12/results/" + testId + "/" + studentId;
+  httplib::Result res = client.Get(path.c_str(), headers);
+  return res && res->status == 200;
 }
 
 }  // namespace poster
