@@ -3,7 +3,8 @@
 #include "interfaces/IBallisticsSolver.h"
 #include "interfaces/ITargetProvider.h"
 #include "interfaces/IConfigLoader.h"
+#include <string>
 
 std::unique_ptr<IBallisticSolver> createSolver(SolverType type);
-std::unique_ptr<ITargetProvider> createProvider(ProviderType type);
+std::unique_ptr<ITargetProvider> createProvider(ProviderType type, std::string path = "");
 std::unique_ptr<IConfigLoader> createLoader(LoaderType type);

@@ -22,7 +22,7 @@ std::unique_ptr<ITargetProvider> createProvider(ProviderType type)
 {
   switch (type) {
     case ProviderType::JSON:
-      return std::make_unique<JsonTargetProvider>();
+      return std::make_unique<JsonTargetProvider>(std::move(path));
   }
   return nullptr;
 };

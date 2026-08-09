@@ -5,7 +5,7 @@
 
 void JsonTargetProvider::load()
 {
-  std::ifstream targetsFile("drone_ballistics/data/targets.json");
+  std::ifstream targetsFile(path_.empty() ? "drone_ballistics/data/targets.json" : path_);
   if (!targetsFile.is_open()) {
     throw std::runtime_error("Cannot open targets.json");
   }
@@ -44,4 +44,8 @@ int JsonTargetProvider::getTimeSteps()
 Coord *JsonTargetProvider::getTarget(int idx)
 {
   return &this->targets[idx][0];
+}
+JsonTargetProvider::JsonTargetProvider(std::string path)
+  : path_(std::move(path))
+{
 }

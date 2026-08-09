@@ -21,3 +21,6 @@ target_link_libraries(post_runner PUBLIC result_source result_sink posting_polic
 add_executable(post_runner_test test/post_runner_test.cpp)
 target_link_libraries(post_runner_test PRIVATE post_runner GTest::gtest_main)
 add_test(NAME post_runner_test COMMAND post_runner_test)
+
+add_executable(results_poster src/main.cpp)
+target_link_libraries(results_poster PRIVATE post_runner)
