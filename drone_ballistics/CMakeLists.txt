@@ -47,7 +47,13 @@ add_executable(ballistics src/main.cpp)
 
 # Базові compiler warnings допомагають побачити підозрілі місця до runtime.
 target_include_directories(ballistics PRIVATE include)
-
+target_include_directories(ballistics SYSTEM
+                           PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/third_party/c_library_v2)
+add_library(mavlinklink src/telemetry/MavlinkLink.cpp)
+target_include_directories(mavlinklink PUBLIC include)
+target_include_directories(mavlinklink SYSTEM
+                           PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/third_party/c_library_v2)
+target_compile_options(mavlinklink PRIVATE -Wall -Wextra -pedantic)
 target_compile_options(ballistics PRIVATE -Wall -Wextra -pedantic)
 target_link_libraries(
     ballistics
@@ -59,5 +65,6 @@ target_link_libraries(
             jsonconfigloader
             tablesolver
             ballistictable
-            state)
+            state
+            mavlinklink)
 target_link_libraries(analyticalsolver PRIVATE helpers)

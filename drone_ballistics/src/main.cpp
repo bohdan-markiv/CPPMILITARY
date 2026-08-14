@@ -3,7 +3,7 @@
 #include "config/ComponentFactory.h"
 #include <iostream>
 #include <fstream>
-
+#include "telemetry/MavlinkLink.hpp"
 std::vector<SimStep> simLog;
 
 auto main(int argc, char **argv) -> int
