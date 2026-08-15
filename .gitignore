@@ -33,3 +33,5 @@ core.*
 Thumbs.db
 
 .cache/
+.drone_ballistics/checker/
+drone_ballistics/checker/

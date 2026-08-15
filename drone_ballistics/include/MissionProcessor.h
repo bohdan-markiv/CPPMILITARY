@@ -44,7 +44,7 @@ public:
     , configs(std::move(configs))
   {
   }
-
+  [[nodiscard]] bool targetHit() const { return TARGET_HIT; }
   float calculateTimeToStop(float currentSpeed, float attackSpeed, bool targetChanged, DronePhase phase, float remainingTurnTime, float a);
   float angleDifference(float from, float to);
   void init();
@@ -54,4 +54,7 @@ public:
   void changeSolver(std::unique_ptr<IBallisticSolver> newSolver);
   SimStep step();
   [[nodiscard]] int getN() const;
+  [[nodiscard]] float getT() const { return t; }
+  [[nodiscard]] float getSpeed() const { return currentSpeed; }
+  [[nodiscard]] float getAltitude() const { return config.altitude; }
 };
